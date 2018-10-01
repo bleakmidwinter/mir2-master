@@ -644,8 +644,9 @@ namespace Server.MirEnvir
                             Broadcast(new S.Chat
                                 {
                                     Message = string.Format("Online Players: {0}", Players.Count),
-                                    Type = ChatType.Hint
-                                });
+                                //Type = ChatType.Hint
+                                Type = ChatType.System2
+                            });
                         }
 
                         if (Time >= SpawnTime)
