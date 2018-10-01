@@ -787,6 +787,10 @@ namespace Client.MirScenes.Dialogs
                     backColour = Color.DarkRed;
                     foreColour = Color.White;
                     break;
+                case ChatType.System3:
+                    backColour = Color.Blue;
+                    foreColour = Color.White;
+                    break;
                 case ChatType.Group:
                     backColour = Color.White;
                     foreColour = Color.Brown;
