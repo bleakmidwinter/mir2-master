@@ -3668,10 +3668,10 @@ namespace Server.MirObjects
 
                 switch (parts[0].ToUpper())
                 {
-                    case "LOGIN":
-                        GMLogin = true;
-                        ReceiveChat("Please type the GM Password", ChatType.Hint);
-                        return;
+                    //case "LOGIN":
+                    //    GMLogin = true;
+                    //    ReceiveChat("Please type the GM Password", ChatType.Hint);
+                    //    return;
 
                     case "KILL":
                         if (!IsGM) return;
@@ -10417,6 +10417,10 @@ namespace Server.MirObjects
                 Enqueue(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
                 Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
                 ReceiveChat("You are a walking explosive.", ChatType.System);
+            }
+            else if (p.PType == PoisonType.Paralysis)
+            {
+                ReceiveChat("You have been paralysed.", ChatType.System2);
             }
             else
                 ReceiveChat("You have been poisoned.", ChatType.System2);
