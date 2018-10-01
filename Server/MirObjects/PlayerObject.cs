@@ -354,6 +354,7 @@ namespace Server.MirObjects
             if (Account.AdminAccount)
             {
                 IsGM = true;
+                GMNeverDie = true;
                 SMain.Enqueue(string.Format("{0} is now a GM", Name));
             }
 
@@ -11784,6 +11785,7 @@ namespace Server.MirObjects
             UserItem tempTo = null;
             int indexFrom = -1;
             int indexTo = -1;
+            string statName = "";
 
             if (Dead)
             {
@@ -12030,70 +12032,84 @@ namespace Server.MirObjects
                     if ((tempFrom.Info.MaxDC + tempFrom.DC) > 0)
                     {
                         if (succeeded) tempTo.DC = (byte)Math.Min(byte.MaxValue, tempTo.DC + tempFrom.Info.MaxDC + tempFrom.DC);
+                        statName = "DC + 1";
                     }
 
                     else if ((tempFrom.Info.MaxMC + tempFrom.MC) > 0)
                     {
                         if (succeeded) tempTo.MC = (byte)Math.Min(byte.MaxValue, tempTo.MC + tempFrom.Info.MaxMC + tempFrom.MC);
+                        statName = "MC + 1";
                     }
 
                     else if ((tempFrom.Info.MaxSC + tempFrom.SC) > 0)
                     {
                         if (succeeded) tempTo.SC = (byte)Math.Min(byte.MaxValue, tempTo.SC + tempFrom.Info.MaxSC + tempFrom.SC);
+                        statName = "SC + 1";
                     }
 
                     else if ((tempFrom.Info.MaxAC + tempFrom.AC) > 0)
                     {
                         if (succeeded) tempTo.AC = (byte)Math.Min(byte.MaxValue, tempTo.AC + tempFrom.Info.MaxAC + tempFrom.AC);
+                        statName = "AC + 1";
                     }
 
                     else if ((tempFrom.Info.MaxMAC + tempFrom.MAC) > 0)
                     {
                         if (succeeded) tempTo.MAC = (byte)Math.Min(byte.MaxValue, tempTo.MAC + tempFrom.Info.MaxMAC + tempFrom.MAC);
+                        statName = "MAC + 1";
                     }
 
                     else if ((tempFrom.Info.Durability) > 0)
                     {
                         if (succeeded) tempTo.MaxDura = (ushort)Math.Min(ushort.MaxValue, tempTo.MaxDura + tempFrom.MaxDura);
+                        statName = "Durability + 2";
                     }
 
                     else if ((tempFrom.Info.AttackSpeed + tempFrom.AttackSpeed) > 0)
                     {
                         if (succeeded) tempTo.AttackSpeed = (sbyte)Math.Max(sbyte.MinValue, (Math.Min(sbyte.MaxValue, tempTo.AttackSpeed + tempFrom.Info.AttackSpeed + tempFrom.AttackSpeed)));
+                        statName = "Attack Speed + 1";
                     }
 
                     else if ((tempFrom.Info.Agility + tempFrom.Agility) > 0)
                     {
                         if (succeeded) tempTo.Agility = (byte)Math.Min(byte.MaxValue, tempFrom.Info.Agility + tempTo.Agility + tempFrom.Agility);
+                        statName = "Agility + 1";
                     }
 
                     else if ((tempFrom.Info.Accuracy + tempFrom.Accuracy) > 0)
                     {
                         if (succeeded) tempTo.Accuracy = (byte)Math.Min(byte.MaxValue, tempFrom.Info.Accuracy + tempTo.Accuracy + tempFrom.Accuracy);
+                        statName = "Accuracy + 1";
                     }
 
                     else if ((tempFrom.Info.PoisonAttack + tempFrom.PoisonAttack) > 0)
                     {
                         if (succeeded) tempTo.PoisonAttack = (byte)Math.Min(byte.MaxValue, tempFrom.Info.PoisonAttack + tempTo.PoisonAttack + tempFrom.PoisonAttack);
+                        statName = "Poison Attack + 1";
                     }
 
                     else if ((tempFrom.Info.Freezing + tempFrom.Freezing) > 0)
                     {
                         if (succeeded) tempTo.Freezing = (byte)Math.Min(byte.MaxValue, tempFrom.Info.Freezing + tempTo.Freezing + tempFrom.Freezing);
+                        statName = "Slow + 1";
                     }
 
                     else if ((tempFrom.Info.MagicResist + tempFrom.MagicResist) > 0)
                     {
                         if (succeeded) tempTo.MagicResist = (byte)Math.Min(byte.MaxValue, tempFrom.Info.MagicResist + tempTo.MagicResist + tempFrom.MagicResist);
+                        statName = "Magic Resistance + 1";
                     }
 
                     else if ((tempFrom.Info.PoisonResist + tempFrom.PoisonResist) > 0)
                     {
                         if (succeeded) tempTo.PoisonResist = (byte)Math.Min(byte.MaxValue, tempFrom.Info.PoisonResist + tempTo.PoisonResist + tempFrom.PoisonResist);
+                        statName = "Poison Resistance + 1";
                     }
                     else if ((tempFrom.Info.Luck + tempFrom.Luck) > 0)
                     {
                         if (succeeded) tempTo.Luck = (sbyte)Math.Min(sbyte.MaxValue, tempFrom.Info.Luck + tempTo.Luck + tempFrom.Luck);
+                        statName = "Luck + 1";
                     }
                     else
                     {
@@ -12108,7 +12124,8 @@ namespace Server.MirObjects
                         if ((tempFrom.Info.Shape == 3) && (Envir.Random.Next(15) < 3))
                         {
                             //item destroyed
-                            ReceiveChat("Item has been destroyed.", ChatType.Hint);
+                            //ReceiveChat("Item has been destroyed.", ChatType.Hint);
+                            ReceiveChat("The item was destroyed.", ChatType.System);
                             Report.ItemChanged("CombineItem (Item Destroyed)", Info.Inventory[indexTo], 1, 1);
 
                             Info.Inventory[indexTo] = null;
@@ -12117,7 +12134,8 @@ namespace Server.MirObjects
                         else
                         {
                             //upgrade has no effect
-                            ReceiveChat("Upgrade has no effect.", ChatType.Hint);
+                            //ReceiveChat("Upgrade has no effect.", ChatType.Hint);
+                            ReceiveChat("Item was not upgraded.", ChatType.Hint);
                         }
 
                         canUpgrade = false;
@@ -12155,7 +12173,8 @@ namespace Server.MirObjects
             if (canUpgrade && Info.Inventory[indexTo] != null)
             {
                 tempTo.GemCount++;
-                ReceiveChat("Item has been upgraded.", ChatType.Hint);
+                //ReceiveChat("Item has been upgraded.", ChatType.Hint);
+                ReceiveChat(statName + " has been added to " + tempTo.Name + ".", ChatType.System3);
                 Enqueue(new S.ItemUpgraded { Item = tempTo });
             }
 
