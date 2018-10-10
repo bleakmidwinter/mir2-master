@@ -355,6 +355,8 @@ namespace Server.MirObjects
             {
                 IsGM = true;
                 GMNeverDie = true;
+                //10-10-2018 GM automatically in observer mode on login
+                Observer = true;
                 SMain.Enqueue(string.Format("{0} is now a GM", Name));
             }
 
