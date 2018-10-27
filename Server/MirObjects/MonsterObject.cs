@@ -810,13 +810,13 @@ namespace Server.MirObjects
                 OwnerTime = Envir.Time + Settings.Minute,
             };
 
-            if (!item.Info.GlobalDropNotify)
-                return ob.Drop(Settings.DropRange);
+            //if (!item.Info.GlobalDropNotify)
+            //    return ob.Drop(Settings.DropRange);
 
-            foreach (var player in Envir.Players)
-            {
-                player.ReceiveChat($"{Name} has dropped {item.FriendlyName}.", ChatType.System2);
-            }
+            //foreach (var player in Envir.Players)
+            //{
+            //    player.ReceiveChat($"{Name} has dropped {item.FriendlyName}.", ChatType.System2);
+            //}
 
             return ob.Drop(Settings.DropRange);
         }
