@@ -1267,9 +1267,9 @@ namespace Server.MirEnvir
                                 MagicInfoList.Add(m);
                         }
                     }
-                    FillMagicInfoList();
-                    if (LoadVersion <= 70)
-                        UpdateMagicInfo();
+                    //FillMagicInfoList();
+                    //if (LoadVersion <= 70)
+                    //    UpdateMagicInfo();
 
                     if (LoadVersion >= 63)
                     {
