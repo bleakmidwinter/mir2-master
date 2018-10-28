@@ -2346,6 +2346,75 @@ namespace Client.MirObjects
             frame.Frames.Add(MirAction.Attack1, new Frame(999, 1, -1, 120) { Blend = true });
             frame.Frames.Add(MirAction.Struck, new Frame(88, 9, -9, 100) { Blend = true });
 
+            //ORCS
+            //208 - OrcKnifeman, OrcSpearman, OrcMiner, Orc, OrcWarrior, OrcHunter
+            Monsters.Add(frame = new FrameSet());
+            frame.Frames.Add(MirAction.Standing, new Frame(0, 4, 0, 500));
+            frame.Frames.Add(MirAction.Walking, new Frame(32, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack1, new Frame(80, 6, 0, 100));
+            frame.Frames.Add(MirAction.Struck, new Frame(128, 2, 0, 200));
+            frame.Frames.Add(MirAction.Die, new Frame(144, 10, 0, 100));
+            frame.Frames.Add(MirAction.Dead, new Frame(153, 1, 9, 1000));
+            frame.Frames.Add(MirAction.Revive, new Frame(144, 10, 0, 100) { Reverse = true });
+
+            //209 - OrcSorcerer
+            Monsters.Add(frame = new FrameSet());
+            frame.Frames.Add(MirAction.Standing, new Frame(0, 4, 0, 500));
+            frame.Frames.Add(MirAction.Walking, new Frame(32, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack1, new Frame(80, 6, 0, 100));
+            frame.Frames.Add(MirAction.Struck, new Frame(128, 2, 0, 200));
+            frame.Frames.Add(MirAction.Die, new Frame(144, 10, 0, 100));
+            frame.Frames.Add(MirAction.Dead, new Frame(153, 1, 9, 1000));
+            frame.Frames.Add(MirAction.Revive, new Frame(144, 10, 0, 100) { Reverse = true });
+            frame.Frames.Add(MirAction.AttackRange1, new Frame(224, 6, 0, 100));
+
+            //210 - OrcChampion
+            Monsters.Add(frame = new FrameSet());
+            frame.Frames.Add(MirAction.Standing, new Frame(0, 4, 0, 500));
+            frame.Frames.Add(MirAction.Walking, new Frame(32, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack1, new Frame(80, 6, 0, 100));
+            frame.Frames.Add(MirAction.Struck, new Frame(128, 2, 0, 200));
+            frame.Frames.Add(MirAction.Die, new Frame(144, 10, 0, 100));
+            frame.Frames.Add(MirAction.Dead, new Frame(153, 1, 9, 1000));
+            frame.Frames.Add(MirAction.Revive, new Frame(144, 10, 0, 100) { Reverse = true });
+            frame.Frames.Add(MirAction.Attack2, new Frame(224, 6, 0, 100));
+
+            //211 - OrcColossus
+            Monsters.Add(frame = new FrameSet());
+            frame.Frames.Add(MirAction.Standing, new Frame(0, 4, 0, 500));
+            frame.Frames.Add(MirAction.Walking, new Frame(32, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack1, new Frame(80, 8, 0, 100));
+            frame.Frames.Add(MirAction.Struck, new Frame(144, 2, 0, 200));
+            frame.Frames.Add(MirAction.Die, new Frame(160, 16, 0, 100));
+            frame.Frames.Add(MirAction.Dead, new Frame(175, 1, 15, 1000));
+            frame.Frames.Add(MirAction.Revive, new Frame(160, 16, 0, 100) { Reverse = true });
+            frame.Frames.Add(MirAction.Attack2, new Frame(288, 10, 0, 100));
+            frame.Frames.Add(MirAction.Attack3, new Frame(368, 8, 0, 100));
+            frame.Frames.Add(MirAction.Attack4, new Frame(432, 8, 0, 100));
+
+            //212 - OrcWarlord
+            Monsters.Add(frame = new FrameSet());
+            frame.Frames.Add(MirAction.Standing, new Frame(0, 4, 0, 500));
+            frame.Frames.Add(MirAction.Walking, new Frame(32, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack1, new Frame(80, 10, 0, 100));
+            frame.Frames.Add(MirAction.Struck, new Frame(160, 2, 0, 200));
+            frame.Frames.Add(MirAction.Die, new Frame(176, 14, 0, 100));
+            frame.Frames.Add(MirAction.Dead, new Frame(189, 1, 13, 1000));
+            frame.Frames.Add(MirAction.Revive, new Frame(176, 14, 0, 100) { Reverse = true });
+            frame.Frames.Add(MirAction.Attack2, new Frame(288, 10, 0, 100));
+            frame.Frames.Add(MirAction.Attack3, new Frame(368, 8, 0, 100));
+
+            //213 - OrcSwordsman(slasher)
+            Monsters.Add(frame = new FrameSet());
+            frame.Frames.Add(MirAction.Standing, new Frame(0, 4, 0, 500));
+            frame.Frames.Add(MirAction.Walking, new Frame(32, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack1, new Frame(80, 6, 0, 100));
+            frame.Frames.Add(MirAction.Attack2, new Frame(80, 6, 0, 100));
+            frame.Frames.Add(MirAction.Struck, new Frame(128, 2, 0, 200));
+            frame.Frames.Add(MirAction.Die, new Frame(144, 10, 0, 100));
+            frame.Frames.Add(MirAction.Dead, new Frame(153, 1, 9, 1000));
+            frame.Frames.Add(MirAction.Revive, new Frame(144, 10, 0, 100) { Reverse = true });
+
             #endregion
 
             /*

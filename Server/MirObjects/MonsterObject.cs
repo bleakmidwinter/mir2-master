@@ -216,6 +216,14 @@ namespace Server.MirObjects
                     return new VenomSpider(info);
                 case 101:
                     return new ZumaArcher(info);
+                case 102:
+                    return new OrcKnifeman(info);
+                case 103:
+                    return new OrcSpearman(info);
+                case 104:
+                    return new OrcSwordman(info);
+                case 105:
+                    return new OrcChampion(info);
 
                 //unfinished
                 case 253:

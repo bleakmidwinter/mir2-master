@@ -270,6 +270,10 @@
     <Compile Include="MirObjects\Monsters\IcePillar.cs" />
     <Compile Include="MirObjects\Monsters\FlameSpear.cs" />
     <Compile Include="MirObjects\Monsters\FlameQueen.cs" />
+    <Compile Include="MirObjects\Monsters\OrcChampion.cs" />
+    <Compile Include="MirObjects\Monsters\OrcKnifeman.cs" />
+    <Compile Include="MirObjects\Monsters\OrcSpearman.cs" />
+    <Compile Include="MirObjects\Monsters\OrcSwordman.cs" />
     <Compile Include="MirObjects\Monsters\TrollKing.cs" />
     <Compile Include="MirObjects\Monsters\ManectricKing.cs" />
     <Compile Include="MirObjects\Monsters\TrollBomber.cs" />

@@ -603,7 +603,19 @@ public enum Monster : ushort
     Ram1 = 400,
     Ram2 = 401,
     Kite = 402,
-    
+
+    Orc = 423,
+    OrcMiner = 424,
+    OrcKnifeman = 425,
+    OrcSpearman = 426,
+    OrcSwordman = 427,
+    OrcWarrior = 428,
+    OrcHunter = 429,
+    OrcSorcerer = 430,
+    OrcChampion = 431,
+    OrcColossus = 432,
+    OrcWarlord = 433,
+
 
     EvilMir = 900,
     EvilMirBody = 901,

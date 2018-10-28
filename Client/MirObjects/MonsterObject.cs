@@ -999,6 +999,29 @@ namespace Client.MirObjects
                 case Monster.HellBomb3:
                     Frames = FrameSet.Monsters[207];
                     break;
+                case Monster.Orc:
+                case Monster.OrcMiner:
+                case Monster.OrcKnifeman:
+                case Monster.OrcSpearman:
+                case Monster.OrcWarrior:
+                case Monster.OrcHunter:
+                    Frames = FrameSet.Monsters[208];
+                    break;
+                case Monster.OrcSorcerer:
+                    Frames = FrameSet.Monsters[209];
+                    break;
+                case Monster.OrcChampion:
+                    Frames = FrameSet.Monsters[210];
+                    break;
+                case Monster.OrcColossus:
+                    Frames = FrameSet.Monsters[211];
+                    break;
+                case Monster.OrcWarlord:
+                    Frames = FrameSet.Monsters[212];
+                    break;
+                case Monster.OrcSwordman:
+                    Frames = FrameSet.Monsters[213];
+                    break;
 
 
                 case Monster.BabyPig:
@@ -1976,6 +1999,25 @@ namespace Client.MirObjects
                         {
                             switch (FrameIndex)
                             {
+                                case 1:
+                                    PlaySwingSound();
+                                    switch (BaseImage)
+                                    {
+                                        case Monster.OrcMiner:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcMiner], 224 + (int)Direction * 5, 5, Frame.Count * Frame.Interval, this));
+                                            //Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcMiner], 224 + (int)Direction * 5, 5, 5 * Frame.Interval, this));
+                                            break;
+                                        case Monster.OrcHunter:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcHunter], 224 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
+                                            break;
+                                        case Monster.OrcWarrior:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcWarrior], 224 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
+                                            break;
+                                        case Monster.OrcChampion:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcChampion], 272 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
+                                            break;
+                                    }
+                                    break;
                                 case 3:
                                     {
                                         PlaySwingSound();
@@ -2042,6 +2084,12 @@ namespace Client.MirObjects
                                                     if (TrackableEffect.GetOwnerEffectID(this.ObjectID, "SnowmanSnow") < 0)
                                                         Effects.Add(new TrackableEffect(new Effect(Libraries.Pets[((ushort)BaseImage) - 10000], 208, 11, 1500, this), "SnowmanSnow"));
                                                 }
+                                                break;
+                                            case Monster.OrcSwordman:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcSwordman], 224 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
+                                                break;
+                                            case Monster.OrcChampion:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcChampion], 320 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
                                                 break;
                                         }
                                     }
@@ -2177,7 +2225,9 @@ namespace Client.MirObjects
                         }
                         else
                         {
-                            if (FrameIndex == 2) PlaySwingSound();
+                            if (FrameIndex == 2)
+                                PlaySwingSound();
+
                             MapObject ob = null;
                             Missile missile;
                             switch (FrameIndex)
@@ -2194,8 +2244,12 @@ namespace Client.MirObjects
                                                     SoundManager.PlaySound(BaseSound + 6);
                                                 }
                                                 break;
+                                            case Monster.OrcSorcerer:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcSorcerer], 272, 6, Frame.Count * Frame.Interval, this));
+                                                break;
                                         }
                                         break;
+
                                     }
                                 case 2:
                                     {
@@ -2471,6 +2525,27 @@ namespace Client.MirObjects
                                                 break;
                                             case Monster.FlameQueen:
                                                 Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.FlameQueen], 729, 10, Frame.Count * Frame.Interval, this));
+                                                break;
+                                            // Orcs Projectiles
+                                            case Monster.OrcKnifeman:
+                                                if (MapControl.GetObject(TargetID) != null)
+                                                    CreateProjectile(224, Libraries.Monsters[(ushort)Monster.OrcKnifeman], false, 1, 30, 0);
+                                                break;
+                                            case Monster.OrcSpearman:
+                                                if (MapControl.GetObject(TargetID) != null)
+                                                    CreateProjectile(224, Libraries.Monsters[(ushort)Monster.OrcSpearman], false, 1, 30, 0);
+                                                break;
+                                            case Monster.OrcSorcerer:
+                                                missile = CreateProjectile(282, Libraries.Monsters[(ushort)Monster.OrcSorcerer], true, 3, 30, 0, false);
+
+                                                if (missile.Target != null)
+                                                {
+                                                    missile.Complete += (o, e) =>
+                                                    {
+                                                        if (missile.Target.CurrentAction == MirAction.Dead) return;
+                                                        missile.Target.Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcSorcerer], 308, 3, 300, missile.Target) { Blend = true });
+                                                    };
+                                                }
                                                 break;
                                         }
                                         break;
@@ -3205,6 +3280,7 @@ namespace Client.MirObjects
                             break;
                     }
                     break;
+
 
                 case Monster.ManectricKing:
                     switch (CurrentAction)
