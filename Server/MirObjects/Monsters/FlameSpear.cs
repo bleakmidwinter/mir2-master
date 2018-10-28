@@ -66,7 +66,11 @@ namespace Server.MirObjects.Monsters
                 Point target = Functions.PointMove(CurrentLocation, Direction, i);
 
                 if (target == Target.CurrentLocation)
-                    Target.Attacked(this, damage, DefenceType.MACAgility);
+                {
+                    //Target.Attacked(this, damage, DefenceType.MACAgility);
+                    DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.MACAgility);
+                    ActionList.Add(action);
+                }
                 else
                 {
                     if (!CurrentMap.ValidPoint(target)) continue;

@@ -83,7 +83,12 @@ namespace Server.MirObjects.Monsters
                 Point target = Functions.PointMove(CurrentLocation, Direction, i);
 
                 if (target == Target.CurrentLocation)
-                    Target.Attacked(this, damage, range ? DefenceType.MACAgility : DefenceType.ACAgility);
+                {
+                    //Target.Attacked(this, damage, range ? DefenceType.MACAgility : DefenceType.ACAgility);
+
+                    DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, range? DefenceType.MACAgility : DefenceType.ACAgility);
+                    ActionList.Add(action);
+                }
                 else
                 {
                     if (!CurrentMap.ValidPoint(target)) continue;
@@ -97,7 +102,10 @@ namespace Server.MirObjects.Monsters
                         if (ob.Race == ObjectType.Monster || ob.Race == ObjectType.Player)
                         {
                             if (!ob.IsAttackTarget(this)) continue;
-                            ob.Attacked(this, damage, range ? DefenceType.MACAgility : DefenceType.ACAgility);
+                            //ob.Attacked(this, damage, range ? DefenceType.MACAgility : DefenceType.ACAgility);
+
+                            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, range? DefenceType.MACAgility : DefenceType.ACAgility);
+                            ActionList.Add(action);
                         }
                         else continue;
 

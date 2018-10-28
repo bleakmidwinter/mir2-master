@@ -31,7 +31,10 @@ namespace Server.MirObjects.Monsters
 
             for (int i = 0; i < targets.Count; i++)
             {
-                targets[i].Attacked(this, damage, defence);
+                //targets[i].Attacked(this, damage, defence);
+
+                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, targets[i], damage, defence);
+                ActionList.Add(action);
             }
         }
 

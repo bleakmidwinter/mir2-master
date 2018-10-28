@@ -190,7 +190,10 @@ namespace Server.MirObjects.Monsters
 
             if (damage == 0) return;
 
-            Target.Attacked(this, damage);
+            //Target.Attacked(this, damage);
+
+            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
+            ActionList.Add(action);
         }
 
         private void HypnoAttack()

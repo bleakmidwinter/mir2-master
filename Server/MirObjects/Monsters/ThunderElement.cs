@@ -61,7 +61,10 @@ namespace Server.MirObjects.Monsters
 
             int damage = GetAttackPower(MinDC, MaxDC);
             if (damage == 0) return;
-            Target.Attacked(this, damage, DefenceType.MAC);
+            //Target.Attacked(this, damage, DefenceType.MAC);
+
+            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.MAC);
+            ActionList.Add(action);
         }
 
         public override int Attacked(MonsterObject attacker, int damage, DefenceType type = DefenceType.ACAgility)

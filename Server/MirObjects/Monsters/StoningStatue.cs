@@ -79,7 +79,10 @@ namespace Server.MirObjects.Monsters
 
             for (int i = 0; i < targets.Count; i++)
             {
-                targets[i].Attacked(this, MaxDC * 3, DefenceType.MACAgility);
+                //targets[i].Attacked(this, MaxDC * 3, DefenceType.MACAgility);
+
+                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, targets[i], MaxDC * 3, DefenceType.MACAgility);
+                ActionList.Add(action);
 
                 if (Envir.Random.Next(2) == 0)
                 {
@@ -107,7 +110,10 @@ namespace Server.MirObjects.Monsters
 
                 if (target == Target.CurrentLocation)
                 {
-                    Target.Attacked(this, damage, DefenceType.ACAgility);
+                    //Target.Attacked(this, damage, DefenceType.ACAgility);
+
+                    DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
+                    ActionList.Add(action);
                 }
                 else
                 {
@@ -123,7 +129,10 @@ namespace Server.MirObjects.Monsters
                         {
                             if (!ob.IsAttackTarget(this)) continue;
 
-                            ob.Attacked(this, damage, DefenceType.ACAgility);
+                            //ob.Attacked(this, damage, DefenceType.ACAgility);
+
+                            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, DefenceType.ACAgility);
+                            ActionList.Add(action);
                         }
                         else continue;
 
