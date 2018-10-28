@@ -11,7 +11,7 @@ namespace Server.MirObjects.Monsters
     class HellKeeper : MonsterObject
     {
         protected override bool CanMove { get { return false; } }
-        protected override bool CanRegen { get { return false; } }
+        //protected override bool CanRegen { get { return false; } }
         
 
         protected internal HellKeeper(MonsterInfo info) : base(info)
@@ -211,5 +211,7 @@ namespace Server.MirObjects.Monsters
                 }
             }
         }
+
+        protected override void ProcessRoam() { }
     }
 }
