@@ -10423,6 +10423,10 @@ namespace Server.MirObjects
             {
                 ReceiveChat("You have been paralysed.", ChatType.System2);
             }
+            else if (p.PType == PoisonType.Slow)
+            {
+                ReceiveChat("You have been slowed.", ChatType.System2);
+            }
             else
                 ReceiveChat("You have been poisoned.", ChatType.System2);
 
