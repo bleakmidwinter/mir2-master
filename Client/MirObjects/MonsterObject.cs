@@ -1013,10 +1013,10 @@ namespace Client.MirObjects
                 case Monster.OrcChampion:
                     Frames = FrameSet.Monsters[210];
                     break;
-                case Monster.OrcColossus:
+                case Monster.OrcGoliath:
                     Frames = FrameSet.Monsters[211];
                     break;
-                case Monster.OrcWarlord:
+                case Monster.OrcLord:
                     Frames = FrameSet.Monsters[212];
                     break;
                 case Monster.OrcSwordman:
@@ -2005,7 +2005,6 @@ namespace Client.MirObjects
                                     {
                                         case Monster.OrcMiner:
                                             Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcMiner], 224 + (int)Direction * 5, 5, Frame.Count * Frame.Interval, this));
-                                            //Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcMiner], 224 + (int)Direction * 5, 5, 5 * Frame.Interval, this));
                                             break;
                                         case Monster.OrcHunter:
                                             Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcHunter], 224 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
@@ -2015,6 +2014,9 @@ namespace Client.MirObjects
                                             break;
                                         case Monster.OrcChampion:
                                             Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcChampion], 272 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
+                                            break;
+                                        case Monster.OrcLord:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcLord], 464 + (int)Direction * 10, 10, 8 * Frame.Interval, this));
                                             break;
                                     }
                                     break;
@@ -2035,6 +2037,14 @@ namespace Client.MirObjects
                                         }
                                         break;
                                     }
+                                case 6:
+                                    switch (BaseImage)
+                                    {
+                                        case Monster.OrcGoliath:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcGoliath], 496, 4, 500, this));
+                                            break;
+                                    }
+                                    break;
                             }
                             NextMotion += FrameInterval;
                         }
@@ -2091,6 +2101,9 @@ namespace Client.MirObjects
                                             case Monster.OrcChampion:
                                                 Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcChampion], 320 + (int)Direction * 6, 6, Frame.Count * Frame.Interval, this));
                                                 break;
+                                            case Monster.OrcLord:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcLord], 544 + (int)Direction * 10, 10, 10 * Frame.Interval, this));
+                                                break;
                                         }
                                     }
                                     break;
@@ -2103,6 +2116,19 @@ namespace Client.MirObjects
                                                 break;
                                             case Monster.FlameQueen:
                                                 Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.FlameQueen], 720, 9, Frame.Count * Frame.Interval, this));
+                                                break;
+                                            case Monster.OrcGoliath:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcGoliath], 500, 4, 4 * Frame.Interval, this));
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case 6:
+                                    {
+                                        switch (BaseImage)
+                                        {
+                                            case Monster.OrcLord:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcLord], 624, 7, 7 * FrameInterval, this));
                                                 break;
                                         }
                                     }
@@ -2156,6 +2182,9 @@ namespace Client.MirObjects
                                             if (TrackableEffect.GetOwnerEffectID(this.ObjectID, "CreatureFlame") < 0)
                                                 Effects.Add(new TrackableEffect(new Effect(Libraries.Pets[((ushort)BaseImage) - 10000], 280, 4, 800, this), "CreatureFlame"));
                                             break;
+                                        case Monster.OrcLord:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcLord], 631 + (int)Direction * 8, 8, 8 * Frame.Interval, this));
+                                            break;
                                     }
                                     break;
                                 case 3:
@@ -2164,6 +2193,9 @@ namespace Client.MirObjects
                                         {
                                             case Monster.WingedTigerLord:
                                                 Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.WingedTigerLord], 632, 8, 600, this, 0, true));
+                                                break;
+                                            case Monster.OrcGoliath:
+                                                Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcGoliath], 504 + (int)Direction * 6, 6, 6 * Frame.Interval, this));
                                                 break;
                                         }
                                     }
@@ -2196,6 +2228,18 @@ namespace Client.MirObjects
                         }
                         else
                         {
+                            switch (FrameIndex)
+                            {
+                                case 1:
+                                    switch (BaseImage)
+                                    {
+                                        case Monster.OrcGoliath:
+                                            Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.OrcGoliath], 564, 14, 14 * Frame.Interval, this));
+                                            break;
+                                    }
+                                    break;
+                            }
+
                             NextMotion += FrameInterval;
                         }
                     }
@@ -3797,6 +3841,14 @@ namespace Client.MirObjects
                     {
                         case MirAction.Attack2:
                             if (FrameIndex >= 4) Libraries.Monsters[(ushort)Monster.WaterGuard].DrawBlend(264 + (FrameIndex + (int)Direction * 3) - 4, DrawLocation, Color.White, true);
+                            break;
+                    }
+                    break;
+                case Monster.OrcLord:
+                    switch (CurrentAction)
+                    {
+                        case MirAction.Standing:
+                            Libraries.Monsters[(ushort)Monster.OrcLord].DrawBlend(432 + FrameIndex + (int)Direction * 4, DrawLocation, Color.White, true);
                             break;
                     }
                     break;

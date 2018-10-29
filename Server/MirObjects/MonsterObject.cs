@@ -172,7 +172,8 @@ namespace Server.MirObjects
                 case 78:
                     return new HellCannibal(info);
                 case 79:
-                    return new HellKeeper(info);
+                    //return new HellKeeper(info);
+                    return new HellKeeper2(info);
                 case 80:
                     return new ConquestArcher(info);
                 case 81:
@@ -224,6 +225,10 @@ namespace Server.MirObjects
                     return new OrcSwordman(info);
                 case 105:
                     return new OrcChampion(info);
+                case 106:
+                    return new OrcGoliath(info);
+                case 107:
+                    return new OrcLord(info);
 
                 //unfinished
                 case 253:
@@ -1348,6 +1353,13 @@ namespace Server.MirObjects
             if (Target.CurrentMap != CurrentMap) return false;
 
             return Target.CurrentLocation != CurrentLocation && Functions.InRange(CurrentLocation, Target.CurrentLocation, 1);
+        }
+
+        protected virtual bool InAttackRange(int dist)
+        {
+            if (Target.CurrentMap != CurrentMap) return false;
+
+            return Target.CurrentLocation != CurrentLocation && Functions.InRange(CurrentLocation, Target.CurrentLocation, dist);
         }
         protected virtual void FindTarget()
         {

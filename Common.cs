@@ -613,8 +613,8 @@ public enum Monster : ushort
     OrcHunter = 429,
     OrcSorcerer = 430,
     OrcChampion = 431,
-    OrcColossus = 432,
-    OrcWarlord = 433,
+    OrcGoliath = 432,
+    OrcLord = 433,
 
 
     EvilMir = 900,

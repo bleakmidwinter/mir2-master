@@ -265,12 +265,15 @@
     <Compile Include="MirObjects\Monsters\FlameAssassin.cs" />
     <Compile Include="MirObjects\Monsters\FlameMage.cs" />
     <Compile Include="MirObjects\Monsters\FlameScythe.cs" />
+    <Compile Include="MirObjects\Monsters\HellKeeper2.cs" />
     <Compile Include="MirObjects\Monsters\HellLord.cs" />
     <Compile Include="MirObjects\Monsters\HellKnight.cs" />
     <Compile Include="MirObjects\Monsters\IcePillar.cs" />
     <Compile Include="MirObjects\Monsters\FlameSpear.cs" />
     <Compile Include="MirObjects\Monsters\FlameQueen.cs" />
     <Compile Include="MirObjects\Monsters\OrcChampion.cs" />
+    <Compile Include="MirObjects\Monsters\OrcGoliath.cs" />
+    <Compile Include="MirObjects\Monsters\OrcLord.cs" />
     <Compile Include="MirObjects\Monsters\OrcKnifeman.cs" />
     <Compile Include="MirObjects\Monsters\OrcSpearman.cs" />
     <Compile Include="MirObjects\Monsters\OrcSwordman.cs" />
