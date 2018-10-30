@@ -53,7 +53,10 @@ namespace Server.MirObjects.Monsters
                         if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Monster) continue;
                         if (!ob.IsAttackTarget(this)) continue;
 
-                        ob.Attacked(this, MinDC, DefenceType.ACAgility);
+                        //ob.Attacked(this, MinDC, DefenceType.ACAgility);
+
+                        DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, MinDC, DefenceType.ACAgility);
+                        ActionList.Add(action);
 
                         if (Envir.Random.Next(Settings.PoisonResistWeight) >= ob.PoisonResist)
                         {

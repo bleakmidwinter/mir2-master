@@ -265,11 +265,18 @@
     <Compile Include="MirObjects\Monsters\FlameAssassin.cs" />
     <Compile Include="MirObjects\Monsters\FlameMage.cs" />
     <Compile Include="MirObjects\Monsters\FlameScythe.cs" />
+    <Compile Include="MirObjects\Monsters\HellKeeper2.cs" />
     <Compile Include="MirObjects\Monsters\HellLord.cs" />
     <Compile Include="MirObjects\Monsters\HellKnight.cs" />
     <Compile Include="MirObjects\Monsters\IcePillar.cs" />
     <Compile Include="MirObjects\Monsters\FlameSpear.cs" />
     <Compile Include="MirObjects\Monsters\FlameQueen.cs" />
+    <Compile Include="MirObjects\Monsters\OrcChampion.cs" />
+    <Compile Include="MirObjects\Monsters\OrcGoliath.cs" />
+    <Compile Include="MirObjects\Monsters\OrcLord.cs" />
+    <Compile Include="MirObjects\Monsters\OrcKnifeman.cs" />
+    <Compile Include="MirObjects\Monsters\OrcSpearman.cs" />
+    <Compile Include="MirObjects\Monsters\OrcSwordman.cs" />
     <Compile Include="MirObjects\Monsters\TrollKing.cs" />
     <Compile Include="MirObjects\Monsters\ManectricKing.cs" />
     <Compile Include="MirObjects\Monsters\TrollBomber.cs" />
@@ -360,6 +367,7 @@
     <Compile Include="MirObjects\Monsters\SpittingSpider.cs" />
     <Compile Include="MirObjects\Monsters\Tree.cs" />
     <Compile Include="MirObjects\Monsters\WoomaTaurus.cs" />
+    <Compile Include="MirObjects\Monsters\ZumaArcher.cs" />
     <Compile Include="MirObjects\Monsters\ZumaMonster.cs" />
     <Compile Include="MirObjects\Monsters\ZumaTaurus.cs" />
     <Compile Include="MirObjects\NPCObject.cs" />

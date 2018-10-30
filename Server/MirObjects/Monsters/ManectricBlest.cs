@@ -36,7 +36,10 @@ namespace Server.MirObjects.Monsters
 
                 for (int i = 0; i < targets.Count; i++)
                 {
-                    targets[i].Attacked(this, damage, DefenceType.MAC);
+                    //targets[i].Attacked(this, damage, DefenceType.MAC);
+
+                    DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, targets[i], damage, DefenceType.MAC);
+                    ActionList.Add(action);
 
                     if (Envir.Random.Next(Settings.PoisonResistWeight) >= targets[i].PoisonResist)
                     {
@@ -87,7 +90,10 @@ namespace Server.MirObjects.Monsters
                                 if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Monster) continue;
                                 if (!ob.IsAttackTarget(this)) continue;
 
-                                ob.Attacked(this, damage, DefenceType.Agility);
+                                //ob.Attacked(this, damage, DefenceType.Agility);
+
+                                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, DefenceType.Agility);
+                                ActionList.Add(action);
                                 break;
                             }
                         }

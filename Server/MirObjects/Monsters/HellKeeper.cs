@@ -11,7 +11,7 @@ namespace Server.MirObjects.Monsters
     class HellKeeper : MonsterObject
     {
         protected override bool CanMove { get { return false; } }
-        protected override bool CanRegen { get { return false; } }
+        //protected override bool CanRegen { get { return false; } }
         
 
         protected internal HellKeeper(MonsterInfo info) : base(info)
@@ -190,7 +190,10 @@ namespace Server.MirObjects.Monsters
 
             if (damage == 0) return;
 
-            Target.Attacked(this, damage);
+            //Target.Attacked(this, damage);
+
+            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
+            ActionList.Add(action);
         }
 
         private void HypnoAttack()
@@ -208,5 +211,7 @@ namespace Server.MirObjects.Monsters
                 }
             }
         }
+
+        protected override void ProcessRoam() { }
     }
 }

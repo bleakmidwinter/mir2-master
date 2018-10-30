@@ -150,7 +150,10 @@ namespace Server.MirObjects.Monsters
                         {
                             if (!ob.IsAttackTarget(this)) continue;
 
-                            ob.Attacked(this, damage, DefenceType.ACAgility);
+                            //ob.Attacked(this, damage, DefenceType.ACAgility);
+
+                            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, DefenceType.ACAgility);
+                            ActionList.Add(action);
                         }
                         else continue;
 

@@ -172,7 +172,8 @@ namespace Server.MirObjects
                 case 78:
                     return new HellCannibal(info);
                 case 79:
-                    return new HellKeeper(info);
+                    //return new HellKeeper(info);
+                    return new HellKeeper2(info);
                 case 80:
                     return new ConquestArcher(info);
                 case 81:
@@ -214,6 +215,20 @@ namespace Server.MirObjects
                     return new HellBomb(info);
                 case 100:
                     return new VenomSpider(info);
+                case 101:
+                    return new ZumaArcher(info);
+                case 102:
+                    return new OrcKnifeman(info);
+                case 103:
+                    return new OrcSpearman(info);
+                case 104:
+                    return new OrcSwordman(info);
+                case 105:
+                    return new OrcChampion(info);
+                case 106:
+                    return new OrcGoliath(info);
+                case 107:
+                    return new OrcLord(info);
 
                 //unfinished
                 case 253:
@@ -810,13 +825,13 @@ namespace Server.MirObjects
                 OwnerTime = Envir.Time + Settings.Minute,
             };
 
-            if (!item.Info.GlobalDropNotify)
-                return ob.Drop(Settings.DropRange);
+            //if (!item.Info.GlobalDropNotify)
+            //    return ob.Drop(Settings.DropRange);
 
-            foreach (var player in Envir.Players)
-            {
-                player.ReceiveChat($"{Name} has dropped {item.FriendlyName}.", ChatType.System2);
-            }
+            //foreach (var player in Envir.Players)
+            //{
+            //    player.ReceiveChat($"{Name} has dropped {item.FriendlyName}.", ChatType.System2);
+            //}
 
             return ob.Drop(Settings.DropRange);
         }
@@ -1339,6 +1354,13 @@ namespace Server.MirObjects
 
             return Target.CurrentLocation != CurrentLocation && Functions.InRange(CurrentLocation, Target.CurrentLocation, 1);
         }
+
+        protected virtual bool InAttackRange(int dist)
+        {
+            if (Target.CurrentMap != CurrentMap) return false;
+
+            return Target.CurrentLocation != CurrentLocation && Functions.InRange(CurrentLocation, Target.CurrentLocation, dist);
+        }
         protected virtual void FindTarget()
         {
             //if (CurrentMap.Players.Count < 1) return;
@@ -1584,7 +1606,10 @@ namespace Server.MirObjects
 
             if (damage == 0) return;
 
-            Target.Attacked(this, damage);
+            //Target.Attacked(this, damage);
+
+            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
+            ActionList.Add(action);
         }
 
         public void ReleaseBindingShot()

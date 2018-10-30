@@ -94,6 +94,8 @@
             this.ImportButton = new System.Windows.Forms.Button();
             this.ExportSelectedButton = new System.Windows.Forms.Button();
             this.DropBuilderButton = new System.Windows.Forms.Button();
+            this.txtSearchMonster = new System.Windows.Forms.TextBox();
+            this.lblMonsterListCount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.MonsterInfoPanel.SuspendLayout();
@@ -105,10 +107,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(174, 41);
+            this.tabControl1.Location = new System.Drawing.Point(174, 67);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(602, 255);
+            this.tabControl1.Size = new System.Drawing.Size(602, 251);
             this.tabControl1.TabIndex = 16;
             // 
             // tabPage1
@@ -117,7 +119,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(594, 229);
+            this.tabPage1.Size = new System.Drawing.Size(594, 225);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Info";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -184,7 +186,7 @@
             this.MonsterInfoPanel.Enabled = false;
             this.MonsterInfoPanel.Location = new System.Drawing.Point(3, 6);
             this.MonsterInfoPanel.Name = "MonsterInfoPanel";
-            this.MonsterInfoPanel.Size = new System.Drawing.Size(585, 217);
+            this.MonsterInfoPanel.Size = new System.Drawing.Size(585, 213);
             this.MonsterInfoPanel.TabIndex = 11;
             // 
             // UndeadCheckBox
@@ -706,7 +708,7 @@
             this.MonsterInfoListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MonsterInfoListBox.FormattingEnabled = true;
-            this.MonsterInfoListBox.Location = new System.Drawing.Point(12, 41);
+            this.MonsterInfoListBox.Location = new System.Drawing.Point(12, 67);
             this.MonsterInfoListBox.Name = "MonsterInfoListBox";
             this.MonsterInfoListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.MonsterInfoListBox.Size = new System.Drawing.Size(156, 251);
@@ -772,11 +774,30 @@
             this.DropBuilderButton.UseVisualStyleBackColor = true;
             this.DropBuilderButton.Click += new System.EventHandler(this.DropBuilderButton_Click);
             // 
+            // txtSearchMonster
+            // 
+            this.txtSearchMonster.Location = new System.Drawing.Point(13, 42);
+            this.txtSearchMonster.Name = "txtSearchMonster";
+            this.txtSearchMonster.Size = new System.Drawing.Size(155, 20);
+            this.txtSearchMonster.TabIndex = 1;
+            this.txtSearchMonster.TextChanged += new System.EventHandler(this.txtSearchMonster_TextChanged);
+            this.txtSearchMonster.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchMonster_KeyUp);
+            // 
+            // lblMonsterListCount
+            // 
+            this.lblMonsterListCount.AutoSize = true;
+            this.lblMonsterListCount.Location = new System.Drawing.Point(12, 329);
+            this.lblMonsterListCount.Name = "lblMonsterListCount";
+            this.lblMonsterListCount.Size = new System.Drawing.Size(0, 13);
+            this.lblMonsterListCount.TabIndex = 29;
+            // 
             // MonsterInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 308);
+            this.ClientSize = new System.Drawing.Size(788, 351);
+            this.Controls.Add(this.lblMonsterListCount);
+            this.Controls.Add(this.txtSearchMonster);
             this.Controls.Add(this.DropBuilderButton);
             this.Controls.Add(this.ExportSelectedButton);
             this.Controls.Add(this.ImportButton);
@@ -790,11 +811,13 @@
             this.Name = "MonsterInfoForm";
             this.Text = "MonsterInfoForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MonsterInfoForm_FormClosed);
+            this.Load += new System.EventHandler(this.MonsterInfoForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.MonsterInfoPanel.ResumeLayout(false);
             this.MonsterInfoPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -866,5 +889,7 @@
         private System.Windows.Forms.CheckBox UndeadCheckBox;
         private System.Windows.Forms.CheckBox AutoRevCheckBox;
         private System.Windows.Forms.Button DropBuilderButton;
+        private System.Windows.Forms.TextBox txtSearchMonster;
+        private System.Windows.Forms.Label lblMonsterListCount;
     }
 }

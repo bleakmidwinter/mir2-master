@@ -53,7 +53,10 @@ namespace Server.MirObjects.Monsters
                         if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Monster) continue;
                         if (!ob.IsAttackTarget(this)) continue;
 
-                        ob.Attacked(this, MinDC, DefenceType.Agility);
+                        //ob.Attacked(this, MinDC, DefenceType.Agility);
+
+                        DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, MinDC, DefenceType.Agility);
+                        ActionList.Add(action);
                         break;
                     }
                 }

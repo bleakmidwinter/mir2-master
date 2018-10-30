@@ -25,7 +25,10 @@ namespace Server.MirObjects.Monsters
 
             for (int i = 0; i < targets.Count; i++)
             {
-                targets[i].Attacked(this, targets[i] == target ? damage : damage / 2, defence);
+                //targets[i].Attacked(this, targets[i] == target ? damage : damage / 2, defence);
+
+                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, targets[i], targets[i] == target ? damage : damage / 2, defence, DefenceType.MACAgility);
+                ActionList.Add(action);
             }
         }
     }

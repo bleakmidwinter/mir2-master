@@ -6,9 +6,9 @@ using S = ServerPackets;
 
 namespace Server.MirObjects.Monsters
 {
-    public class BlackFoxman : MonsterObject
+    public class OrcChampion : MonsterObject
     {
-        protected internal BlackFoxman(MonsterInfo info)
+        protected internal OrcChampion(MonsterInfo info)
             : base(info)
         {
         }

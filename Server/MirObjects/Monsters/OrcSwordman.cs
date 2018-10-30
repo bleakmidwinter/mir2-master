@@ -6,9 +6,9 @@ using S = ServerPackets;
 
 namespace Server.MirObjects.Monsters
 {
-    public class BlackFoxman : MonsterObject
+    public class OrcSwordman : MonsterObject
     {
-        protected internal BlackFoxman(MonsterInfo info)
+        protected internal OrcSwordman(MonsterInfo info)
             : base(info)
         {
         }
@@ -21,10 +21,11 @@ namespace Server.MirObjects.Monsters
             int x = Math.Abs(Target.CurrentLocation.X - CurrentLocation.X);
             int y = Math.Abs(Target.CurrentLocation.Y - CurrentLocation.Y);
 
-            if (x > 2 || y > 2) return false;
+            if (x > 5 || y > 5) return false;
 
 
-            return (x <= 1 && y <= 1) || (x == y || x % 2 == y % 2);
+            //return (x <= 1 && y <= 1) || (x == y || x % 5 == y % 5);
+            return (x <= 1 && y <= 1) || (x == y || x % 5 == y % 5 || (x <= 5 || y <= 5));
         }
 
         protected override void Attack()
@@ -40,16 +41,17 @@ namespace Server.MirObjects.Monsters
 
             bool range = !Functions.InRange(CurrentLocation, Target.CurrentLocation, 1);
 
-            if (!range && Envir.Random.Next(3) > 0)
+            if (!range)
             {
                 base.Attack();
             }
             else
             {
                 Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 1 });
-                LineAttack(2);
+                LineAttack(5);
             }
 
+            MoveTo(Target.CurrentLocation);
 
             ActionTime = Envir.Time + 300;
             AttackTime = Envir.Time + AttackSpeed;
@@ -88,7 +90,7 @@ namespace Server.MirObjects.Monsters
 
                             //ob.Attacked(this, damage, DefenceType.ACAgility);
 
-                            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
+                            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, DefenceType.ACAgility);
                             ActionList.Add(action);
                         }
                         else continue;
