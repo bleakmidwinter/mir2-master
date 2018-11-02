@@ -927,7 +927,24 @@ namespace Server.MirEnvir
 
                 RespawnTick.Save(writer);
             }
+
+            BackupDatabase();
+
         }
+
+        private void BackupDatabase()
+        {
+            if (File.Exists(DatabasePath))
+            {
+                //string fileName = string.Format("Database" + " {0:0000}-{1:00}-{2:00} {3:00}-{4:00}-.bak", Now.Year, Now.Month, Now.Day, Now.Hour, Now.Minute);
+                string fileName = string.Format("Database" + " {0:0000}-{1:00}-{2:00} {3:00}-{4:00}-.bak", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute);
+                string fullPath = Path.Combine(BackUpPath, "Database", fileName);
+                if (!Directory.Exists(BackUpPath + "Database")) Directory.CreateDirectory(BackUpPath + "Database");
+                if (File.Exists(fullPath)) File.Delete(fullPath);
+                File.Copy(DatabasePath, fullPath);
+            }
+        }
+
         public void SaveAccounts()
         {
             while (Saving)
@@ -1147,10 +1164,12 @@ namespace Server.MirEnvir
             {
                 if (File.Exists(AccountPath))
                 {
-                    if (!Directory.Exists(BackUpPath)) Directory.CreateDirectory(BackUpPath);
                     string fileName = string.Format("Accounts {0:0000}-{1:00}-{2:00} {3:00}-{4:00}-{5:00}.bak", Now.Year, Now.Month, Now.Day, Now.Hour, Now.Minute, Now.Second);
+                    string fullPath = Path.Combine(BackUpPath, "Accounts", fileName);
+                    if (!Directory.Exists(BackUpPath + "Accounts")) Directory.CreateDirectory(BackUpPath + "Accounts");
                     if (File.Exists(Path.Combine(BackUpPath, fileName))) File.Delete(Path.Combine(BackUpPath, fileName));
-                    File.Move(AccountPath, Path.Combine(BackUpPath, fileName));
+                    //File.Move(AccountPath, Path.Combine(BackUpPath, fileName));
+                    File.Move(AccountPath, fullPath);
                 }
 
                 SaveAccounts(mStream);
