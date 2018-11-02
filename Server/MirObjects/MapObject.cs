@@ -737,7 +737,7 @@ namespace Server.MirObjects
         public MapObject Owner;
         public PoisonType PType;
         public int Value;
-        public long Duration, Time, TickTime, TickSpeed;
+        public long Duration, Time, TickTime, TickSpeed, StartTime;
 
         public Poison() { }
 

@@ -982,13 +982,21 @@ namespace Server.MirObjects
                     continue;
                 }
 
+                if (Envir.Time >= poison.StartTime + ((poison.Time + 1) * 1000))
+                    poison.Time++;
+
+                if (poison.Time >= poison.Duration)
+                {
+                    PoisonList.RemoveAt(i);
+                    break;
+                }
+
                 if (Envir.Time > poison.TickTime)
                 {
-                    poison.Time++;
                     poison.TickTime = Envir.Time + poison.TickSpeed;
 
-                    if (poison.Time >= poison.Duration)
-                        PoisonList.RemoveAt(i);
+                    //if (poison.Time >= poison.Duration)
+                    //    PoisonList.RemoveAt(i);
 
                     if (poison.PType == PoisonType.Green || poison.PType == PoisonType.Bleeding)
                     {
@@ -1027,7 +1035,7 @@ namespace Server.MirObjects
                 switch (poison.PType)
                 {
                     case PoisonType.Red:
-                        ArmourRate -= 0.10F;
+                        ArmourRate -= 0.15F;
                         break;
                     case PoisonType.Stun:
                         DamageRate += 0.20F;
@@ -5957,7 +5965,8 @@ namespace Server.MirObjects
             {
                 magic = GetMagic(Spell.Slaying);
 
-                if (magic != null && Envir.Random.Next(12) <= magic.Level)
+                //if (magic != null && Envir.Random.Next(12) <= magic.Level)
+                if (magic != null && Envir.Random.Next(20) <= magic.Level)
                 {
                     Slaying = true;
                     Enqueue(new S.SpellToggle { Spell = Spell.Slaying, CanUse = Slaying });
@@ -8722,6 +8731,9 @@ namespace Server.MirObjects
                     switch (item.Info.Shape)
                     {
                         case 1:
+                            long poisonDuration = (value * 2) + ((magic.Level + 1) * 7);
+                            int poisonValue = value / 15 + magic.Level + 1 + Envir.Random.Next(PoisonAttack);
+
                             target.ApplyPoison(new Poison
                             {
                                 Duration = (value * 2) + ((magic.Level + 1) * 7),
@@ -10379,6 +10391,8 @@ namespace Server.MirObjects
         }
         public override void ApplyPoison(Poison p, MapObject Caster = null, bool NoResist = false, bool ignoreDefence = true)
         {
+            p.StartTime = Envir.Time;
+
             if ((Caster != null) && (!NoResist))
                 if (((Caster.Race != ObjectType.Player) || Settings.PvpCanResistPoison) && (Envir.Random.Next(Settings.PoisonResistWeight) < PoisonResist))
                     return;
@@ -10412,25 +10426,86 @@ namespace Server.MirObjects
                 return;
             }
 
-            if (p.PType == PoisonType.DelayedExplosion)
-            {
-                ExplosionInflictedTime = Envir.Time + 4000;
-                Enqueue(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
-                Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
-                ReceiveChat("You are a walking explosive.", ChatType.System);
-            }
-            else if (p.PType == PoisonType.Paralysis)
-            {
-                ReceiveChat("You have been paralysed.", ChatType.System2);
-            }
-            else if (p.PType == PoisonType.Slow)
-            {
-                ReceiveChat("You have been slowed.", ChatType.System2);
-            }
-            else
-                ReceiveChat("You have been poisoned.", ChatType.System2);
+            //if (p.PType == PoisonType.DelayedExplosion)
+            //{
+            //    ExplosionInflictedTime = Envir.Time + 4000;
+            //    Enqueue(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
+            //    Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
+            //    ReceiveChat("You are a walking explosive.", ChatType.System);
+            //}
+            //else if (p.PType == PoisonType.Paralysis)
+            //{
+            //    ReceiveChat("You have been paralysed.", ChatType.System2);
+            //}
+            //else if (p.PType == PoisonType.Slow)
+            //{
+            //    ReceiveChat("You have been slowed.", ChatType.System2);
+            //}
+            //else
+            //    ReceiveChat("You have been poisoned.", ChatType.System2);
+            int[] values = new int[1];
 
-            PoisonList.Add(p);
+            switch (p.PType)
+            {
+                case PoisonType.DelayedExplosion:
+                    ExplosionInflictedTime = Envir.Time + 4000;
+                    Enqueue(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
+                    Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
+                    ReceiveChat("You are a walking explosive.", ChatType.System);
+                    break;
+                case PoisonType.Green:
+                    ReceiveChat("You have been poisoned.", ChatType.System2);
+
+                    try
+                    {
+                        values[0] = p.Value;
+
+                        AddBuff(new Buff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+                        //S.AddBuff addBuff = new S.AddBuff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster.Name : "", Expire = Envir.Time + p.Duration, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false };
+                        //S.AddBuff addBuff = new S.AddBuff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster.Name : "", Expire = p.Duration, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false };
+                        //Enqueue(addBuff);
+                    }
+                    catch { }
+                    break;
+                case PoisonType.Red:
+                    ReceiveChat("You have been poisoned.", ChatType.System2);
+
+                    values[0] = p.Value;
+
+                    AddBuff(new Buff { Type = BuffType.RedPoison, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+                    break;
+                case PoisonType.Slow:
+                    ReceiveChat("You have been slowed.", ChatType.System2);
+
+                    values[0] = p.Value;
+
+                    AddBuff(new Buff { Type = BuffType.Slowed, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+                    break;
+                case PoisonType.Paralysis:
+                    ReceiveChat("You have been paralysed.", ChatType.System2);
+
+                    values[0] = p.Value;
+
+                    AddBuff(new Buff { Type = BuffType.Paralysed, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+                    break;
+                case PoisonType.Stun:
+                    ReceiveChat("You have been stunned.", ChatType.System2);
+
+                    values[0] = p.Value;
+
+                    AddBuff(new Buff { Type = BuffType.Stun, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+                    break;
+                default:
+                    ReceiveChat("You have been poisoned.", ChatType.System2);
+                    break;
+            }
+
+                PoisonList.Add(p);
         }
 
         public override void AddBuff(Buff b)
