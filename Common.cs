@@ -1241,6 +1241,14 @@ public enum BuffType : byte
     Prison,
     Rested,
 
+    //Poisons
+    GreenPoison = 150,
+    RedPoison,
+    Stun,
+    Slowed,
+    Frozen,
+    Paralysed,
+
     //stats
     Impact = 200,
     Magic,

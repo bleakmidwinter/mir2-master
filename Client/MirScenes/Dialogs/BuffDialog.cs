@@ -597,6 +597,22 @@ namespace Client.MirScenes.Dialogs
                     return 158;
                 case BuffType.WonderDrug:
                     return 252;
+
+
+                //Poisons
+                case BuffType.GreenPoison:
+                    return 300;
+                case BuffType.RedPoison:
+                    return 301;
+                case BuffType.Stun:
+                    return 302;
+                case BuffType.Slowed:
+                    return 303;
+                case BuffType.Frozen:
+                    return 304;
+                case BuffType.Paralysed:
+                    return 305;
+
                 default:
                     return 0;
             }

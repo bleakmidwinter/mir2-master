@@ -10341,6 +10341,24 @@ namespace Client.MirScenes
                 case BuffType.Knapsack:
                     text = string.Format("Knapsack\nIncreases BagWeight by: {0}.\n", Values[0]);
                     break;
+                case BuffType.GreenPoison:
+                    text = string.Format("Green poison\nApplies {0} damage per second.\n", Values[0]);
+                    break;
+                case BuffType.RedPoison:
+                    text = string.Format("Red poison\nIncreases physical damage taken by 15%.\n", Values[0]);
+                    break;
+                case BuffType.Stun:
+                    text = string.Format("Stunned\nIncreases damage taken by 20%.\n", Values[0]);
+                    break;
+                case BuffType.Slowed:
+                    text = string.Format("Slowed\nReduces movement speed.\n", Values[0]);
+                    break;
+                case BuffType.Frozen:
+                    text = string.Format("Frozen\nUnable to move.\n", Values[0]);
+                    break;
+                case BuffType.Paralysed:
+                    text = string.Format("Paralysed\nUnable to move.\n", Values[0]);
+                    break;
             }
 
             text += string.Format("Expire: {0}", Infinite ? "Never" : Functions.PrintTimeSpanFromSeconds(Math.Round((Expire - CMain.Time) / 1000D)));
