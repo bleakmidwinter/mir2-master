@@ -257,6 +257,10 @@ namespace Server
         public static List<int> Guild_MembercapList = new List<int>();
         public static List<GuildBuffInfo> Guild_BuffList = new List<GuildBuffInfo>();
 
+        //Guild war settings
+        public static bool BroadcastGuildWarKillShout = false;
+        public static string GuildWarKillShoutType = "Local";
+
         public static void LoadVersion()
         {
             try
@@ -475,6 +479,7 @@ namespace Server
             LoadMentor();
             LoadGoods();
             LoadGem();
+            LoadGuildWarSettings();
         }
         public static void Save()
         {
@@ -1333,5 +1338,24 @@ namespace Server
             reader.Write("Goods", "BuyBackMaxStored", GoodsBuyBackMaxStored);
         }
 
+        public static void LoadGuildWarSettings()
+        {
+            if (!File.Exists(ConfigPath + @".\GuildWarSystem.ini"))
+            {
+                SaveGuildWarSettings();
+                return;
+            }
+            InIReader reader = new InIReader(ConfigPath + @".\GuildWarSystem.ini");
+            BroadcastGuildWarKillShout = reader.ReadBoolean("Config", "BroadcastGuildWarKillShout", BroadcastGuildWarKillShout);
+            GuildWarKillShoutType = reader.ReadString("Config", "GuildWarKillShoutType", GuildWarKillShoutType);
+        }
+
+        public static void SaveGuildWarSettings()
+        {
+            File.Delete(ConfigPath + @".\GuildWarSystem.ini");
+            InIReader reader = new InIReader(ConfigPath + @".\GuildWarSystem.ini");
+            reader.Write("Config", "BroadcastGuildWarKillShout", BroadcastGuildWarKillShout);
+            reader.Write("Config", "GuildWarKillShoutType", GuildWarKillShoutType);
+        }
     }
 }

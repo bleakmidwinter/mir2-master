@@ -89,8 +89,9 @@ namespace Server
             this.gemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conquestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.respawnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InterfaceTimer = new System.Windows.Forms.Timer(this.components);
             this.monsterTunerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InterfaceTimer = new System.Windows.Forms.Timer(this.components);
+            this.guildWarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -460,14 +461,14 @@ namespace Server
             // serverToolStripMenuItem
             // 
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serverToolStripMenuItem.Text = "Server";
             this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
             // 
             // balanceToolStripMenuItem
             // 
             this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
-            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.balanceToolStripMenuItem.Text = "Balance";
             this.balanceToolStripMenuItem.Click += new System.EventHandler(this.balanceToolStripMenuItem_Click);
             // 
@@ -485,106 +486,114 @@ namespace Server
             this.mentorToolStripMenuItem,
             this.gemToolStripMenuItem,
             this.conquestToolStripMenuItem,
-            this.respawnsToolStripMenuItem});
+            this.respawnsToolStripMenuItem,
+            this.guildWarToolStripMenuItem});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.systemToolStripMenuItem.Text = "System";
             // 
             // dragonSystemToolStripMenuItem
             // 
             this.dragonSystemToolStripMenuItem.Name = "dragonSystemToolStripMenuItem";
-            this.dragonSystemToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.dragonSystemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dragonSystemToolStripMenuItem.Text = "Dragon";
             this.dragonSystemToolStripMenuItem.Click += new System.EventHandler(this.dragonSystemToolStripMenuItem_Click);
             // 
             // miningToolStripMenuItem
             // 
             this.miningToolStripMenuItem.Name = "miningToolStripMenuItem";
-            this.miningToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.miningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.miningToolStripMenuItem.Text = "Mining";
             this.miningToolStripMenuItem.Click += new System.EventHandler(this.miningToolStripMenuItem_Click);
             // 
             // guildsToolStripMenuItem
             // 
             this.guildsToolStripMenuItem.Name = "guildsToolStripMenuItem";
-            this.guildsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.guildsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guildsToolStripMenuItem.Text = "Guilds";
             this.guildsToolStripMenuItem.Click += new System.EventHandler(this.guildsToolStripMenuItem_Click);
             // 
             // fishingToolStripMenuItem
             // 
             this.fishingToolStripMenuItem.Name = "fishingToolStripMenuItem";
-            this.fishingToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.fishingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fishingToolStripMenuItem.Text = "Fishing";
             this.fishingToolStripMenuItem.Click += new System.EventHandler(this.fishingToolStripMenuItem_Click);
             // 
             // mailToolStripMenuItem
             // 
             this.mailToolStripMenuItem.Name = "mailToolStripMenuItem";
-            this.mailToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.mailToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mailToolStripMenuItem.Text = "Mail";
             this.mailToolStripMenuItem.Click += new System.EventHandler(this.mailToolStripMenuItem_Click);
             // 
             // goodsToolStripMenuItem
             // 
             this.goodsToolStripMenuItem.Name = "goodsToolStripMenuItem";
-            this.goodsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.goodsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.goodsToolStripMenuItem.Text = "Goods";
             this.goodsToolStripMenuItem.Click += new System.EventHandler(this.goodsToolStripMenuItem_Click);
             // 
             // refiningToolStripMenuItem
             // 
             this.refiningToolStripMenuItem.Name = "refiningToolStripMenuItem";
-            this.refiningToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.refiningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.refiningToolStripMenuItem.Text = "Refining";
             this.refiningToolStripMenuItem.Click += new System.EventHandler(this.refiningToolStripMenuItem_Click);
             // 
             // relationshipToolStripMenuItem
             // 
             this.relationshipToolStripMenuItem.Name = "relationshipToolStripMenuItem";
-            this.relationshipToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.relationshipToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.relationshipToolStripMenuItem.Text = "Relationship";
             this.relationshipToolStripMenuItem.Click += new System.EventHandler(this.relationshipToolStripMenuItem_Click);
             // 
             // mentorToolStripMenuItem
             // 
             this.mentorToolStripMenuItem.Name = "mentorToolStripMenuItem";
-            this.mentorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.mentorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mentorToolStripMenuItem.Text = "Mentor";
             this.mentorToolStripMenuItem.Click += new System.EventHandler(this.mentorToolStripMenuItem_Click);
             // 
             // gemToolStripMenuItem
             // 
             this.gemToolStripMenuItem.Name = "gemToolStripMenuItem";
-            this.gemToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.gemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gemToolStripMenuItem.Text = "Gem";
             this.gemToolStripMenuItem.Click += new System.EventHandler(this.gemToolStripMenuItem_Click);
             // 
             // conquestToolStripMenuItem
             // 
             this.conquestToolStripMenuItem.Name = "conquestToolStripMenuItem";
-            this.conquestToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.conquestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.conquestToolStripMenuItem.Text = "Conquest";
             this.conquestToolStripMenuItem.Click += new System.EventHandler(this.conquestToolStripMenuItem_Click);
             // 
             // respawnsToolStripMenuItem
             // 
             this.respawnsToolStripMenuItem.Name = "respawnsToolStripMenuItem";
-            this.respawnsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.respawnsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.respawnsToolStripMenuItem.Text = "SpawnTick";
             this.respawnsToolStripMenuItem.Click += new System.EventHandler(this.respawnsToolStripMenuItem_Click);
+            // 
+            // monsterTunerToolStripMenuItem
+            // 
+            this.monsterTunerToolStripMenuItem.Name = "monsterTunerToolStripMenuItem";
+            this.monsterTunerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.monsterTunerToolStripMenuItem.Text = "Monster Tuner";
+            this.monsterTunerToolStripMenuItem.Click += new System.EventHandler(this.monsterTunerToolStripMenuItem_Click);
             // 
             // InterfaceTimer
             // 
             this.InterfaceTimer.Enabled = true;
             this.InterfaceTimer.Tick += new System.EventHandler(this.InterfaceTimer_Tick);
             // 
-            // monsterTunerToolStripMenuItem
+            // guildWarToolStripMenuItem
             // 
-            this.monsterTunerToolStripMenuItem.Name = "monsterTunerToolStripMenuItem";
-            this.monsterTunerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.monsterTunerToolStripMenuItem.Text = "Monster Tuner";
-            this.monsterTunerToolStripMenuItem.Click += new System.EventHandler(this.monsterTunerToolStripMenuItem_Click);
+            this.guildWarToolStripMenuItem.Name = "guildWarToolStripMenuItem";
+            this.guildWarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guildWarToolStripMenuItem.Text = "Guild war";
+            this.guildWarToolStripMenuItem.Click += new System.EventHandler(this.guildWarToolStripMenuItem_Click);
             // 
             // SMain
             // 
@@ -679,6 +688,7 @@ namespace Server
         private ToolStripMenuItem rebootServerToolStripMenuItem;
         private ToolStripMenuItem respawnsToolStripMenuItem;
         private ToolStripMenuItem monsterTunerToolStripMenuItem;
+        private ToolStripMenuItem guildWarToolStripMenuItem;
     }
 }
 

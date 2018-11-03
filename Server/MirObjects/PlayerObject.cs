@@ -1271,7 +1271,37 @@ namespace Server.MirObjects
 
                 if (AtWar(hitter) || WarZone)
                 {
-                    hitter.ReceiveChat(string.Format("You've been protected by the law"), ChatType.System);
+                    if (!Settings.BroadcastGuildWarKillShout)
+                    {
+                        //hitter.ReceiveChat(string.Format("You've been protected by the law"), ChatType.System);
+                        ReceiveChat(string.Format("You were killed by " + hitter.Name + "."), ChatType.Hint);
+                        hitter.ReceiveChat(string.Format("You killed " + Name + "."), ChatType.Hint);
+                    }
+                    else
+                    {
+                        Packet p;
+                        string message = "Guild war: " + hitter.Name + " has killed " + Name + ".";
+
+                        if (Settings.GuildWarKillShoutType == "Local")
+                        {
+                            p = new S.Chat { Message = message, Type = ChatType.Shout };
+
+                            for (int i = 0; i < CurrentMap.Players.Count; i++)
+                            {
+                                if (!Functions.InRange(CurrentLocation, CurrentMap.Players[i].CurrentLocation, Globals.DataRange * 3)) continue;
+                                CurrentMap.Players[i].Enqueue(p);
+                            }
+                        }
+                        else if (Settings.GuildWarKillShoutType == "Map")
+                        {
+                            p = new S.Chat { Message = message, Type = ChatType.Shout };
+
+                            for (int i = 0; i < CurrentMap.Players.Count; i++)
+                            {
+                                CurrentMap.Players[i].Enqueue(p);
+                            }
+                        }
+                    }
                 }
                 else if (Envir.Time > BrownTime && PKPoints < 200)
                 {

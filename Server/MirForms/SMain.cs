@@ -408,6 +408,13 @@ namespace Server
             form.ShowDialog();
         }
 
+        private void guildWarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SystemInfoForm form = new SystemInfoForm(8);
+
+            form.ShowDialog();
+        }
+
         private void gameshopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GameShop form = new GameShop();

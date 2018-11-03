@@ -107,6 +107,7 @@
             this.GemStatCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbltickmins = new System.Windows.Forms.Label();
             this.txtSpawnTickDefault = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.pnlSpawnTickConfig = new System.Windows.Forms.Panel();
@@ -117,8 +118,12 @@
             this.lbSpawnTickList = new System.Windows.Forms.ListBox();
             this.btnSpawnTickRemove = new System.Windows.Forms.Button();
             this.btnSpawnTickAdd = new System.Windows.Forms.Button();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.GuildWarKillShoutCheckbox = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lbltickmins = new System.Windows.Forms.Label();
+            this.WarKillShoutTypeGroupBox = new System.Windows.Forms.GroupBox();
+            this.WarShoutLocalRadioButton = new System.Windows.Forms.RadioButton();
+            this.WarShoutMapRadioButton = new System.Windows.Forms.RadioButton();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -132,6 +137,8 @@
             this.tabPage8.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlSpawnTickConfig.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.WarKillShoutTypeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -145,10 +152,10 @@
             this.tabPage1.Controls.Add(this.FishingDelayTextBox);
             this.tabPage1.Controls.Add(this.FishingSuccessRateStartTextBox);
             this.tabPage1.Controls.Add(this.FishingAttemptsTextBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 40);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(399, 229);
+            this.tabPage1.Size = new System.Drawing.Size(399, 211);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Fishing";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -280,7 +287,9 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(407, 255);
@@ -294,10 +303,10 @@
             this.tabPage2.Controls.Add(this.MailCostPer1kTextBox);
             this.tabPage2.Controls.Add(this.MailFreeWithStampCheckbox);
             this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 40);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(399, 229);
+            this.tabPage2.Size = new System.Drawing.Size(399, 211);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mail";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -389,9 +398,9 @@
             this.tabPage3.Controls.Add(this.GoodsMaxStoredTextBox);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.GoodsOnCheckBox);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 40);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(399, 229);
+            this.tabPage3.Size = new System.Drawing.Size(399, 211);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Goods";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -479,9 +488,9 @@
             this.tabPage4.Controls.Add(this.BaseChance_textbox);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.WeaponOnly_checkbox);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 40);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(399, 229);
+            this.tabPage4.Size = new System.Drawing.Size(399, 211);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Refining";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -662,9 +671,9 @@
             this.tabPage5.Controls.Add(this.label13);
             this.tabPage5.Controls.Add(this.MarriageCooldown_textbox);
             this.tabPage5.Controls.Add(this.LoverRecall_checkbox);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 40);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(399, 229);
+            this.tabPage5.Size = new System.Drawing.Size(399, 211);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Relationship";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -762,9 +771,9 @@
             this.tabPage6.Controls.Add(this.label28);
             this.tabPage6.Controls.Add(this.MentorLength_textbox);
             this.tabPage6.Controls.Add(this.MenteeSkillBoost_checkbox);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 40);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(399, 229);
+            this.tabPage6.Size = new System.Drawing.Size(399, 211);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Mentor";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -869,10 +878,10 @@
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.GemStatCheckBox);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Location = new System.Drawing.Point(4, 40);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(399, 229);
+            this.tabPage7.Size = new System.Drawing.Size(399, 211);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Gem";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -896,10 +905,10 @@
             this.tabPage8.Controls.Add(this.lbSpawnTickList);
             this.tabPage8.Controls.Add(this.btnSpawnTickRemove);
             this.tabPage8.Controls.Add(this.btnSpawnTickAdd);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Location = new System.Drawing.Point(4, 40);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(399, 229);
+            this.tabPage8.Size = new System.Drawing.Size(399, 211);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "SpawnTick";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -913,6 +922,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(241, 100);
             this.panel1.TabIndex = 4;
+            // 
+            // lbltickmins
+            // 
+            this.lbltickmins.AutoSize = true;
+            this.lbltickmins.Location = new System.Drawing.Point(175, 6);
+            this.lbltickmins.Name = "lbltickmins";
+            this.lbltickmins.Size = new System.Drawing.Size(54, 13);
+            this.lbltickmins.TabIndex = 2;
+            this.lbltickmins.Text = "in minutes";
             // 
             // txtSpawnTickDefault
             // 
@@ -1010,14 +1028,62 @@
             this.btnSpawnTickAdd.UseVisualStyleBackColor = true;
             this.btnSpawnTickAdd.Click += new System.EventHandler(this.btnSpawnTickAdd_Click);
             // 
-            // lbltickmins
+            // tabPage9
             // 
-            this.lbltickmins.AutoSize = true;
-            this.lbltickmins.Location = new System.Drawing.Point(175, 6);
-            this.lbltickmins.Name = "lbltickmins";
-            this.lbltickmins.Size = new System.Drawing.Size(54, 13);
-            this.lbltickmins.TabIndex = 2;
-            this.lbltickmins.Text = "in minutes";
+            this.tabPage9.Controls.Add(this.WarKillShoutTypeGroupBox);
+            this.tabPage9.Controls.Add(this.GuildWarKillShoutCheckbox);
+            this.tabPage9.Location = new System.Drawing.Point(4, 40);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(399, 211);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Guild war";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // GuildWarKillShoutCheckbox
+            // 
+            this.GuildWarKillShoutCheckbox.AutoSize = true;
+            this.GuildWarKillShoutCheckbox.Location = new System.Drawing.Point(20, 17);
+            this.GuildWarKillShoutCheckbox.Name = "GuildWarKillShoutCheckbox";
+            this.GuildWarKillShoutCheckbox.Size = new System.Drawing.Size(178, 17);
+            this.GuildWarKillShoutCheckbox.TabIndex = 0;
+            this.GuildWarKillShoutCheckbox.Text = "Broadcast shout on guild war kill";
+            this.GuildWarKillShoutCheckbox.UseVisualStyleBackColor = true;
+            this.GuildWarKillShoutCheckbox.CheckedChanged += new System.EventHandler(this.GuildWarKillShoutCheckbox_CheckedChanged);
+            // 
+            // WarKillShoutTypeGroupBox
+            // 
+            this.WarKillShoutTypeGroupBox.Controls.Add(this.WarShoutMapRadioButton);
+            this.WarKillShoutTypeGroupBox.Controls.Add(this.WarShoutLocalRadioButton);
+            this.WarKillShoutTypeGroupBox.Location = new System.Drawing.Point(20, 50);
+            this.WarKillShoutTypeGroupBox.Name = "WarKillShoutTypeGroupBox";
+            this.WarKillShoutTypeGroupBox.Size = new System.Drawing.Size(264, 45);
+            this.WarKillShoutTypeGroupBox.TabIndex = 1;
+            this.WarKillShoutTypeGroupBox.TabStop = false;
+            this.WarKillShoutTypeGroupBox.Text = "Shout type";
+            // 
+            // WarShoutLocalRadioButton
+            // 
+            this.WarShoutLocalRadioButton.AutoSize = true;
+            this.WarShoutLocalRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.WarShoutLocalRadioButton.Name = "WarShoutLocalRadioButton";
+            this.WarShoutLocalRadioButton.Size = new System.Drawing.Size(51, 17);
+            this.WarShoutLocalRadioButton.TabIndex = 0;
+            this.WarShoutLocalRadioButton.TabStop = true;
+            this.WarShoutLocalRadioButton.Text = "Local";
+            this.WarShoutLocalRadioButton.UseVisualStyleBackColor = true;
+            this.WarShoutLocalRadioButton.CheckedChanged += new System.EventHandler(this.WarShoutLocalRadioButton_CheckedChanged);
+            // 
+            // WarShoutMapRadioButton
+            // 
+            this.WarShoutMapRadioButton.AutoSize = true;
+            this.WarShoutMapRadioButton.Location = new System.Drawing.Point(128, 19);
+            this.WarShoutMapRadioButton.Name = "WarShoutMapRadioButton";
+            this.WarShoutMapRadioButton.Size = new System.Drawing.Size(46, 17);
+            this.WarShoutMapRadioButton.TabIndex = 1;
+            this.WarShoutMapRadioButton.TabStop = true;
+            this.WarShoutMapRadioButton.Text = "Map";
+            this.WarShoutMapRadioButton.UseVisualStyleBackColor = true;
             // 
             // SystemInfoForm
             // 
@@ -1056,6 +1122,10 @@
             this.panel1.PerformLayout();
             this.pnlSpawnTickConfig.ResumeLayout(false);
             this.pnlSpawnTickConfig.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
+            this.WarKillShoutTypeGroupBox.ResumeLayout(false);
+            this.WarKillShoutTypeGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1152,5 +1222,10 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label lbltickmins;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.CheckBox GuildWarKillShoutCheckbox;
+        private System.Windows.Forms.GroupBox WarKillShoutTypeGroupBox;
+        private System.Windows.Forms.RadioButton WarShoutMapRadioButton;
+        private System.Windows.Forms.RadioButton WarShoutLocalRadioButton;
     }
 }

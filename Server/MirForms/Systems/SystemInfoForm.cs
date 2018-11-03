@@ -19,7 +19,7 @@ namespace Server
             get { return SMain.EditEnvir; }
         }
 
-        public bool FishingChanged = false, MailChanged = false, GoodsChanged = false, RefineChanged = false, MarriageChanged = false, MentorChanged = false, GemChanged = false, SpawnChanged = false;
+        public bool FishingChanged = false, MailChanged = false, GoodsChanged = false, RefineChanged = false, MarriageChanged = false, MentorChanged = false, GemChanged = false, SpawnChanged = false, GuildWarChanged = false;
 
         public SystemInfoForm()
         {
@@ -42,6 +42,18 @@ namespace Server
             UpdateMentor();
             UpdateGem();
             UpdateSpawnTick();
+            UpdateGuildWarSettings();
+        }
+
+        private void UpdateGuildWarSettings()
+        {
+            GuildWarKillShoutCheckbox.Checked = Settings.BroadcastGuildWarKillShout;
+            WarShoutLocalRadioButton.Checked = Settings.GuildWarKillShoutType == "Local" ? true : false;
+
+            if (Settings.GuildWarKillShoutType == "Local")
+                WarShoutLocalRadioButton.Checked = true;
+            else
+                WarShoutMapRadioButton.Checked = true;
         }
 
         #region Update
@@ -177,6 +189,9 @@ namespace Server
                 Settings.SaveGem();
             if (SpawnChanged)
                 Envir.SaveDB();
+
+            if (GuildWarChanged)
+                Settings.SaveGuildWarSettings();
         }
 
         #region Fishing
@@ -700,7 +715,24 @@ namespace Server
             GoodsChanged = true;
         }
 
+        private void WarShoutLocalRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.GuildWarKillShoutType = WarShoutLocalRadioButton.Checked ? "Local" : "Map";
+            GuildWarChanged = true;
+        }
+
+        private void GuildWarKillShoutCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            Settings.BroadcastGuildWarKillShout = GuildWarKillShoutCheckbox.Checked;
+            GuildWarChanged = true;
+
+            WarKillShoutTypeGroupBox.Enabled = GuildWarKillShoutCheckbox.Checked;
+        }
+
         #endregion
+
         #region Gem
         private void GemStatCheckBox_CheckedChanged(object sender, EventArgs e)
         {
