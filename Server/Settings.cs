@@ -77,7 +77,8 @@ namespace Server
                            SafeZoneHealing = false,
                            GameMasterEffect = false,
                            GatherOrbsPerLevel = true,
-                           ExpMobLevelDifference = true;
+                           ExpMobLevelDifference = true,
+                           DisableDeathDrops = false;
 
         //Database
         public static int SaveDelay = 5;
@@ -312,6 +313,7 @@ namespace Server
             GatherOrbsPerLevel = Reader.ReadBoolean("Optional", "GatherOrbsPerLevel", GatherOrbsPerLevel);
             ExpMobLevelDifference = Reader.ReadBoolean("Optional", "ExpMobLevelDifference", ExpMobLevelDifference);
             GameMasterEffect = Reader.ReadBoolean("Optional", "GameMasterEffect", GameMasterEffect);
+            DisableDeathDrops = Reader.ReadBoolean("Optional", "DisableDeathDrops", DisableDeathDrops);
 
             //Database
             SaveDelay = Reader.ReadInt32("Database", "SaveDelay", SaveDelay);
@@ -516,6 +518,7 @@ namespace Server
             Reader.Write("Optional", "GatherOrbsPerLevel", GatherOrbsPerLevel);
             Reader.Write("Optional", "ExpMobLevelDifference", ExpMobLevelDifference);
             Reader.Write("Optional", "GameMasterEffect", GameMasterEffect);
+            Reader.Write("Optional", "DisableDeathDrops", DisableDeathDrops);
 
             //Database
             Reader.Write("Database", "SaveDelay", SaveDelay);

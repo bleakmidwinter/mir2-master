@@ -68,10 +68,11 @@
             this.SaveDelayTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.gameMasterEffect_CheckBox = new System.Windows.Forms.CheckBox();
             this.SafeZoneHealingCheckBox = new System.Windows.Forms.CheckBox();
             this.SafeZoneBorderCheckBox = new System.Windows.Forms.CheckBox();
             this.VPathDialog = new System.Windows.Forms.OpenFileDialog();
-            this.gameMasterEffect_CheckBox = new System.Windows.Forms.CheckBox();
+            this.DisableDeathDropsCheckBox = new System.Windows.Forms.CheckBox();
             this.configTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -486,6 +487,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.DisableDeathDropsCheckBox);
             this.tabPage5.Controls.Add(this.gameMasterEffect_CheckBox);
             this.tabPage5.Controls.Add(this.SafeZoneHealingCheckBox);
             this.tabPage5.Controls.Add(this.SafeZoneBorderCheckBox);
@@ -496,6 +498,16 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Optional";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // gameMasterEffect_CheckBox
+            // 
+            this.gameMasterEffect_CheckBox.AutoSize = true;
+            this.gameMasterEffect_CheckBox.Location = new System.Drawing.Point(24, 66);
+            this.gameMasterEffect_CheckBox.Name = "gameMasterEffect_CheckBox";
+            this.gameMasterEffect_CheckBox.Size = new System.Drawing.Size(120, 17);
+            this.gameMasterEffect_CheckBox.TabIndex = 2;
+            this.gameMasterEffect_CheckBox.Text = "Game Master Effect";
+            this.gameMasterEffect_CheckBox.UseVisualStyleBackColor = true;
             // 
             // SafeZoneHealingCheckBox
             // 
@@ -524,15 +536,15 @@
             this.VPathDialog.FileName = "Mir2.Exe";
             this.VPathDialog.Filter = "Executable Files (*.exe)|*.exe";
             // 
-            // gameMasterEffect_CheckBox
+            // DisableDeathDropsCheckBox
             // 
-            this.gameMasterEffect_CheckBox.AutoSize = true;
-            this.gameMasterEffect_CheckBox.Location = new System.Drawing.Point(24, 66);
-            this.gameMasterEffect_CheckBox.Name = "gameMasterEffect_CheckBox";
-            this.gameMasterEffect_CheckBox.Size = new System.Drawing.Size(120, 17);
-            this.gameMasterEffect_CheckBox.TabIndex = 2;
-            this.gameMasterEffect_CheckBox.Text = "Game Master Effect";
-            this.gameMasterEffect_CheckBox.UseVisualStyleBackColor = true;
+            this.DisableDeathDropsCheckBox.AutoSize = true;
+            this.DisableDeathDropsCheckBox.Location = new System.Drawing.Point(24, 90);
+            this.DisableDeathDropsCheckBox.Name = "DisableDeathDropsCheckBox";
+            this.DisableDeathDropsCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.DisableDeathDropsCheckBox.TabIndex = 3;
+            this.DisableDeathDropsCheckBox.Text = "Disable death drops";
+            this.DisableDeathDropsCheckBox.UseVisualStyleBackColor = true;
             // 
             // ConfigForm
             // 
@@ -607,5 +619,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox gameMasterEffect_CheckBox;
+        private System.Windows.Forms.CheckBox DisableDeathDropsCheckBox;
     }
 }

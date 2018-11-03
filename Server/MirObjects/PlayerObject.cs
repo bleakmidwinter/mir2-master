@@ -1339,10 +1339,13 @@ namespace Server.MirObjects
                 CurrentMap.Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.ElementalBarrierDown }, CurrentLocation);
             }
 
-            if (PKPoints > 200)
-                RedDeathDrop(LastHitter);
-            else if (!InSafeZone)
-                DeathDrop(LastHitter);
+            if (!Settings.DisableDeathDrops)
+            {
+                if (PKPoints > 200)
+                    RedDeathDrop(LastHitter);
+                else if (!InSafeZone)
+                    DeathDrop(LastHitter);
+            }
 
             HP = 0;
             Dead = true;
@@ -3912,7 +3915,8 @@ namespace Server.MirObjects
 
                         GMNeverDie = !GMNeverDie;
 
-                        hintstring = GMNeverDie ? "Invincible Mode." : "Normal Mode.";
+                        //hintstring = GMNeverDie ? "Invincible Mode." : "Normal Mode.";
+                        hintstring = GMNeverDie ? "Invincible mode: ON" : "Invincible mode: OFF";
                         ReceiveChat(hintstring, ChatType.Hint);
                         UpdateGMBuff();
                         break;
@@ -3931,7 +3935,8 @@ namespace Server.MirObjects
                         if (!IsGM) return;
                         Observer = !Observer;
 
-                        hintstring = Observer ? "Observer Mode." : "Normal Mode.";
+                        //hintstring = Observer ? "Observer Mode." : "Normal Mode.";
+                        hintstring = Observer ? "Observer mode: ON" : "Observer mode: OFF";
                         ReceiveChat(hintstring, ChatType.Hint);
                         UpdateGMBuff();
                         break;
