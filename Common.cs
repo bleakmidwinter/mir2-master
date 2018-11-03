@@ -777,7 +777,8 @@ public enum ChatType : byte
     Mentor = 13,
     Shout2 = 14,
     Shout3 = 15,
-    System3 = 16
+    System3 = 16,
+    Shout4 = 17
 }
 
 public enum ItemType : byte

@@ -1281,11 +1281,10 @@ namespace Server.MirObjects
                     {
                         Packet p;
                         string message = "Guild war: " + hitter.Name + " has killed " + Name + ".";
+                        p = new S.Chat { Message = message, Type = ChatType.Shout4 };
 
                         if (Settings.GuildWarKillShoutType == "Local")
                         {
-                            p = new S.Chat { Message = message, Type = ChatType.Shout };
-
                             for (int i = 0; i < CurrentMap.Players.Count; i++)
                             {
                                 if (!Functions.InRange(CurrentLocation, CurrentMap.Players[i].CurrentLocation, Globals.DataRange * 3)) continue;
@@ -1294,8 +1293,6 @@ namespace Server.MirObjects
                         }
                         else if (Settings.GuildWarKillShoutType == "Map")
                         {
-                            p = new S.Chat { Message = message, Type = ChatType.Shout };
-
                             for (int i = 0; i < CurrentMap.Players.Count; i++)
                             {
                                 CurrentMap.Players[i].Enqueue(p);
