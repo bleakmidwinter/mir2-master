@@ -28,6 +28,8 @@ namespace Server.MirObjects
 
         public bool WarZone = false;
 
+        public KillChainInfo KillChain;
+
         public override ObjectType Race
         {
             get { return ObjectType.Player; }
@@ -707,6 +709,9 @@ namespace Server.MirObjects
             ProcessRegen();
             ProcessPoison();
 
+            if (KillChain != null)
+                ProcessKillChainTimer();
+
             RefreshCreaturesTimeLeft();
 
             UserItem item;
@@ -745,6 +750,79 @@ namespace Server.MirObjects
             RefreshNameColour();
 
         }
+
+        private void ProcessKillChainTimer()
+        {
+            if (Envir.Time >= KillChain.StartTime + ((KillChain.TimePassed + 1) * 1000))
+                KillChain.TimePassed++;
+
+            if (KillChain.TimePassed >= KillChain.Duration)
+            {
+                KillChain = null;
+                ReceiveChat("You have failed the Kill Chain quest.", ChatType.System2);
+            }
+            else
+            {
+                //update timer label
+            }
+        }
+
+        internal void CheckGroupChainKill(MonsterInfo mInfo)
+        {
+            if (GroupMembers != null)
+            {
+                foreach (PlayerObject player in GroupMembers.
+                    Where(player => player.CurrentMap == CurrentMap &&
+                        Functions.InRange(player.CurrentLocation, CurrentLocation, Globals.DataRange) &&
+                        !player.Dead))
+                {
+                    player.CheckNeedChainKill(mInfo);
+                }
+            }
+            else
+                CheckNeedChainKill(mInfo);
+        }
+
+        private void CheckNeedChainKill(MonsterInfo mInfo)
+        {
+            if (KillChain != null)
+            {
+                bool chainCompleted = KillChain.CheckChainKill(mInfo);
+
+                if (chainCompleted)
+                {
+                    ReceiveChat("Congratulations, you completed the kill chain! You've been granted a "
+                        + Settings.KillChainBonusExp.ToString() + "% experience bonus for "
+                        + KillChain.Duration.ToString() + " seconds.", ChatType.System3);
+                    
+
+                    //Broadcast(new S.KillChainCompleted { ObjectID = ObjectID });
+
+                    AddBuff(new Buff { Type = BuffType.Exp2, ExpireTime = Envir.Time + KillChain.Duration * 1000, Values = new int[] { (int)Settings.KillChainBonusExp } });
+
+                    KillChain = null;
+                }
+            }
+            else
+            {
+                if (Envir.Random.Next(100) <= Settings.KillChainChance)
+                {
+                    int killsNeeded = Envir.Random.Next(Settings.KillChainMinMobs, Settings.KillChainMaxMobs);
+
+                    KillChain = new KillChainInfo(mInfo, (ushort)killsNeeded, Envir.Time);
+
+                    ReceiveChat("Kill chain started: you have "
+                        + KillChain.Duration.ToString() + " seconds to kill "
+                        + killsNeeded.ToString() + " " + mInfo.Name + "s. Good luck!", ChatType.System3);
+                }
+            }
+        }
+
+        internal void CheckChainKill(MonsterInfo info)
+        {
+            
+        }
+
         public override void SetOperateTime()
         {
             OperateTime = Envir.Time;
@@ -3283,6 +3361,7 @@ namespace Server.MirObjects
                         break;
                     case BuffType.Rested:
                     case BuffType.Exp:
+                    case BuffType.Exp2:
                         ExpRateOffset = (float)Math.Min(float.MaxValue, ExpRateOffset + buff.Values[0]);
                         break;
                     case BuffType.Drop:
@@ -10455,7 +10534,8 @@ namespace Server.MirObjects
                 if ((PoisonList[i].PType != PoisonType.Green) && ((PoisonList[i].Duration - PoisonList[i].Time) > p.Duration)) return;//cant cast 1 second poison to make a 1minute poison go away!
                 if ((PoisonList[i].PType == PoisonType.Frozen) || (PoisonList[i].PType == PoisonType.Slow) || (PoisonList[i].PType == PoisonType.Paralysis) || (PoisonList[i].PType == PoisonType.LRParalysis)) return;//prevents mobs from being perma frozen/slowed
                 if (p.PType == PoisonType.DelayedExplosion) return;
-                ReceiveChat("You have been poisoned.", ChatType.System2);
+                //ReceiveChat("You have been poisoned.", ChatType.System2);
+                ProcessPoisonType(p);
                 PoisonList[i] = p;
                 return;
             }
@@ -10477,6 +10557,73 @@ namespace Server.MirObjects
             //}
             //else
             //    ReceiveChat("You have been poisoned.", ChatType.System2);
+
+            //switch (p.PType)
+            //{
+            //    case PoisonType.DelayedExplosion:
+            //        ExplosionInflictedTime = Envir.Time + 4000;
+            //        Enqueue(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
+            //        Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
+            //        //ReceiveChat("You are a walking explosive.", ChatType.System);
+            //        ProcessPoisonType(p);
+            //        break;
+            //    case PoisonType.Green:
+            //        //ReceiveChat("You have been poisoned.", ChatType.System2);
+            //        ProcessPoisonType(p);
+
+            //        try
+            //        {
+            //            values[0] = p.Value;
+
+            //            AddBuff(new Buff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+            //            //S.AddBuff addBuff = new S.AddBuff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster.Name : "", Expire = Envir.Time + p.Duration, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false };
+            //            //S.AddBuff addBuff = new S.AddBuff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster.Name : "", Expire = p.Duration, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false };
+            //            //Enqueue(addBuff);
+            //        }
+            //        catch { }
+            //        break;
+            //    case PoisonType.Red:
+            //        //ReceiveChat("You have been poisoned.", ChatType.System2);
+            //        ProcessPoisonType(p);
+
+            //        values[0] = p.Value;
+
+            //        AddBuff(new Buff { Type = BuffType.RedPoison, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+            //        break;
+            //    case PoisonType.Slow:
+            //        //ReceiveChat("You have been slowed.", ChatType.System2);
+            //        ProcessPoisonType(p);
+            //        break;
+            //    case PoisonType.Paralysis:
+            //        //ReceiveChat("You have been paralysed.", ChatType.System2);
+            //        ProcessPoisonType(p);
+
+            //        values[0] = p.Value;
+
+            //        AddBuff(new Buff { Type = BuffType.Paralysed, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+            //        break;
+            //    case PoisonType.Stun:
+            //        //ReceiveChat("You have been stunned.", ChatType.System2);
+            //        ProcessPoisonType(p);
+
+            //        values[0] = p.Value;
+
+            //        AddBuff(new Buff { Type = BuffType.Stun, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+
+            //        break;
+            //    default:
+            //        ReceiveChat("You have been poisoned.", ChatType.System2);
+            //        break;
+            //}
+            ProcessPoisonType(p);
+                PoisonList.Add(p);
+        }
+
+        private void ProcessPoisonType(Poison p)
+        {
             int[] values = new int[1];
 
             switch (p.PType)
@@ -10485,61 +10632,40 @@ namespace Server.MirObjects
                     ExplosionInflictedTime = Envir.Time + 4000;
                     Enqueue(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
                     Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.DelayedExplosion });
-                    ReceiveChat("You are a walking explosive.", ChatType.System);
+                    ReceiveChat("You are a walking explosive.", ChatType.System2);
                     break;
                 case PoisonType.Green:
                     ReceiveChat("You have been poisoned.", ChatType.System2);
-
-                    try
-                    {
-                        values[0] = p.Value;
-
-                        AddBuff(new Buff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
-
-                        //S.AddBuff addBuff = new S.AddBuff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster.Name : "", Expire = Envir.Time + p.Duration, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false };
-                        //S.AddBuff addBuff = new S.AddBuff { Type = BuffType.GreenPoison, Caster = Caster != null ? Caster.Name : "", Expire = p.Duration, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false };
-                        //Enqueue(addBuff);
-                    }
-                    catch { }
+                    values[0] = p.Value;
+                    AddBuff(new Buff { Type = BuffType.GreenPoison, Caster = p.Owner != null ? p.Owner : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
                     break;
                 case PoisonType.Red:
                     ReceiveChat("You have been poisoned.", ChatType.System2);
-
                     values[0] = p.Value;
-
-                    AddBuff(new Buff { Type = BuffType.RedPoison, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
-
+                    AddBuff(new Buff { Type = BuffType.RedPoison, Caster = p.Owner != null ? p.Owner : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
                     break;
                 case PoisonType.Slow:
                     ReceiveChat("You have been slowed.", ChatType.System2);
-
                     values[0] = p.Value;
-
-                    AddBuff(new Buff { Type = BuffType.Slowed, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
-
+                    AddBuff(new Buff { Type = BuffType.Slowed, Caster = p.Owner != null ? p.Owner : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
                     break;
                 case PoisonType.Paralysis:
                     ReceiveChat("You have been paralysed.", ChatType.System2);
-
                     values[0] = p.Value;
-
-                    AddBuff(new Buff { Type = BuffType.Paralysed, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
-
+                    AddBuff(new Buff { Type = BuffType.Paralysed, Caster = p.Owner != null ? p.Owner : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
                     break;
                 case PoisonType.Stun:
                     ReceiveChat("You have been stunned.", ChatType.System2);
-
                     values[0] = p.Value;
-
-                    AddBuff(new Buff { Type = BuffType.Stun, Caster = Caster != null ? Caster : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
-
+                    AddBuff(new Buff { Type = BuffType.Stun, Caster = p.Owner != null ? p.Owner : null, ExpireTime = Envir.Time + p.Duration * 1000, Values = values, Infinite = false, ObjectID = ObjectID, Visible = false });
+                    break;
+                case PoisonType.Bleeding:
+                    ReceiveChat("You are bleeding.", ChatType.System2);
                     break;
                 default:
                     ReceiveChat("You have been poisoned.", ChatType.System2);
                     break;
             }
-
-                PoisonList.Add(p);
         }
 
         public override void AddBuff(Buff b)

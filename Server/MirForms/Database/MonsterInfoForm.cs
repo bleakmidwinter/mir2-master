@@ -99,6 +99,7 @@ namespace Server
                 CanTameCheckBox.Checked = false;
                 AutoRevCheckBox.Checked = false;
                 UndeadCheckBox.Checked = false;
+                CanStartKillChainCheckBox.Checked = false;
 
                 return;
             }
@@ -143,6 +144,7 @@ namespace Server
             CanTameCheckBox.Checked = info.CanTame;
             AutoRevCheckBox.Checked = info.AutoRev;
             UndeadCheckBox.Checked = info.Undead;
+            CanStartKillChainCheckBox.Checked = info.KillChainMob;
 
             for (int i = 1; i < _selectedMonsterInfos.Count; i++)
             {
@@ -181,6 +183,7 @@ namespace Server
 
                 if (AutoRevCheckBox.Checked != info.AutoRev) AutoRevCheckBox.CheckState = CheckState.Indeterminate;
                 if (UndeadCheckBox.Checked != info.Undead) UndeadCheckBox.CheckState = CheckState.Indeterminate;
+                if (CanStartKillChainCheckBox.Checked != info.KillChainMob) CanStartKillChainCheckBox.CheckState = CheckState.Indeterminate;
             }
 
         }
@@ -778,6 +781,14 @@ namespace Server
         private void MonsterInfoForm_Load(object sender, EventArgs e)
         {
             txtSearchMonster.Focus();
+        }
+
+        private void CanStartKillChainCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            for (int i = 0; i < _selectedMonsterInfos.Count; i++)
+                _selectedMonsterInfos[i].KillChainMob = CanStartKillChainCheckBox.Checked;
         }
     }
 }

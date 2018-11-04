@@ -438,6 +438,9 @@ namespace Client.MirScenes.Dialogs
                     case BuffType.Knapsack:
                         buffBagWeight += buff.Values[0];
                         break;
+                    case BuffType.Exp2:
+                        buffExp += buff.Values[0];
+                        break;
                 }
             }
             
@@ -577,6 +580,8 @@ namespace Client.MirScenes.Dialogs
                     return 240;
                 case BuffType.TemporalFlux:
                     return 261;
+                case BuffType.Exp2:
+                    return 306;
 
                 //Stats
                 case BuffType.Impact:

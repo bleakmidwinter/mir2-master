@@ -173,6 +173,7 @@ namespace Server
         //Mail Settings
         public static bool MailAutoSendGold = false;
         public static bool MailAutoSendItems = false;
+
         public static bool MailFreeWithStamp = true;
         public static uint MailCostPer1KGold = 100;
         public static uint MailItemInsurancePercentage = 5;
@@ -261,6 +262,14 @@ namespace Server
         //Guild war settings
         public static bool BroadcastGuildWarKillShout = false;
         public static string GuildWarKillShoutType = "Local";
+
+        //Kill chain settings
+        public static bool EnableKillChains = false;
+        public static ushort KillChainChance = 0;
+        public static ushort KillChainMinMobs = 1;
+        public static ushort KillChainMaxMobs = 1;
+        public static ushort KillChainDurationPerMob = 0;
+        public static ushort KillChainBonusExp = 0;
 
         public static void LoadVersion()
         {
@@ -482,6 +491,7 @@ namespace Server
             LoadGoods();
             LoadGem();
             LoadGuildWarSettings();
+            LoadKillChainSettings();
         }
         public static void Save()
         {
@@ -1359,6 +1369,34 @@ namespace Server
             InIReader reader = new InIReader(ConfigPath + @".\GuildWarSystem.ini");
             reader.Write("Config", "BroadcastGuildWarKillShout", BroadcastGuildWarKillShout);
             reader.Write("Config", "GuildWarKillShoutType", GuildWarKillShoutType);
+        }
+
+        public static void LoadKillChainSettings()
+        {
+            if (!File.Exists(ConfigPath + @".\KillChainSystem.ini"))
+            {
+                SaveKillChainSettings();
+                return;
+            }
+            InIReader reader = new InIReader(ConfigPath + @".\KillChainSystem.ini");
+            EnableKillChains = reader.ReadBoolean("Config", "EnableKillChains", EnableKillChains);
+            KillChainChance = (ushort)reader.ReadUInt16("Config", "KillChainChance", KillChainChance);
+            KillChainMinMobs = (ushort)reader.ReadUInt16("Config", "KillChainMinMobs", KillChainMinMobs);
+            KillChainMaxMobs = (ushort)reader.ReadUInt16("Config", "KillChainMaxMobs", KillChainMaxMobs);
+            KillChainDurationPerMob = (ushort)reader.ReadUInt16("Config", "KillChainDurationPerMob", KillChainDurationPerMob);
+            KillChainBonusExp = (ushort)reader.ReadUInt16("Config", "KillChainBonusExp", KillChainBonusExp);
+        }
+
+        public static void SaveKillChainSettings()
+        {
+            File.Delete(ConfigPath + @".\KillChainSystem.ini");
+            InIReader reader = new InIReader(ConfigPath + @".\KillChainSystem.ini");
+            reader.Write("Config", "EnableKillChains", EnableKillChains);
+            reader.Write("Config", "KillChainChance", KillChainChance);
+            reader.Write("Config", "KillChainMinMobs", KillChainMinMobs);
+            reader.Write("Config", "KillChainMaxMobs", KillChainMaxMobs);
+            reader.Write("Config", "KillChainDurationPerMob", KillChainDurationPerMob);
+            reader.Write("Config", "KillChainBonusExp", KillChainBonusExp);
         }
     }
 }

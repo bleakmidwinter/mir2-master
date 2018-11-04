@@ -10255,6 +10255,7 @@ namespace Client.MirScenes
                         text += string.Format("GoldRate increased by {0}%\n", Values[2]);
                     break;
                 case BuffType.Exp:
+                case BuffType.Exp2:
                     text = string.Format("Exp Rate\nIncreased by {0}%\n", Values[0]);
                     break;
                 case BuffType.Gold:

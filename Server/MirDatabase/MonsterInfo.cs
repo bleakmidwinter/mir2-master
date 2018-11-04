@@ -31,6 +31,8 @@ namespace Server.MirDatabase
         public bool HasSpawnScript;
         public bool HasDieScript;
 
+        public bool KillChainMob = true;
+
         public MonsterInfo()
         {
         }
@@ -105,6 +107,7 @@ namespace Server.MirDatabase
             if (Envir.LoadVersion < 18) return;
             AutoRev = reader.ReadBoolean();
             Undead = reader.ReadBoolean();
+            KillChainMob = reader.ReadBoolean();
         }
 
         public string GameName
@@ -149,6 +152,7 @@ namespace Server.MirDatabase
             writer.Write(CanTame);
             writer.Write(AutoRev);
             writer.Write(Undead);
+            writer.Write(KillChainMob);
         }
 
         public void LoadDrops()

@@ -119,11 +119,26 @@
             this.btnSpawnTickRemove = new System.Windows.Forms.Button();
             this.btnSpawnTickAdd = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.WarKillShoutTypeGroupBox = new System.Windows.Forms.GroupBox();
+            this.WarShoutMapRadioButton = new System.Windows.Forms.RadioButton();
+            this.WarShoutLocalRadioButton = new System.Windows.Forms.RadioButton();
             this.GuildWarKillShoutCheckbox = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.WarKillShoutTypeGroupBox = new System.Windows.Forms.GroupBox();
-            this.WarShoutLocalRadioButton = new System.Windows.Forms.RadioButton();
-            this.WarShoutMapRadioButton = new System.Windows.Forms.RadioButton();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.EnableKillChainsCheckBox = new System.Windows.Forms.CheckBox();
+            this.KillChainGroupBox = new System.Windows.Forms.GroupBox();
+            this.KillChainLabel1 = new System.Windows.Forms.Label();
+            this.KillChainLabel2 = new System.Windows.Forms.Label();
+            this.txtKillChainBonusExp = new System.Windows.Forms.TextBox();
+            this.KillChainChanceTextBox = new System.Windows.Forms.TextBox();
+            this.KillChainChanceLabel2 = new System.Windows.Forms.Label();
+            this.KillChainChanceLabel1 = new System.Windows.Forms.Label();
+            this.txtKillChainMinMobsDefault = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtKillChainMaxMobsDefault = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtKillChainBonusPerMob = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -139,6 +154,8 @@
             this.pnlSpawnTickConfig.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.WarKillShoutTypeGroupBox.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.KillChainGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -288,6 +305,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -398,9 +416,9 @@
             this.tabPage3.Controls.Add(this.GoodsMaxStoredTextBox);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.GoodsOnCheckBox);
-            this.tabPage3.Location = new System.Drawing.Point(4, 40);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(399, 211);
+            this.tabPage3.Size = new System.Drawing.Size(399, 229);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Goods";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1040,17 +1058,6 @@
             this.tabPage9.Text = "Guild war";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // GuildWarKillShoutCheckbox
-            // 
-            this.GuildWarKillShoutCheckbox.AutoSize = true;
-            this.GuildWarKillShoutCheckbox.Location = new System.Drawing.Point(20, 17);
-            this.GuildWarKillShoutCheckbox.Name = "GuildWarKillShoutCheckbox";
-            this.GuildWarKillShoutCheckbox.Size = new System.Drawing.Size(178, 17);
-            this.GuildWarKillShoutCheckbox.TabIndex = 0;
-            this.GuildWarKillShoutCheckbox.Text = "Broadcast shout on guild war kill";
-            this.GuildWarKillShoutCheckbox.UseVisualStyleBackColor = true;
-            this.GuildWarKillShoutCheckbox.CheckedChanged += new System.EventHandler(this.GuildWarKillShoutCheckbox_CheckedChanged);
-            // 
             // WarKillShoutTypeGroupBox
             // 
             this.WarKillShoutTypeGroupBox.Controls.Add(this.WarShoutMapRadioButton);
@@ -1061,6 +1068,17 @@
             this.WarKillShoutTypeGroupBox.TabIndex = 1;
             this.WarKillShoutTypeGroupBox.TabStop = false;
             this.WarKillShoutTypeGroupBox.Text = "Shout type";
+            // 
+            // WarShoutMapRadioButton
+            // 
+            this.WarShoutMapRadioButton.AutoSize = true;
+            this.WarShoutMapRadioButton.Location = new System.Drawing.Point(128, 19);
+            this.WarShoutMapRadioButton.Name = "WarShoutMapRadioButton";
+            this.WarShoutMapRadioButton.Size = new System.Drawing.Size(46, 17);
+            this.WarShoutMapRadioButton.TabIndex = 1;
+            this.WarShoutMapRadioButton.TabStop = true;
+            this.WarShoutMapRadioButton.Text = "Map";
+            this.WarShoutMapRadioButton.UseVisualStyleBackColor = true;
             // 
             // WarShoutLocalRadioButton
             // 
@@ -1074,16 +1092,162 @@
             this.WarShoutLocalRadioButton.UseVisualStyleBackColor = true;
             this.WarShoutLocalRadioButton.CheckedChanged += new System.EventHandler(this.WarShoutLocalRadioButton_CheckedChanged);
             // 
-            // WarShoutMapRadioButton
+            // GuildWarKillShoutCheckbox
             // 
-            this.WarShoutMapRadioButton.AutoSize = true;
-            this.WarShoutMapRadioButton.Location = new System.Drawing.Point(128, 19);
-            this.WarShoutMapRadioButton.Name = "WarShoutMapRadioButton";
-            this.WarShoutMapRadioButton.Size = new System.Drawing.Size(46, 17);
-            this.WarShoutMapRadioButton.TabIndex = 1;
-            this.WarShoutMapRadioButton.TabStop = true;
-            this.WarShoutMapRadioButton.Text = "Map";
-            this.WarShoutMapRadioButton.UseVisualStyleBackColor = true;
+            this.GuildWarKillShoutCheckbox.AutoSize = true;
+            this.GuildWarKillShoutCheckbox.Location = new System.Drawing.Point(20, 17);
+            this.GuildWarKillShoutCheckbox.Name = "GuildWarKillShoutCheckbox";
+            this.GuildWarKillShoutCheckbox.Size = new System.Drawing.Size(178, 17);
+            this.GuildWarKillShoutCheckbox.TabIndex = 0;
+            this.GuildWarKillShoutCheckbox.Text = "Broadcast shout on guild war kill";
+            this.GuildWarKillShoutCheckbox.UseVisualStyleBackColor = true;
+            this.GuildWarKillShoutCheckbox.CheckedChanged += new System.EventHandler(this.GuildWarKillShoutCheckbox_CheckedChanged);
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.KillChainGroupBox);
+            this.tabPage10.Controls.Add(this.EnableKillChainsCheckBox);
+            this.tabPage10.Location = new System.Drawing.Point(4, 40);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(399, 211);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "Kill chains";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // EnableKillChainsCheckBox
+            // 
+            this.EnableKillChainsCheckBox.AutoSize = true;
+            this.EnableKillChainsCheckBox.Location = new System.Drawing.Point(23, 21);
+            this.EnableKillChainsCheckBox.Name = "EnableKillChainsCheckBox";
+            this.EnableKillChainsCheckBox.Size = new System.Drawing.Size(108, 17);
+            this.EnableKillChainsCheckBox.TabIndex = 0;
+            this.EnableKillChainsCheckBox.Text = "Enable kill chains";
+            this.EnableKillChainsCheckBox.UseVisualStyleBackColor = true;
+            this.EnableKillChainsCheckBox.CheckedChanged += new System.EventHandler(this.EnableKillChainsCheckBox_CheckedChanged);
+            // 
+            // KillChainGroupBox
+            // 
+            this.KillChainGroupBox.Controls.Add(this.txtKillChainBonusPerMob);
+            this.KillChainGroupBox.Controls.Add(this.label38);
+            this.KillChainGroupBox.Controls.Add(this.txtKillChainMaxMobsDefault);
+            this.KillChainGroupBox.Controls.Add(this.label36);
+            this.KillChainGroupBox.Controls.Add(this.txtKillChainMinMobsDefault);
+            this.KillChainGroupBox.Controls.Add(this.label34);
+            this.KillChainGroupBox.Controls.Add(this.KillChainChanceTextBox);
+            this.KillChainGroupBox.Controls.Add(this.KillChainChanceLabel2);
+            this.KillChainGroupBox.Controls.Add(this.KillChainChanceLabel1);
+            this.KillChainGroupBox.Controls.Add(this.txtKillChainBonusExp);
+            this.KillChainGroupBox.Controls.Add(this.KillChainLabel2);
+            this.KillChainGroupBox.Controls.Add(this.KillChainLabel1);
+            this.KillChainGroupBox.Location = new System.Drawing.Point(23, 44);
+            this.KillChainGroupBox.Name = "KillChainGroupBox";
+            this.KillChainGroupBox.Size = new System.Drawing.Size(278, 138);
+            this.KillChainGroupBox.TabIndex = 1;
+            this.KillChainGroupBox.TabStop = false;
+            // 
+            // KillChainLabel1
+            // 
+            this.KillChainLabel1.AutoSize = true;
+            this.KillChainLabel1.Location = new System.Drawing.Point(6, 114);
+            this.KillChainLabel1.Name = "KillChainLabel1";
+            this.KillChainLabel1.Size = new System.Drawing.Size(104, 13);
+            this.KillChainLabel1.TabIndex = 0;
+            this.KillChainLabel1.Text = "Kill chain exp bonus:";
+            // 
+            // KillChainLabel2
+            // 
+            this.KillChainLabel2.AutoSize = true;
+            this.KillChainLabel2.Location = new System.Drawing.Point(240, 114);
+            this.KillChainLabel2.Name = "KillChainLabel2";
+            this.KillChainLabel2.Size = new System.Drawing.Size(15, 13);
+            this.KillChainLabel2.TabIndex = 2;
+            this.KillChainLabel2.Text = "%";
+            // 
+            // txtKillChainBonusExp
+            // 
+            this.txtKillChainBonusExp.Location = new System.Drawing.Point(199, 111);
+            this.txtKillChainBonusExp.Name = "txtKillChainBonusExp";
+            this.txtKillChainBonusExp.Size = new System.Drawing.Size(35, 20);
+            this.txtKillChainBonusExp.TabIndex = 2;
+            this.txtKillChainBonusExp.TextChanged += new System.EventHandler(this.txtKillChainBonusExp_TextChanged);
+            // 
+            // KillChainChanceTextBox
+            // 
+            this.KillChainChanceTextBox.Location = new System.Drawing.Point(199, 13);
+            this.KillChainChanceTextBox.Name = "KillChainChanceTextBox";
+            this.KillChainChanceTextBox.Size = new System.Drawing.Size(35, 20);
+            this.KillChainChanceTextBox.TabIndex = 5;
+            this.KillChainChanceTextBox.TextChanged += new System.EventHandler(this.KillChainChanceTextBox_TextChanged);
+            // 
+            // KillChainChanceLabel2
+            // 
+            this.KillChainChanceLabel2.AutoSize = true;
+            this.KillChainChanceLabel2.Location = new System.Drawing.Point(240, 16);
+            this.KillChainChanceLabel2.Name = "KillChainChanceLabel2";
+            this.KillChainChanceLabel2.Size = new System.Drawing.Size(15, 13);
+            this.KillChainChanceLabel2.TabIndex = 4;
+            this.KillChainChanceLabel2.Text = "%";
+            // 
+            // KillChainChanceLabel1
+            // 
+            this.KillChainChanceLabel1.AutoSize = true;
+            this.KillChainChanceLabel1.Location = new System.Drawing.Point(6, 16);
+            this.KillChainChanceLabel1.Name = "KillChainChanceLabel1";
+            this.KillChainChanceLabel1.Size = new System.Drawing.Size(149, 13);
+            this.KillChainChanceLabel1.TabIndex = 3;
+            this.KillChainChanceLabel1.Text = "Chance of triggering kill chain:";
+            // 
+            // txtKillChainMinMobsDefault
+            // 
+            this.txtKillChainMinMobsDefault.Location = new System.Drawing.Point(199, 37);
+            this.txtKillChainMinMobsDefault.Name = "txtKillChainMinMobsDefault";
+            this.txtKillChainMinMobsDefault.Size = new System.Drawing.Size(35, 20);
+            this.txtKillChainMinMobsDefault.TabIndex = 8;
+            this.txtKillChainMinMobsDefault.TextChanged += new System.EventHandler(this.txtKillChainMinMobsDefault_TextChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(6, 40);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(156, 13);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "Default minimum mobs required:";
+            // 
+            // txtKillChainMaxMobsDefault
+            // 
+            this.txtKillChainMaxMobsDefault.Location = new System.Drawing.Point(199, 61);
+            this.txtKillChainMaxMobsDefault.Name = "txtKillChainMaxMobsDefault";
+            this.txtKillChainMaxMobsDefault.Size = new System.Drawing.Size(35, 20);
+            this.txtKillChainMaxMobsDefault.TabIndex = 11;
+            this.txtKillChainMaxMobsDefault.TextChanged += new System.EventHandler(this.txtKillChainMaxMobsDefault_TextChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(6, 64);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(159, 13);
+            this.label36.TabIndex = 9;
+            this.label36.Text = "Default maximum mobs required:";
+            // 
+            // txtKillChainBonusPerMob
+            // 
+            this.txtKillChainBonusPerMob.Location = new System.Drawing.Point(199, 86);
+            this.txtKillChainBonusPerMob.Name = "txtKillChainBonusPerMob";
+            this.txtKillChainBonusPerMob.Size = new System.Drawing.Size(35, 20);
+            this.txtKillChainBonusPerMob.TabIndex = 14;
+            this.txtKillChainBonusPerMob.TextChanged += new System.EventHandler(this.txtKillChainBonusPerMob_TextChanged);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(6, 89);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(182, 13);
+            this.label38.TabIndex = 12;
+            this.label38.Text = "Bonus duration per mob (in seconds):";
             // 
             // SystemInfoForm
             // 
@@ -1126,6 +1290,10 @@
             this.tabPage9.PerformLayout();
             this.WarKillShoutTypeGroupBox.ResumeLayout(false);
             this.WarKillShoutTypeGroupBox.PerformLayout();
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
+            this.KillChainGroupBox.ResumeLayout(false);
+            this.KillChainGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1227,5 +1395,20 @@
         private System.Windows.Forms.GroupBox WarKillShoutTypeGroupBox;
         private System.Windows.Forms.RadioButton WarShoutMapRadioButton;
         private System.Windows.Forms.RadioButton WarShoutLocalRadioButton;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.GroupBox KillChainGroupBox;
+        private System.Windows.Forms.TextBox txtKillChainBonusExp;
+        private System.Windows.Forms.Label KillChainLabel2;
+        private System.Windows.Forms.Label KillChainLabel1;
+        private System.Windows.Forms.CheckBox EnableKillChainsCheckBox;
+        private System.Windows.Forms.TextBox KillChainChanceTextBox;
+        private System.Windows.Forms.Label KillChainChanceLabel2;
+        private System.Windows.Forms.Label KillChainChanceLabel1;
+        private System.Windows.Forms.TextBox txtKillChainBonusPerMob;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox txtKillChainMaxMobsDefault;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtKillChainMinMobsDefault;
+        private System.Windows.Forms.Label label34;
     }
 }

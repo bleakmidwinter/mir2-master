@@ -415,6 +415,13 @@ namespace Server
             form.ShowDialog();
         }
 
+        private void killChainsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SystemInfoForm form = new SystemInfoForm(9);
+
+            form.ShowDialog();
+        }
+
         private void gameshopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GameShop form = new GameShop();

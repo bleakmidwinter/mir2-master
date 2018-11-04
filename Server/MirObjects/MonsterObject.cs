@@ -670,6 +670,15 @@ namespace Server.MirObjects
 
                 PlayerObject playerObj = (PlayerObject)EXPOwner;
                 playerObj.CheckGroupQuestKill(Info);
+
+                if (Settings.EnableKillChains)
+                {
+                    if (Info.KillChainMob)
+                    {
+                        playerObj.CheckGroupChainKill(Info);
+                    }
+
+                }
             }
 
             if (Respawn != null)

@@ -1241,6 +1241,7 @@ public enum BuffType : byte
     Guild,
     Prison,
     Rested,
+    Exp2,
 
     //Poisons
     GreenPoison = 150,

@@ -19,7 +19,8 @@ namespace Server
             get { return SMain.EditEnvir; }
         }
 
-        public bool FishingChanged = false, MailChanged = false, GoodsChanged = false, RefineChanged = false, MarriageChanged = false, MentorChanged = false, GemChanged = false, SpawnChanged = false, GuildWarChanged = false;
+        public bool FishingChanged = false, MailChanged = false, GoodsChanged = false, RefineChanged = false,
+            MarriageChanged = false, MentorChanged = false, GemChanged = false, SpawnChanged = false, GuildWarChanged = false, KillChainsChanged = false;
 
         public SystemInfoForm()
         {
@@ -43,7 +44,10 @@ namespace Server
             UpdateGem();
             UpdateSpawnTick();
             UpdateGuildWarSettings();
+            UpdateKillChainSettings();
         }
+
+        #region Update
 
         private void UpdateGuildWarSettings()
         {
@@ -56,7 +60,16 @@ namespace Server
                 WarShoutMapRadioButton.Checked = true;
         }
 
-        #region Update
+        private void UpdateKillChainSettings()
+        {
+            EnableKillChainsCheckBox.Checked = Settings.EnableKillChains;
+            KillChainGroupBox.Enabled = Settings.EnableKillChains;
+            KillChainChanceTextBox.Text = Settings.KillChainChance.ToString();
+            txtKillChainMinMobsDefault.Text = Settings.KillChainMinMobs.ToString();
+            txtKillChainMaxMobsDefault.Text = Settings.KillChainMaxMobs.ToString();
+            txtKillChainBonusPerMob.Text = Settings.KillChainDurationPerMob.ToString();
+            txtKillChainBonusExp.Text = Settings.KillChainBonusExp.ToString();
+        }
 
         private void UpdateFishing()
         {
@@ -192,6 +205,9 @@ namespace Server
 
             if (GuildWarChanged)
                 Settings.SaveGuildWarSettings();
+
+            if (KillChainsChanged)
+                Settings.SaveKillChainSettings();
         }
 
         #region Fishing
@@ -721,14 +737,105 @@ namespace Server
             GuildWarChanged = true;
         }
 
+        private void txtKillChainBonusExp_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            ushort temp;
+
+            if (!ushort.TryParse(ActiveControl.Text, out temp) || temp > 100)
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.KillChainBonusExp = temp;
+            KillChainsChanged = true;
+        }
+
+        private void KillChainChanceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            ushort temp;
+
+            if (!ushort.TryParse(ActiveControl.Text, out temp) || temp > 100)
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.KillChainChance = temp;
+            KillChainsChanged = true;
+        }
+
+        private void txtKillChainMinMobsDefault_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            ushort temp;
+
+            if (!ushort.TryParse(ActiveControl.Text, out temp))
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.KillChainMinMobs = temp;
+            KillChainsChanged = true;
+        }
+
+        private void txtKillChainMaxMobsDefault_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            ushort temp;
+
+            if (!ushort.TryParse(ActiveControl.Text, out temp))
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.KillChainMaxMobs = temp;
+            KillChainsChanged = true;
+        }
+
+        private void txtKillChainBonusPerMob_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            ushort temp;
+
+            if (!ushort.TryParse(ActiveControl.Text, out temp))
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.KillChainDurationPerMob = temp;
+            KillChainsChanged = true;
+        }
+
+        private void EnableKillChainsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (ActiveControl != sender) return;
+
+            Settings.EnableKillChains = EnableKillChainsCheckBox.Checked;
+            KillChainGroupBox.Enabled = EnableKillChainsCheckBox.Checked;
+
+            KillChainsChanged = true;
+        }
+
         private void GuildWarKillShoutCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (ActiveControl != sender) return;
 
             Settings.BroadcastGuildWarKillShout = GuildWarKillShoutCheckbox.Checked;
-            GuildWarChanged = true;
-
             WarKillShoutTypeGroupBox.Enabled = GuildWarKillShoutCheckbox.Checked;
+
+            GuildWarChanged = true;
         }
 
         #endregion

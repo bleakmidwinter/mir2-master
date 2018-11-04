@@ -259,6 +259,7 @@
     <Compile Include="MirObjects\GuildObject.cs" />
     <Compile Include="MirObjects\IntelligentCreatureObject.cs" />
     <Compile Include="MirObjects\ItemObject.cs" />
+    <Compile Include="MirObjects\KillChainInfo.cs" />
     <Compile Include="MirObjects\MapObject.cs" />
     <Compile Include="MirObjects\MonsterObject.cs" />
     <Compile Include="MirObjects\Monsters\HellBomb.cs" />

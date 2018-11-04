@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.MonsterInfoPanel = new System.Windows.Forms.Panel();
+            this.CanStartKillChainCheckBox = new System.Windows.Forms.CheckBox();
             this.UndeadCheckBox = new System.Windows.Forms.CheckBox();
             this.AutoRevCheckBox = new System.Windows.Forms.CheckBox();
             this.ImageComboBox = new System.Windows.Forms.ComboBox();
@@ -129,6 +130,7 @@
             this.MonsterInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MonsterInfoPanel.Controls.Add(this.CanStartKillChainCheckBox);
             this.MonsterInfoPanel.Controls.Add(this.UndeadCheckBox);
             this.MonsterInfoPanel.Controls.Add(this.AutoRevCheckBox);
             this.MonsterInfoPanel.Controls.Add(this.ImageComboBox);
@@ -188,6 +190,17 @@
             this.MonsterInfoPanel.Name = "MonsterInfoPanel";
             this.MonsterInfoPanel.Size = new System.Drawing.Size(585, 213);
             this.MonsterInfoPanel.TabIndex = 11;
+            // 
+            // CanStartKillChainCheckBox
+            // 
+            this.CanStartKillChainCheckBox.AutoSize = true;
+            this.CanStartKillChainCheckBox.Location = new System.Drawing.Point(434, 165);
+            this.CanStartKillChainCheckBox.Name = "CanStartKillChainCheckBox";
+            this.CanStartKillChainCheckBox.Size = new System.Drawing.Size(97, 17);
+            this.CanStartKillChainCheckBox.TabIndex = 89;
+            this.CanStartKillChainCheckBox.Text = "Allow Kill Chain";
+            this.CanStartKillChainCheckBox.UseVisualStyleBackColor = true;
+            this.CanStartKillChainCheckBox.CheckedChanged += new System.EventHandler(this.CanStartKillChainCheckBox_CheckedChanged);
             // 
             // UndeadCheckBox
             // 
@@ -891,5 +904,6 @@
         private System.Windows.Forms.Button DropBuilderButton;
         private System.Windows.Forms.TextBox txtSearchMonster;
         private System.Windows.Forms.Label lblMonsterListCount;
+        private System.Windows.Forms.CheckBox CanStartKillChainCheckBox;
     }
 }
