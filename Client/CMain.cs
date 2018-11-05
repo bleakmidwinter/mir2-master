@@ -21,8 +21,8 @@ namespace Client
 {
     public partial class CMain : Form
     {
-        public static MirControl DebugBaseLabel, HintBaseLabel;
-        public static MirLabel DebugTextLabel, HintTextLabel, ScreenshotTextLabel;
+        public static MirControl DebugBaseLabel, HintBaseLabel, KillChainBaseLabel;
+        public static MirLabel DebugTextLabel, HintTextLabel, ScreenshotTextLabel, KillChainLabel;
         public static Graphics Graphics;
         public static Point MPoint;
 
@@ -40,6 +40,9 @@ namespace Client
 
         public static bool Shift, Alt, Ctrl, Tilde;
         public static KeyBindSettings InputKeys = new KeyBindSettings();
+
+        public static bool KillChainActive;
+        public static string KillChainMessage;
 
         public CMain()
         {
@@ -316,7 +319,17 @@ namespace Client
 
             CreateHintLabel();
             CreateDebugLabel();
- 
+
+            if (KillChainActive)
+            {
+                CreateKillChainLabel();
+            }
+            else
+            {
+                KillChainBaseLabel = null;
+                KillChainLabel = null;
+            }
+            
         }
         private static void RenderEnvironment()
         {
@@ -424,7 +437,7 @@ namespace Client
             {
                 text = string.Format("FPS: {0}", FPS);
             }
-            
+
 
             DebugTextLabel.Text = text;
         }
@@ -441,6 +454,55 @@ namespace Client
             DebugOverride = true;
 
             DebugTextLabel.Text = text;
+        }
+
+        public static void UpdateKillChainLabel()
+        {
+            if (KillChainLabel == null || KillChainBaseLabel == null)
+            {
+                CreateKillChainLabel();
+            }
+
+            KillChainLabel.Text = KillChainMessage;
+        }
+
+        public static void CreateKillChainLabel()
+        {
+            if (KillChainBaseLabel == null || KillChainBaseLabel.IsDisposed)
+            {
+                KillChainBaseLabel = new MirControl
+                {
+                    BackColour = Color.FromArgb(50, 50, 50),
+                    Border = true,
+                    BorderColour = Color.Black,
+                    DrawControlTexture = true,
+                    Location = new Point(5, 500),
+                    NotControl = true,
+                    Opacity = 0.5F
+                };
+            }
+
+            if (KillChainLabel == null || KillChainLabel.IsDisposed)
+            {
+                KillChainLabel = new MirLabel
+                {
+                    AutoSize = true,
+                    BackColour = Color.Transparent,
+                    ForeColour = Color.OrangeRed,
+                    Parent = KillChainBaseLabel,
+                    Font = new Font(Settings.FontName, 10F, FontStyle.Bold)
+            };
+
+                KillChainLabel.SizeChanged += (o, e) => KillChainBaseLabel.Size = KillChainLabel.Size;
+            }
+
+            KillChainLabel.Text = KillChainMessage;
+        }
+
+        public static void RemoveKillChainLabel()
+        {
+            KillChainBaseLabel = null;
+            KillChainLabel = null;
         }
 
         private static void CreateHintLabel()

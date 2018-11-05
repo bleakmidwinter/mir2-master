@@ -2304,6 +2304,66 @@ namespace ServerPackets
             writer.Write(ObjectID);
         }
     }
+    public sealed class KillChainActive : Packet
+    {
+        public override short Index
+        {
+            get { return (short)ServerPacketIds.KillChainActive; }
+        }
+
+        public bool Active;
+        public string KillChainMessage;
+
+        protected override void ReadPacket(BinaryReader reader)
+        {
+            KillChainMessage = reader.ReadString();
+            Active = reader.ReadBoolean();
+        }
+
+        protected override void WritePacket(BinaryWriter writer)
+        {
+            writer.Write(KillChainMessage);
+            writer.Write(Active);
+        }
+    }
+    public sealed class CompletedKillChain : Packet
+    {
+        public override short Index
+        {
+            get { return (short)ServerPacketIds.CompletedKillChain; }
+        }
+
+        protected override void ReadPacket(BinaryReader reader)
+        {
+
+        }
+
+        protected override void WritePacket(BinaryWriter writer)
+        {
+
+        }
+    }
+
+    public sealed class OtherPlayerCompletedKillChain : Packet
+    {
+        public override short Index
+        {
+            get { return (short)ServerPacketIds.OtherPlayerCompletedKillChain; }
+        }
+
+        public uint ObjectID;
+
+        protected override void ReadPacket(BinaryReader reader)
+        {
+            ObjectID = reader.ReadUInt32();
+        }
+
+        protected override void WritePacket(BinaryWriter writer)
+        {
+            writer.Write(ObjectID);
+        }
+    }
+
     public sealed class ObjectHarvest : Packet
     {
         public override short Index

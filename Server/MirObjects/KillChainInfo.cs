@@ -16,6 +16,7 @@ namespace Server.MirObjects
         public int TimePassed;
         public long StartTime;
         public MonsterInfo mobInfo;
+        public string Message;
 
         public KillChainInfo(MonsterInfo mInfo, ushort KillsNeeded, long startTime)
         {
@@ -26,10 +27,17 @@ namespace Server.MirObjects
             Duration = KillsRequired * Settings.KillChainDurationPerMob; //duration in seconds
         }
 
-        internal bool CheckChainKill(MonsterInfo info)
+        internal bool CheckChainKill(MonsterInfo info, ref bool isKillChainMob)
         {
             if (info.Index == mobInfo.Index)
+            {
                 Kills++;
+                isKillChainMob = true;
+            }
+            else
+            {
+                isKillChainMob = false;
+            }
 
             return Kills >= KillsRequired ? true : false;
         }

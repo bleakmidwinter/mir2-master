@@ -754,12 +754,17 @@ namespace Server.MirObjects
         private void ProcessKillChainTimer()
         {
             if (Envir.Time >= KillChain.StartTime + ((KillChain.TimePassed + 1) * 1000))
+            {
                 KillChain.TimePassed++;
+                string message = ConstructKillChainMessage();
+                Enqueue(new S.KillChainActive { KillChainMessage = "Kill chain: " + message, Active = true});
+            }
 
             if (KillChain.TimePassed >= KillChain.Duration)
             {
                 KillChain = null;
                 ReceiveChat("You have failed the Kill Chain quest.", ChatType.System2);
+                Enqueue(new S.KillChainActive { KillChainMessage = "", Active = false });
             }
             else
             {
@@ -787,20 +792,26 @@ namespace Server.MirObjects
         {
             if (KillChain != null)
             {
-                bool chainCompleted = KillChain.CheckChainKill(mInfo);
+                bool IsKillChainMob = false;
+                bool chainCompleted = KillChain.CheckChainKill(mInfo, ref IsKillChainMob);
 
                 if (chainCompleted)
                 {
                     ReceiveChat("Congratulations, you completed the kill chain! You've been granted a "
                         + Settings.KillChainBonusExp.ToString() + "% experience bonus for "
                         + KillChain.Duration.ToString() + " seconds.", ChatType.System3);
-                    
 
-                    //Broadcast(new S.KillChainCompleted { ObjectID = ObjectID });
+                    Enqueue(new S.CompletedKillChain());
+                    Broadcast(new S.OtherPlayerCompletedKillChain { ObjectID = ObjectID });
 
                     AddBuff(new Buff { Type = BuffType.Exp2, ExpireTime = Envir.Time + KillChain.Duration * 1000, Values = new int[] { (int)Settings.KillChainBonusExp } });
 
                     KillChain = null;
+                }
+                else if (IsKillChainMob)
+                {
+                    string message = "Kill chain: " + ConstructKillChainMessage();
+                    Enqueue(new S.KillChainActive { KillChainMessage = message, Active = true });
                 }
             }
             else
@@ -811,11 +822,35 @@ namespace Server.MirObjects
 
                     KillChain = new KillChainInfo(mInfo, (ushort)killsNeeded, Envir.Time);
 
-                    ReceiveChat("Kill chain started: you have "
+                    string message = "you have "
                         + KillChain.Duration.ToString() + " seconds to kill "
-                        + killsNeeded.ToString() + " " + mInfo.Name + "s. Good luck!", ChatType.System3);
+                        + killsNeeded.ToString() + " " + mInfo.Name + "s.";
+
+                    message = ConstructKillChainMessage();
+
+                    KillChain.Message = "Kill chain: " + message;
+
+                    ReceiveChat("Kill chain started: " + message + ". Good luck!", ChatType.System3);
+
+                    Enqueue(new S.KillChainActive { KillChainMessage = "Kill chain: " + message });
                 }
             }
+        }
+
+        private string ConstructKillChainMessage()
+        {
+            string message;
+
+            int timeRemaining = KillChain.Duration - KillChain.TimePassed;
+
+            message = "you have "
+                        + timeRemaining.ToString() + " seconds to kill "
+                        + KillChain.KillsRequired.ToString() + " " + KillChain.mobInfo.Name;
+
+            if (KillChain.KillsRequired > 1)
+                message += "s";
+
+            return message;
         }
 
         internal void CheckChainKill(MonsterInfo info)

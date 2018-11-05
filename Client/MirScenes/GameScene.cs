@@ -1657,6 +1657,15 @@ namespace Client.MirScenes
                 case (short)ServerPacketIds.ConfirmItemRental:
                     ConfirmItemRental((S.ConfirmItemRental)p);
                     break;
+                case (short)ServerPacketIds.CompletedKillChain:
+                    CompletedKillChain();
+                    break;
+                case (short)ServerPacketIds.OtherPlayerCompletedKillChain:
+                    OtherPlayerCompletedKillChain((S.OtherPlayerCompletedKillChain)p);
+                    break;
+                case (short)ServerPacketIds.KillChainActive:
+                    UpdateKillChainInfo((S.KillChainActive)p);
+                    break;
                 default:
                     base.ProcessPacket(p);
                     break;
@@ -3048,6 +3057,36 @@ namespace Client.MirScenes
                 return;
             }
         }
+        private void UpdateKillChainInfo(S.KillChainActive p)
+        {
+            CMain.KillChainActive = p.Active;
+            if (p.Active)
+            {
+                CMain.KillChainMessage = p.KillChainMessage;
+                //CMain.CreateKillChainLabel();
+                //CMain.KillChainBaseLabel.Draw();
+            }
+            
+        }
+        private void CompletedKillChain()
+        {
+            CMain.KillChainActive = false;
+            CMain.RemoveKillChainLabel();
+            User.Effects.Add(new Effect(Libraries.Magic2, 2790, 10, 1800, User));
+        }
+
+        private void OtherPlayerCompletedKillChain(S.OtherPlayerCompletedKillChain p)
+        {
+            for (int i = MapControl.Objects.Count - 1; i >= 0; i--)
+            {
+                MapObject ob = MapControl.Objects[i];
+                if (ob.ObjectID != p.ObjectID) continue;
+                ob.Effects.Add(new Effect(Libraries.Magic2, 2790, 10, 1800, ob));
+                SoundManager.PlaySound(SoundList.LevelUp);
+                return;
+            }
+        }
+
         private void ObjectHarvest(S.ObjectHarvest p)
         {
             for (int i = MapControl.Objects.Count - 1; i >= 0; i--)

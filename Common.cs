@@ -1517,7 +1517,10 @@ public enum ServerPacketIds : short
     ItemRentalPartnerLock,
     CanConfirmItemRental,
     ConfirmItemRental,
-    NewRecipeInfo
+    NewRecipeInfo,
+    CompletedKillChain,
+    OtherPlayerCompletedKillChain,
+    KillChainActive
 }
 
 public enum ClientPacketIds : short
@@ -5236,6 +5239,12 @@ public abstract class Packet
                 return new S.ConfirmItemRental();
             case (short)ServerPacketIds.NewRecipeInfo:
                 return new S.NewRecipeInfo();
+            case (short)ServerPacketIds.CompletedKillChain:
+                return new S.CompletedKillChain();
+            case (short)ServerPacketIds.OtherPlayerCompletedKillChain:
+                return new S.OtherPlayerCompletedKillChain();
+            case (short)ServerPacketIds.KillChainActive:
+                return new S.KillChainActive();
             default:
                 return null;
         }

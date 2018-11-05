@@ -48,6 +48,9 @@ namespace Client.MirControls
             if (CMain.HintBaseLabel != null && !CMain.HintBaseLabel.IsDisposed)
                 CMain.HintBaseLabel.Draw();
 
+            if (CMain.KillChainBaseLabel != null && !CMain.KillChainBaseLabel.IsDisposed)
+                CMain.KillChainBaseLabel.Draw();
+
             OnShown();
         }
 
