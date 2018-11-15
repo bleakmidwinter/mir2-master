@@ -18,6 +18,7 @@ namespace Server.MirObjects.Monsters
         public bool Range;
         private long MassAttackTime;
         private bool rage30 = false, rage50 = false;
+        private List<MapObject> targetsInRange;
 
         protected internal HellKeeper2(MonsterInfo info) : base(info)
         {
@@ -174,53 +175,43 @@ namespace Server.MirObjects.Monsters
         {
             if (!CanAttack) return;
 
-            List<MapObject> targets = FindAllTargets(Info.ViewRange, CurrentLocation);
-            if (targets.Count == 0) return;
+            targetsInRange = FindAllTargets(Info.ViewRange, CurrentLocation);
+            if (targetsInRange.Count == 0) return;
 
             ShockTime = 0;
 
-            for (int i = 0; i < targets.Count; i++)
+            for (int i = 0; i < targetsInRange.Count; i++)
             {
-                Target = targets[i];
+                //Target = targets[i];
 
-                int x = Math.Abs(Target.CurrentLocation.X - CurrentLocation.X);
-                int y = Math.Abs(Target.CurrentLocation.Y - CurrentLocation.Y);
+                int x = Math.Abs(targetsInRange[i].CurrentLocation.X - CurrentLocation.X);
+                int y = Math.Abs(targetsInRange[i].CurrentLocation.Y - CurrentLocation.Y);
 
-                if ((x > 1 || y > 1) && Envir.Random.Next(3) == 0)
+                if ((x > 1 || y > 1) && (Envir.Random.Next(3) == 0) && Envir.Time > PullTime)
                 {
                     //Direction = Functions.DirectionFromPoint(CurrentLocation, Target.CurrentLocation);
 
-                    Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 1 });
-                    ActionTime = Envir.Time + 300;
-                    AttackTime = Envir.Time + AttackSpeed;
-                    PullTime = Envir.Time + 5000;
-
-                    //Try to pull all targets
-                    PullAttack(targets);
-                    break;
+                    //Pull all targets in
+                    PullAttack();
+                    return;
                 }
-                else
-                {
-                    Attack();
-                }
-
             }
 
-            ActionTime = Envir.Time + 300;
-            AttackTime = Envir.Time + AttackSpeed;
+            Attack();
         }
 
         protected override void Attack()
         {
-            if (!Target.IsAttackTarget(this))
-            {
-                Target = null;
-                return;
-            }
+            //if (!Target.IsAttackTarget(this))
+            //{
+            //    Target = null;
+            //    return;
+            //}
 
+            Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 0 });
             ActionTime = Envir.Time + 300;
             AttackTime = Envir.Time + AttackSpeed;
-            PullTime = Envir.Time + 5000;
+            //PullTime = Envir.Time + 5000;
 
             if (((HP * 100 / MaxHP) < 50) && (MassAttackTime < Envir.Time) && (!rage50))
             {
@@ -241,14 +232,17 @@ namespace Server.MirObjects.Monsters
             if (damage == 0) return;
 
             //Target.Attacked(this, damage);
-            Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 0 });
+            //Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 0 });
 
-            DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
-            ActionList.Add(action);
-
-            if (Envir.Random.Next(10) == 0)
+            foreach (MapObject ob in targetsInRange)
             {
-                Target.ApplyPoison(new Poison { Owner = this, Duration = 5, PType = PoisonType.Stun, TickSpeed = 1000 }, this);
+                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, DefenceType.ACAgility);
+                ActionList.Add(action);
+
+                if (Envir.Random.Next(10) == 0)
+                {
+                    ob.ApplyPoison(new Poison { Owner = this, Duration = 5, PType = PoisonType.Stun, TickSpeed = 1000 }, this);
+                }
             }
 
 
@@ -260,42 +254,49 @@ namespace Server.MirObjects.Monsters
             //ActionTime = Envir.Time + 500;
             //AttackTime = Envir.Time + (AttackSpeed);
 
-            Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 1 });
+            //Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 1 });
 
-            List<MapObject> targets = FindAllTargets(15, CurrentLocation, false);
+            targetsInRange = FindAllTargets(15, CurrentLocation, false);
 
-            if (targets.Count == 0) return;
+            if (targetsInRange.Count == 0) return;
 
             int damage = GetAttackPower(MinDC, MaxDC) * 4;
 
-            for (int i = 0; i < targets.Count; i++)
+            for (int i = 0; i < targetsInRange.Count; i++)
             {
-                Target = targets[i];
+                //Target = targets[i];
 
                 int delay = Functions.MaxDistance(CurrentLocation, Target.CurrentLocation) * 50 + 750; //50 MS per Step
 
-                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + delay, Target, damage, DefenceType.ACAgility);
+                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + delay, targetsInRange[i], damage, DefenceType.ACAgility);
                 ActionList.Add(action);
 
                 if (Envir.Random.Next(1) == 0)
                 {
-                    Target.ApplyPoison(new Poison { Owner = this, Duration = 5, PType = PoisonType.Paralysis, TickSpeed = 1000 }, this);
+                    targetsInRange[i].ApplyPoison(new Poison { Owner = this, Duration = 5, PType = PoisonType.Paralysis, TickSpeed = 1000 }, this);
                 }
             }
+
+            //Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 1 });
+            //ActionTime = Envir.Time + 300;
+            //AttackTime = Envir.Time + AttackSpeed;
+            //PullTime = Envir.Time + 5000;
 
             //MassAttackTime = Envir.Time + 2000 + (Envir.Random.Next(5) * 1000);
             //ActionTime = Envir.Time + 800;
             //AttackTime = Envir.Time + (AttackSpeed);
-            return;
         }
 
-        private void PullAttack(List<MapObject> targets)
+        private void PullAttack()
         {
+            if (targetsInRange == null || targetsInRange.Count == 0)
+                return;
+
             int damage = GetAttackPower(MinDC, MaxDC) * 2;
 
-            foreach (MapObject ob in targets)
+            foreach (MapObject ob in targetsInRange)
             {
-                MirDirection pushdir = Functions.DirectionFromPoint(Target.CurrentLocation, CurrentLocation);
+                MirDirection pushdir = Functions.DirectionFromPoint(ob.CurrentLocation, CurrentLocation);
                 if (Envir.Random.Next(Settings.MagicResistWeight) < Target.MagicResist) return;
                 int distance = Functions.MaxDistance(ob.CurrentLocation, CurrentLocation) - 1;
                 //if (distance <= 0) return;
@@ -303,12 +304,17 @@ namespace Server.MirObjects.Monsters
 
                 ob.Pushed(this, pushdir, distance);
 
-                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, Target, damage, DefenceType.ACAgility);
+                DelayedAction action = new DelayedAction(DelayedType.Damage, Envir.Time + 350, ob, damage, DefenceType.ACAgility);
                 ActionList.Add(action);
 
                 if (Envir.Random.Next(1) == 0)
-                        Target.ApplyPoison(new Poison { Owner = this, Duration = 5, PType = PoisonType.Paralysis, TickSpeed = 1000 }, this);
+                        ob.ApplyPoison(new Poison { Owner = this, Duration = 5, PType = PoisonType.Paralysis, TickSpeed = 1000 }, this);
             }
+
+            Broadcast(new S.ObjectAttack { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation, Type = 1 });
+            ActionTime = Envir.Time + 300;
+            AttackTime = Envir.Time + AttackSpeed;
+            PullTime = Envir.Time + 5000;
         }
 
         private void HypnoAttack()
