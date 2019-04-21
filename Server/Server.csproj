@@ -257,6 +257,7 @@
     <Compile Include="MirObjects\DecoObject.cs" />
     <Compile Include="MirObjects\DelayedAction.cs" />
     <Compile Include="MirObjects\GuildObject.cs" />
+    <Compile Include="MirObjects\GuildWarKill.cs" />
     <Compile Include="MirObjects\IntelligentCreatureObject.cs" />
     <Compile Include="MirObjects\ItemObject.cs" />
     <Compile Include="MirObjects\KillChainInfo.cs" />

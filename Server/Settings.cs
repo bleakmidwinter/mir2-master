@@ -271,6 +271,19 @@ namespace Server
         public static ushort KillChainDurationPerMob = 0;
         public static ushort KillChainBonusExp = 0;
 
+        public static bool EnableGWKillSprees = false;
+        public static int TimeBetweenGWKills = 0;
+        public static string KillingSpreeShoutType = "Local";
+        public static bool EnableKillSpreeBuffs = false;
+        public static int KillSpreeBuffDuration = 0;
+        public static int KillSpreeBuffMultiplier = 0;
+
+        public static string TwoGuildWarKillsMessage = "";
+        public static string ThreeGuildWarKillsMessage = "";
+        public static string FourGuildWarKillsMessage = "";
+        public static string FiveOrMoreGuildWarKillsMessage = "";
+
+
         public static void LoadVersion()
         {
             try
@@ -1361,6 +1374,17 @@ namespace Server
             InIReader reader = new InIReader(ConfigPath + @".\GuildWarSystem.ini");
             BroadcastGuildWarKillShout = reader.ReadBoolean("Config", "BroadcastGuildWarKillShout", BroadcastGuildWarKillShout);
             GuildWarKillShoutType = reader.ReadString("Config", "GuildWarKillShoutType", GuildWarKillShoutType);
+            EnableGWKillSprees = reader.ReadBoolean("Config", "EnableGWKillSprees", EnableGWKillSprees);
+            TimeBetweenGWKills = reader.ReadInt32("Config", "TimeBetweenGWKills", TimeBetweenGWKills);
+            KillingSpreeShoutType = reader.ReadString("Config", "KillingSpreeShoutType", KillingSpreeShoutType);
+            EnableKillSpreeBuffs = reader.ReadBoolean("Config", "EnableKillSpreeBuffs", EnableKillSpreeBuffs);
+            KillSpreeBuffDuration = reader.ReadInt32("Config", "KillSpreeBuffDuration", KillSpreeBuffDuration);
+            KillSpreeBuffMultiplier = reader.ReadInt32("Config", "KillSpreeBuffMultiplier", KillSpreeBuffMultiplier);
+
+            TwoGuildWarKillsMessage = reader.ReadString("Config", "TwoGuildWarKills", TwoGuildWarKillsMessage);
+            ThreeGuildWarKillsMessage = reader.ReadString("Config", "ThreeGuildWarKills", ThreeGuildWarKillsMessage);
+            FourGuildWarKillsMessage = reader.ReadString("Config", "FourGuildWarKills", FourGuildWarKillsMessage);
+            FiveOrMoreGuildWarKillsMessage = reader.ReadString("Config", "FiveOrMoreGuildWarKills", FiveOrMoreGuildWarKillsMessage);
         }
 
         public static void SaveGuildWarSettings()
@@ -1369,6 +1393,12 @@ namespace Server
             InIReader reader = new InIReader(ConfigPath + @".\GuildWarSystem.ini");
             reader.Write("Config", "BroadcastGuildWarKillShout", BroadcastGuildWarKillShout);
             reader.Write("Config", "GuildWarKillShoutType", GuildWarKillShoutType);
+            reader.Write("Config", "EnableGWKillSprees", EnableGWKillSprees);
+            reader.Write("Config", "TimeBetweenGWKills", TimeBetweenGWKills);
+            reader.Write("Config", "KillingSpreeShoutType", KillingSpreeShoutType);
+            reader.Write("Config", "EnableKillSpreeBuffs", EnableKillSpreeBuffs);
+            reader.Write("Config", "KillSpreeBuffDuration", KillSpreeBuffDuration);
+            reader.Write("Config", "KillSpreeBuffMultiplier", KillSpreeBuffMultiplier);
         }
 
         public static void LoadKillChainSettings()
@@ -1385,6 +1415,9 @@ namespace Server
             KillChainMaxMobs = (ushort)reader.ReadUInt16("Config", "KillChainMaxMobs", KillChainMaxMobs);
             KillChainDurationPerMob = (ushort)reader.ReadUInt16("Config", "KillChainDurationPerMob", KillChainDurationPerMob);
             KillChainBonusExp = (ushort)reader.ReadUInt16("Config", "KillChainBonusExp", KillChainBonusExp);
+
+            //Kill spree message text
+
         }
 
         public static void SaveKillChainSettings()

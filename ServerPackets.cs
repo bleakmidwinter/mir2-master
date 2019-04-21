@@ -3369,6 +3369,7 @@ namespace ServerPackets
         public long Expire;
         public int[] Values;
         public bool Infinite;
+        public string Title;
 
         protected override void ReadPacket(BinaryReader reader)
         {
@@ -3385,6 +3386,7 @@ namespace ServerPackets
             }
 
             Infinite = reader.ReadBoolean();
+            Title = reader.ReadString();
         }
         protected override void WritePacket(BinaryWriter writer)
         {
@@ -3401,6 +3403,7 @@ namespace ServerPackets
             }
 
             writer.Write(Infinite);
+            writer.Write(Title == null ? "" : Title);
         }
     }
     public sealed class RemoveBuff : Packet

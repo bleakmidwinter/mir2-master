@@ -778,7 +778,8 @@ public enum ChatType : byte
     Shout2 = 14,
     Shout3 = 15,
     System3 = 16,
-    Shout4 = 17
+    Shout4 = 17,
+    KillSpreeAnnouncement = 18
 }
 
 public enum ItemType : byte
@@ -1242,6 +1243,7 @@ public enum BuffType : byte
     Prison,
     Rested,
     Exp2,
+    KillSpree,
 
     //Poisons
     GreenPoison = 150,

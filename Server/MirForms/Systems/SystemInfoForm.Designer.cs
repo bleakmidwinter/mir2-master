@@ -119,26 +119,39 @@
             this.btnSpawnTickRemove = new System.Windows.Forms.Button();
             this.btnSpawnTickAdd = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.GuildWarKillSpreeGroupBox = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.KillSpreeShoutMapRadioButton = new System.Windows.Forms.RadioButton();
+            this.KillSpreeShoutLocalRadioButton = new System.Windows.Forms.RadioButton();
+            this.TimeBetweenGWKillsTextBox = new System.Windows.Forms.TextBox();
+            this.TimeBetweenGWKillsLabels = new System.Windows.Forms.Label();
+            this.AllowGWKillSpreesCheckBox = new System.Windows.Forms.CheckBox();
             this.WarKillShoutTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.WarShoutMapRadioButton = new System.Windows.Forms.RadioButton();
             this.WarShoutLocalRadioButton = new System.Windows.Forms.RadioButton();
             this.GuildWarKillShoutCheckbox = new System.Windows.Forms.CheckBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.EnableKillChainsCheckBox = new System.Windows.Forms.CheckBox();
             this.KillChainGroupBox = new System.Windows.Forms.GroupBox();
-            this.KillChainLabel1 = new System.Windows.Forms.Label();
-            this.KillChainLabel2 = new System.Windows.Forms.Label();
-            this.txtKillChainBonusExp = new System.Windows.Forms.TextBox();
+            this.txtKillChainBonusPerMob = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtKillChainMaxMobsDefault = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtKillChainMinMobsDefault = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.KillChainChanceTextBox = new System.Windows.Forms.TextBox();
             this.KillChainChanceLabel2 = new System.Windows.Forms.Label();
             this.KillChainChanceLabel1 = new System.Windows.Forms.Label();
-            this.txtKillChainMinMobsDefault = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.txtKillChainMaxMobsDefault = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.txtKillChainBonusPerMob = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
+            this.txtKillChainBonusExp = new System.Windows.Forms.TextBox();
+            this.KillChainLabel2 = new System.Windows.Forms.Label();
+            this.KillChainLabel1 = new System.Windows.Forms.Label();
+            this.EnableKillChainsCheckBox = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.EnableKillSpreeBuffsCheckbox = new System.Windows.Forms.CheckBox();
+            this.KillSpreeBuffDurationLabel = new System.Windows.Forms.Label();
+            this.KillSpreeBuffDurationTextbox = new System.Windows.Forms.TextBox();
+            this.KillSpreeBuffGroupBox = new System.Windows.Forms.GroupBox();
+            this.KillSpreeBuffMultiplierLabel = new System.Windows.Forms.Label();
+            this.KillSpreeBuffDropdown = new System.Windows.Forms.ComboBox();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -153,9 +166,11 @@
             this.panel1.SuspendLayout();
             this.pnlSpawnTickConfig.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.GuildWarKillSpreeGroupBox.SuspendLayout();
             this.WarKillShoutTypeGroupBox.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.KillChainGroupBox.SuspendLayout();
+            this.KillSpreeBuffGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -169,10 +184,11 @@
             this.tabPage1.Controls.Add(this.FishingDelayTextBox);
             this.tabPage1.Controls.Add(this.FishingSuccessRateStartTextBox);
             this.tabPage1.Controls.Add(this.FishingAttemptsTextBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 40);
+            this.tabPage1.Location = new System.Drawing.Point(4, 46);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(399, 211);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(535, 316);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Fishing";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -183,9 +199,11 @@
             this.groupBox1.Controls.Add(this.MonsterSpawnChanceTextBox);
             this.groupBox1.Controls.Add(this.FishingMobIndexComboBox);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(6, 151);
+            this.groupBox1.Location = new System.Drawing.Point(8, 186);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 72);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(471, 89);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Monster";
@@ -193,17 +211,19 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 19);
+            this.label6.Location = new System.Drawing.Point(4, 23);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.Size = new System.Drawing.Size(93, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "Mob Spawn : ";
             // 
             // MonsterSpawnChanceTextBox
             // 
-            this.MonsterSpawnChanceTextBox.Location = new System.Drawing.Point(137, 41);
+            this.MonsterSpawnChanceTextBox.Location = new System.Drawing.Point(183, 50);
+            this.MonsterSpawnChanceTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.MonsterSpawnChanceTextBox.Name = "MonsterSpawnChanceTextBox";
-            this.MonsterSpawnChanceTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MonsterSpawnChanceTextBox.Size = new System.Drawing.Size(132, 22);
             this.MonsterSpawnChanceTextBox.TabIndex = 3;
             this.MonsterSpawnChanceTextBox.TextChanged += new System.EventHandler(this.MonsterSpawnChanceTextBox_TextChanged);
             // 
@@ -211,86 +231,96 @@
             // 
             this.FishingMobIndexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FishingMobIndexComboBox.FormattingEnabled = true;
-            this.FishingMobIndexComboBox.Location = new System.Drawing.Point(137, 16);
+            this.FishingMobIndexComboBox.Location = new System.Drawing.Point(183, 20);
+            this.FishingMobIndexComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.FishingMobIndexComboBox.Name = "FishingMobIndexComboBox";
-            this.FishingMobIndexComboBox.Size = new System.Drawing.Size(100, 21);
+            this.FishingMobIndexComboBox.Size = new System.Drawing.Size(132, 24);
             this.FishingMobIndexComboBox.TabIndex = 10;
             this.FishingMobIndexComboBox.SelectedIndexChanged += new System.EventHandler(this.FishingMobIndexComboBox_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 44);
+            this.label4.Location = new System.Drawing.Point(4, 54);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 13);
+            this.label4.Size = new System.Drawing.Size(161, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Mob Spawn Chance % : ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 64);
+            this.label5.Location = new System.Drawing.Point(12, 79);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 13);
+            this.label5.Size = new System.Drawing.Size(167, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Success Rate Multiplier : ";
             // 
             // FishingSuccessRateMultiplierTextBox
             // 
-            this.FishingSuccessRateMultiplierTextBox.Location = new System.Drawing.Point(143, 61);
+            this.FishingSuccessRateMultiplierTextBox.Location = new System.Drawing.Point(191, 75);
+            this.FishingSuccessRateMultiplierTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.FishingSuccessRateMultiplierTextBox.Name = "FishingSuccessRateMultiplierTextBox";
-            this.FishingSuccessRateMultiplierTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FishingSuccessRateMultiplierTextBox.Size = new System.Drawing.Size(132, 22);
             this.FishingSuccessRateMultiplierTextBox.TabIndex = 8;
             this.FishingSuccessRateMultiplierTextBox.TextChanged += new System.EventHandler(this.FishingSuccessRateMultiplierTextBox_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 90);
+            this.label3.Location = new System.Drawing.Point(12, 111);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.Size = new System.Drawing.Size(86, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Delay / ms : ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 38);
+            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 13);
+            this.label2.Size = new System.Drawing.Size(157, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Success Rate Start % : ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.Size = new System.Drawing.Size(124, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Attempts / round : ";
             // 
             // FishingDelayTextBox
             // 
-            this.FishingDelayTextBox.Location = new System.Drawing.Point(143, 87);
+            this.FishingDelayTextBox.Location = new System.Drawing.Point(191, 107);
+            this.FishingDelayTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.FishingDelayTextBox.Name = "FishingDelayTextBox";
-            this.FishingDelayTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FishingDelayTextBox.Size = new System.Drawing.Size(132, 22);
             this.FishingDelayTextBox.TabIndex = 2;
             this.FishingDelayTextBox.TextChanged += new System.EventHandler(this.FishingDelayTextBox_TextChanged);
             // 
             // FishingSuccessRateStartTextBox
             // 
-            this.FishingSuccessRateStartTextBox.Location = new System.Drawing.Point(143, 35);
+            this.FishingSuccessRateStartTextBox.Location = new System.Drawing.Point(191, 43);
+            this.FishingSuccessRateStartTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.FishingSuccessRateStartTextBox.Name = "FishingSuccessRateStartTextBox";
-            this.FishingSuccessRateStartTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FishingSuccessRateStartTextBox.Size = new System.Drawing.Size(132, 22);
             this.FishingSuccessRateStartTextBox.TabIndex = 1;
             this.FishingSuccessRateStartTextBox.TextChanged += new System.EventHandler(this.FishingSuccessRateStartTextBox_TextChanged);
             // 
             // FishingAttemptsTextBox
             // 
-            this.FishingAttemptsTextBox.Location = new System.Drawing.Point(143, 9);
+            this.FishingAttemptsTextBox.Location = new System.Drawing.Point(191, 11);
+            this.FishingAttemptsTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.FishingAttemptsTextBox.Name = "FishingAttemptsTextBox";
-            this.FishingAttemptsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FishingAttemptsTextBox.Size = new System.Drawing.Size(132, 22);
             this.FishingAttemptsTextBox.TabIndex = 0;
             this.FishingAttemptsTextBox.TextChanged += new System.EventHandler(this.FishingAttemptsTextBox_TextChanged);
             // 
@@ -306,11 +336,12 @@
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage10);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(16, 15);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(407, 255);
+            this.tabControl1.Size = new System.Drawing.Size(543, 402);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
@@ -321,10 +352,11 @@
             this.tabPage2.Controls.Add(this.MailCostPer1kTextBox);
             this.tabPage2.Controls.Add(this.MailFreeWithStampCheckbox);
             this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 40);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(399, 211);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(535, 316);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mail";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -332,43 +364,48 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(117, 59);
+            this.label8.Location = new System.Drawing.Point(156, 73);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 13);
+            this.label8.Size = new System.Drawing.Size(142, 17);
             this.label8.TabIndex = 5;
             this.label8.Text = "Insurance % Per Item";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(117, 33);
+            this.label7.Location = new System.Drawing.Point(156, 41);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.Size = new System.Drawing.Size(81, 17);
             this.label7.TabIndex = 4;
             this.label7.Text = "Cost Per 1k";
             // 
             // MailInsurancePercentageTextBox
             // 
-            this.MailInsurancePercentageTextBox.Location = new System.Drawing.Point(235, 56);
+            this.MailInsurancePercentageTextBox.Location = new System.Drawing.Point(313, 69);
+            this.MailInsurancePercentageTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.MailInsurancePercentageTextBox.Name = "MailInsurancePercentageTextBox";
-            this.MailInsurancePercentageTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MailInsurancePercentageTextBox.Size = new System.Drawing.Size(132, 22);
             this.MailInsurancePercentageTextBox.TabIndex = 3;
             this.MailInsurancePercentageTextBox.TextChanged += new System.EventHandler(this.MailInsurancePercentageTextBox_TextChanged);
             // 
             // MailCostPer1kTextBox
             // 
-            this.MailCostPer1kTextBox.Location = new System.Drawing.Point(235, 30);
+            this.MailCostPer1kTextBox.Location = new System.Drawing.Point(313, 37);
+            this.MailCostPer1kTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.MailCostPer1kTextBox.Name = "MailCostPer1kTextBox";
-            this.MailCostPer1kTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MailCostPer1kTextBox.Size = new System.Drawing.Size(132, 22);
             this.MailCostPer1kTextBox.TabIndex = 2;
             this.MailCostPer1kTextBox.TextChanged += new System.EventHandler(this.MailCostPer1kTextBox_TextChanged);
             // 
             // MailFreeWithStampCheckbox
             // 
             this.MailFreeWithStampCheckbox.AutoSize = true;
-            this.MailFreeWithStampCheckbox.Location = new System.Drawing.Point(120, 7);
+            this.MailFreeWithStampCheckbox.Location = new System.Drawing.Point(160, 9);
+            this.MailFreeWithStampCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.MailFreeWithStampCheckbox.Name = "MailFreeWithStampCheckbox";
-            this.MailFreeWithStampCheckbox.Size = new System.Drawing.Size(150, 17);
+            this.MailFreeWithStampCheckbox.Size = new System.Drawing.Size(195, 21);
             this.MailFreeWithStampCheckbox.TabIndex = 1;
             this.MailFreeWithStampCheckbox.Text = "Send Mail Free with stamp";
             this.MailFreeWithStampCheckbox.UseVisualStyleBackColor = true;
@@ -378,9 +415,11 @@
             // 
             this.groupBox2.Controls.Add(this.MailAutoSendItemsCheckbox);
             this.groupBox2.Controls.Add(this.MailAutoSendGoldCheckbox);
-            this.groupBox2.Location = new System.Drawing.Point(7, 7);
+            this.groupBox2.Location = new System.Drawing.Point(9, 9);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(90, 69);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(120, 85);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Auto Send";
@@ -388,9 +427,10 @@
             // MailAutoSendItemsCheckbox
             // 
             this.MailAutoSendItemsCheckbox.AutoSize = true;
-            this.MailAutoSendItemsCheckbox.Location = new System.Drawing.Point(7, 44);
+            this.MailAutoSendItemsCheckbox.Location = new System.Drawing.Point(9, 54);
+            this.MailAutoSendItemsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.MailAutoSendItemsCheckbox.Name = "MailAutoSendItemsCheckbox";
-            this.MailAutoSendItemsCheckbox.Size = new System.Drawing.Size(51, 17);
+            this.MailAutoSendItemsCheckbox.Size = new System.Drawing.Size(63, 21);
             this.MailAutoSendItemsCheckbox.TabIndex = 1;
             this.MailAutoSendItemsCheckbox.Text = "Items";
             this.MailAutoSendItemsCheckbox.UseVisualStyleBackColor = true;
@@ -399,9 +439,10 @@
             // MailAutoSendGoldCheckbox
             // 
             this.MailAutoSendGoldCheckbox.AutoSize = true;
-            this.MailAutoSendGoldCheckbox.Location = new System.Drawing.Point(7, 20);
+            this.MailAutoSendGoldCheckbox.Location = new System.Drawing.Point(9, 25);
+            this.MailAutoSendGoldCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.MailAutoSendGoldCheckbox.Name = "MailAutoSendGoldCheckbox";
-            this.MailAutoSendGoldCheckbox.Size = new System.Drawing.Size(48, 17);
+            this.MailAutoSendGoldCheckbox.Size = new System.Drawing.Size(60, 21);
             this.MailAutoSendGoldCheckbox.TabIndex = 0;
             this.MailAutoSendGoldCheckbox.Text = "Gold";
             this.MailAutoSendGoldCheckbox.UseVisualStyleBackColor = true;
@@ -416,70 +457,78 @@
             this.tabPage3.Controls.Add(this.GoodsMaxStoredTextBox);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.GoodsOnCheckBox);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(399, 229);
+            this.tabPage3.Size = new System.Drawing.Size(535, 316);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Goods";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // GoodsBuyBackMaxStoredTextBox
             // 
-            this.GoodsBuyBackMaxStoredTextBox.Location = new System.Drawing.Point(147, 92);
+            this.GoodsBuyBackMaxStoredTextBox.Location = new System.Drawing.Point(196, 113);
+            this.GoodsBuyBackMaxStoredTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.GoodsBuyBackMaxStoredTextBox.Name = "GoodsBuyBackMaxStoredTextBox";
-            this.GoodsBuyBackMaxStoredTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GoodsBuyBackMaxStoredTextBox.Size = new System.Drawing.Size(132, 22);
             this.GoodsBuyBackMaxStoredTextBox.TabIndex = 6;
             this.GoodsBuyBackMaxStoredTextBox.TextChanged += new System.EventHandler(this.GoodsBuyBackMaxStoredTextBox_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 95);
+            this.label11.Location = new System.Drawing.Point(13, 117);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(110, 13);
+            this.label11.Size = new System.Drawing.Size(142, 17);
             this.label11.TabIndex = 5;
             this.label11.Text = "Max Buy Back Stored";
             // 
             // GoodsBuyBackTimeTextBox
             // 
-            this.GoodsBuyBackTimeTextBox.Location = new System.Drawing.Point(147, 66);
+            this.GoodsBuyBackTimeTextBox.Location = new System.Drawing.Point(196, 81);
+            this.GoodsBuyBackTimeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.GoodsBuyBackTimeTextBox.Name = "GoodsBuyBackTimeTextBox";
-            this.GoodsBuyBackTimeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GoodsBuyBackTimeTextBox.Size = new System.Drawing.Size(132, 22);
             this.GoodsBuyBackTimeTextBox.TabIndex = 4;
             this.GoodsBuyBackTimeTextBox.TextChanged += new System.EventHandler(this.GoodsBuyBackTimeTextBox_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 69);
+            this.label10.Location = new System.Drawing.Point(13, 85);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(112, 13);
+            this.label10.Size = new System.Drawing.Size(143, 17);
             this.label10.TabIndex = 3;
             this.label10.Text = "Buy Back Time / Mins";
             // 
             // GoodsMaxStoredTextBox
             // 
-            this.GoodsMaxStoredTextBox.Location = new System.Drawing.Point(147, 40);
+            this.GoodsMaxStoredTextBox.Location = new System.Drawing.Point(196, 49);
+            this.GoodsMaxStoredTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.GoodsMaxStoredTextBox.Name = "GoodsMaxStoredTextBox";
-            this.GoodsMaxStoredTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GoodsMaxStoredTextBox.Size = new System.Drawing.Size(132, 22);
             this.GoodsMaxStoredTextBox.TabIndex = 2;
             this.GoodsMaxStoredTextBox.TextChanged += new System.EventHandler(this.GoodsMaxStoredTextBox_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 43);
+            this.label9.Location = new System.Drawing.Point(13, 53);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.Size = new System.Drawing.Size(125, 17);
             this.label9.TabIndex = 1;
             this.label9.Text = "Max Goods Stored";
             // 
             // GoodsOnCheckBox
             // 
             this.GoodsOnCheckBox.AutoSize = true;
-            this.GoodsOnCheckBox.Location = new System.Drawing.Point(13, 13);
+            this.GoodsOnCheckBox.Location = new System.Drawing.Point(17, 16);
+            this.GoodsOnCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.GoodsOnCheckBox.Name = "GoodsOnCheckBox";
-            this.GoodsOnCheckBox.Size = new System.Drawing.Size(93, 17);
+            this.GoodsOnCheckBox.Size = new System.Drawing.Size(120, 21);
             this.GoodsOnCheckBox.TabIndex = 0;
             this.GoodsOnCheckBox.Text = "Goods Resold";
             this.GoodsOnCheckBox.UseVisualStyleBackColor = true;
@@ -506,173 +555,193 @@
             this.tabPage4.Controls.Add(this.BaseChance_textbox);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.WeaponOnly_checkbox);
-            this.tabPage4.Location = new System.Drawing.Point(4, 40);
+            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(399, 211);
+            this.tabPage4.Size = new System.Drawing.Size(535, 316);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Refining";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // OreName_textbox
             // 
-            this.OreName_textbox.Location = new System.Drawing.Point(221, 75);
+            this.OreName_textbox.Location = new System.Drawing.Point(295, 92);
+            this.OreName_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.OreName_textbox.Name = "OreName_textbox";
-            this.OreName_textbox.Size = new System.Drawing.Size(130, 20);
+            this.OreName_textbox.Size = new System.Drawing.Size(172, 22);
             this.OreName_textbox.TabIndex = 20;
             this.OreName_textbox.TextChanged += new System.EventHandler(this.OreName_textbox_TextChanged);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(218, 59);
+            this.label23.Location = new System.Drawing.Point(291, 73);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(55, 13);
+            this.label23.Size = new System.Drawing.Size(73, 17);
             this.label23.TabIndex = 19;
             this.label23.Text = "Ore Name";
             // 
             // RefineCost_textbox
             // 
-            this.RefineCost_textbox.Location = new System.Drawing.Point(286, 32);
+            this.RefineCost_textbox.Location = new System.Drawing.Point(381, 39);
+            this.RefineCost_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.RefineCost_textbox.Name = "RefineCost_textbox";
-            this.RefineCost_textbox.Size = new System.Drawing.Size(65, 20);
+            this.RefineCost_textbox.Size = new System.Drawing.Size(85, 22);
             this.RefineCost_textbox.TabIndex = 18;
             this.RefineCost_textbox.TextChanged += new System.EventHandler(this.RefineCost_textbox_TextChanged);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(218, 35);
+            this.label22.Location = new System.Drawing.Point(291, 43);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(62, 13);
+            this.label22.Size = new System.Drawing.Size(81, 17);
             this.label22.TabIndex = 17;
             this.label22.Text = "Refine Cost";
             // 
             // ItemDimReturn_textbox
             // 
-            this.ItemDimReturn_textbox.Location = new System.Drawing.Point(154, 184);
+            this.ItemDimReturn_textbox.Location = new System.Drawing.Point(205, 226);
+            this.ItemDimReturn_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.ItemDimReturn_textbox.Name = "ItemDimReturn_textbox";
-            this.ItemDimReturn_textbox.Size = new System.Drawing.Size(51, 20);
+            this.ItemDimReturn_textbox.Size = new System.Drawing.Size(67, 22);
             this.ItemDimReturn_textbox.TabIndex = 16;
             this.ItemDimReturn_textbox.TextChanged += new System.EventHandler(this.ItemDimReturn_textbox_TextChanged);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(23, 187);
+            this.label21.Location = new System.Drawing.Point(31, 230);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(123, 13);
+            this.label21.Size = new System.Drawing.Size(164, 17);
             this.label21.TabIndex = 15;
             this.label21.Text = "Item Diminishing Returns";
             // 
             // WepDimReturn_textbox
             // 
-            this.WepDimReturn_textbox.Location = new System.Drawing.Point(154, 158);
+            this.WepDimReturn_textbox.Location = new System.Drawing.Point(205, 194);
+            this.WepDimReturn_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.WepDimReturn_textbox.Name = "WepDimReturn_textbox";
-            this.WepDimReturn_textbox.Size = new System.Drawing.Size(51, 20);
+            this.WepDimReturn_textbox.Size = new System.Drawing.Size(67, 22);
             this.WepDimReturn_textbox.TabIndex = 14;
             this.WepDimReturn_textbox.TextChanged += new System.EventHandler(this.WepDimReturn_textbox_TextChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 161);
+            this.label20.Location = new System.Drawing.Point(4, 198);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(144, 13);
+            this.label20.Size = new System.Drawing.Size(191, 17);
             this.label20.TabIndex = 13;
             this.label20.Text = "Weapon Diminishing Returns";
             // 
             // CritMultiplier_textbox
             // 
-            this.CritMultiplier_textbox.Location = new System.Drawing.Point(154, 132);
+            this.CritMultiplier_textbox.Location = new System.Drawing.Point(205, 162);
+            this.CritMultiplier_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.CritMultiplier_textbox.Name = "CritMultiplier_textbox";
-            this.CritMultiplier_textbox.Size = new System.Drawing.Size(51, 20);
+            this.CritMultiplier_textbox.Size = new System.Drawing.Size(67, 22);
             this.CritMultiplier_textbox.TabIndex = 12;
             this.CritMultiplier_textbox.TextChanged += new System.EventHandler(this.CritMultiplier_textbox_TextChanged);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(38, 135);
+            this.label19.Location = new System.Drawing.Point(51, 166);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(110, 13);
+            this.label19.Size = new System.Drawing.Size(147, 17);
             this.label19.TabIndex = 11;
             this.label19.Text = "Crit Increase Multiplier";
             // 
             // CritChance_textbox
             // 
-            this.CritChance_textbox.Location = new System.Drawing.Point(154, 106);
+            this.CritChance_textbox.Location = new System.Drawing.Point(205, 130);
+            this.CritChance_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.CritChance_textbox.Name = "CritChance_textbox";
-            this.CritChance_textbox.Size = new System.Drawing.Size(51, 20);
+            this.CritChance_textbox.Size = new System.Drawing.Size(67, 22);
             this.CritChance_textbox.TabIndex = 10;
             this.CritChance_textbox.TextChanged += new System.EventHandler(this.CritChance_textbox_TextChanged);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(53, 109);
+            this.label18.Location = new System.Drawing.Point(71, 134);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(95, 13);
+            this.label18.Size = new System.Drawing.Size(128, 17);
             this.label18.TabIndex = 9;
             this.label18.Text = "Critical Chance (%)";
             // 
             // NormalStat_textbox
             // 
-            this.NormalStat_textbox.Location = new System.Drawing.Point(154, 81);
+            this.NormalStat_textbox.Location = new System.Drawing.Point(205, 100);
+            this.NormalStat_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.NormalStat_textbox.Name = "NormalStat_textbox";
-            this.NormalStat_textbox.Size = new System.Drawing.Size(51, 20);
+            this.NormalStat_textbox.Size = new System.Drawing.Size(67, 22);
             this.NormalStat_textbox.TabIndex = 8;
             this.NormalStat_textbox.TextChanged += new System.EventHandler(this.NormalStat_textbox_TextChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(40, 84);
+            this.label17.Location = new System.Drawing.Point(53, 103);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(106, 13);
+            this.label17.Size = new System.Drawing.Size(140, 17);
             this.label17.TabIndex = 7;
             this.label17.Text = "Normal Stat Increase";
             // 
             // RefineTime_textbox
             // 
-            this.RefineTime_textbox.Location = new System.Drawing.Point(154, 56);
+            this.RefineTime_textbox.Location = new System.Drawing.Point(205, 69);
+            this.RefineTime_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.RefineTime_textbox.Name = "RefineTime_textbox";
-            this.RefineTime_textbox.Size = new System.Drawing.Size(51, 20);
+            this.RefineTime_textbox.Size = new System.Drawing.Size(67, 22);
             this.RefineTime_textbox.TabIndex = 6;
             this.RefineTime_textbox.TextChanged += new System.EventHandler(this.RefineTime_textbox_TextChanged);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(38, 59);
+            this.label16.Location = new System.Drawing.Point(51, 73);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(110, 13);
+            this.label16.Size = new System.Drawing.Size(147, 17);
             this.label16.TabIndex = 5;
             this.label16.Text = "Refine Time (Minutes)";
             // 
             // BaseChance_textbox
             // 
-            this.BaseChance_textbox.Location = new System.Drawing.Point(154, 32);
+            this.BaseChance_textbox.Location = new System.Drawing.Point(205, 39);
+            this.BaseChance_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.BaseChance_textbox.Name = "BaseChance_textbox";
-            this.BaseChance_textbox.Size = new System.Drawing.Size(51, 20);
+            this.BaseChance_textbox.Size = new System.Drawing.Size(67, 22);
             this.BaseChance_textbox.TabIndex = 4;
             this.BaseChance_textbox.TextChanged += new System.EventHandler(this.BaseChance_textbox_TextChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 35);
+            this.label15.Location = new System.Drawing.Point(21, 43);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(132, 13);
+            this.label15.Size = new System.Drawing.Size(175, 17);
             this.label15.TabIndex = 3;
             this.label15.Text = "Base Success Chance (%)";
             // 
             // WeaponOnly_checkbox
             // 
             this.WeaponOnly_checkbox.AutoSize = true;
-            this.WeaponOnly_checkbox.Location = new System.Drawing.Point(34, 9);
+            this.WeaponOnly_checkbox.Location = new System.Drawing.Point(45, 11);
+            this.WeaponOnly_checkbox.Margin = new System.Windows.Forms.Padding(4);
             this.WeaponOnly_checkbox.Name = "WeaponOnly_checkbox";
             this.WeaponOnly_checkbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.WeaponOnly_checkbox.Size = new System.Drawing.Size(133, 17);
+            this.WeaponOnly_checkbox.Size = new System.Drawing.Size(172, 21);
             this.WeaponOnly_checkbox.TabIndex = 2;
             this.WeaponOnly_checkbox.Text = "Only Weapon Refining";
             this.WeaponOnly_checkbox.UseVisualStyleBackColor = true;
@@ -689,9 +758,10 @@
             this.tabPage5.Controls.Add(this.label13);
             this.tabPage5.Controls.Add(this.MarriageCooldown_textbox);
             this.tabPage5.Controls.Add(this.LoverRecall_checkbox);
-            this.tabPage5.Location = new System.Drawing.Point(4, 40);
+            this.tabPage5.Location = new System.Drawing.Point(4, 46);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(399, 211);
+            this.tabPage5.Size = new System.Drawing.Size(535, 316);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Relationship";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -699,78 +769,87 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(65, 143);
+            this.label24.Location = new System.Drawing.Point(87, 176);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(96, 13);
+            this.label24.Size = new System.Drawing.Size(125, 17);
             this.label24.TabIndex = 14;
             this.label24.Text = "Replace Ring Cost";
             // 
             // ReplaceRingCost_textbox
             // 
-            this.ReplaceRingCost_textbox.Location = new System.Drawing.Point(167, 140);
+            this.ReplaceRingCost_textbox.Location = new System.Drawing.Point(223, 172);
+            this.ReplaceRingCost_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.ReplaceRingCost_textbox.Name = "ReplaceRingCost_textbox";
-            this.ReplaceRingCost_textbox.Size = new System.Drawing.Size(64, 20);
+            this.ReplaceRingCost_textbox.Size = new System.Drawing.Size(84, 22);
             this.ReplaceRingCost_textbox.TabIndex = 13;
             this.ReplaceRingCost_textbox.TextChanged += new System.EventHandler(this.ReplaceRingCost_textbox_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(37, 117);
+            this.label14.Location = new System.Drawing.Point(49, 144);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(123, 13);
+            this.label14.Size = new System.Drawing.Size(164, 17);
             this.label14.TabIndex = 12;
             this.label14.Text = "Marriage Required Level";
             // 
             // RequiredLevel_textbox
             // 
-            this.RequiredLevel_textbox.Location = new System.Drawing.Point(167, 114);
+            this.RequiredLevel_textbox.Location = new System.Drawing.Point(223, 140);
+            this.RequiredLevel_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.RequiredLevel_textbox.Name = "RequiredLevel_textbox";
-            this.RequiredLevel_textbox.Size = new System.Drawing.Size(64, 20);
+            this.RequiredLevel_textbox.Size = new System.Drawing.Size(84, 22);
             this.RequiredLevel_textbox.TabIndex = 11;
             this.RequiredLevel_textbox.TextChanged += new System.EventHandler(this.RequiredLevel_textbox_TextChanged);
             // 
             // LoverBonusEXP_textbox
             // 
-            this.LoverBonusEXP_textbox.Location = new System.Drawing.Point(167, 55);
+            this.LoverBonusEXP_textbox.Location = new System.Drawing.Point(223, 68);
+            this.LoverBonusEXP_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.LoverBonusEXP_textbox.Name = "LoverBonusEXP_textbox";
-            this.LoverBonusEXP_textbox.Size = new System.Drawing.Size(64, 20);
+            this.LoverBonusEXP_textbox.Size = new System.Drawing.Size(84, 22);
             this.LoverBonusEXP_textbox.TabIndex = 10;
             this.LoverBonusEXP_textbox.TextChanged += new System.EventHandler(this.LoverBonusEXP_textbox_TextChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(30, 88);
+            this.label12.Location = new System.Drawing.Point(40, 108);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(131, 13);
+            this.label12.Size = new System.Drawing.Size(175, 17);
             this.label12.TabIndex = 9;
             this.label12.Text = "Marriage Cooldown (Days)";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 55);
+            this.label13.Location = new System.Drawing.Point(19, 68);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(147, 13);
+            this.label13.Size = new System.Drawing.Size(197, 17);
             this.label13.TabIndex = 8;
             this.label13.Text = "Bonus % Experience in Group";
             // 
             // MarriageCooldown_textbox
             // 
-            this.MarriageCooldown_textbox.Location = new System.Drawing.Point(167, 85);
+            this.MarriageCooldown_textbox.Location = new System.Drawing.Point(223, 105);
+            this.MarriageCooldown_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.MarriageCooldown_textbox.Name = "MarriageCooldown_textbox";
-            this.MarriageCooldown_textbox.Size = new System.Drawing.Size(64, 20);
+            this.MarriageCooldown_textbox.Size = new System.Drawing.Size(84, 22);
             this.MarriageCooldown_textbox.TabIndex = 7;
             this.MarriageCooldown_textbox.TextChanged += new System.EventHandler(this.MarriageCooldown_textbox_TextChanged);
             // 
             // LoverRecall_checkbox
             // 
             this.LoverRecall_checkbox.AutoSize = true;
-            this.LoverRecall_checkbox.Location = new System.Drawing.Point(32, 23);
+            this.LoverRecall_checkbox.Location = new System.Drawing.Point(43, 28);
+            this.LoverRecall_checkbox.Margin = new System.Windows.Forms.Padding(4);
             this.LoverRecall_checkbox.Name = "LoverRecall_checkbox";
             this.LoverRecall_checkbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LoverRecall_checkbox.Size = new System.Drawing.Size(149, 17);
+            this.LoverRecall_checkbox.Size = new System.Drawing.Size(190, 21);
             this.LoverRecall_checkbox.TabIndex = 1;
             this.LoverRecall_checkbox.Text = "Recall with Wedding Ring";
             this.LoverRecall_checkbox.UseVisualStyleBackColor = true;
@@ -789,9 +868,10 @@
             this.tabPage6.Controls.Add(this.label28);
             this.tabPage6.Controls.Add(this.MentorLength_textbox);
             this.tabPage6.Controls.Add(this.MenteeSkillBoost_checkbox);
-            this.tabPage6.Location = new System.Drawing.Point(4, 40);
+            this.tabPage6.Location = new System.Drawing.Point(4, 46);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(399, 211);
+            this.tabPage6.Size = new System.Drawing.Size(535, 288);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Mentor";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -799,95 +879,106 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(59, 161);
+            this.label29.Location = new System.Drawing.Point(79, 198);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(127, 13);
+            this.label29.Size = new System.Drawing.Size(170, 17);
             this.label29.TabIndex = 25;
             this.label29.Text = "EXP to Mentor at End (%)";
             // 
             // MenteeExpBank_textbox
             // 
-            this.MenteeExpBank_textbox.Location = new System.Drawing.Point(194, 158);
+            this.MenteeExpBank_textbox.Location = new System.Drawing.Point(259, 194);
+            this.MenteeExpBank_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.MenteeExpBank_textbox.Name = "MenteeExpBank_textbox";
-            this.MenteeExpBank_textbox.Size = new System.Drawing.Size(64, 20);
+            this.MenteeExpBank_textbox.Size = new System.Drawing.Size(84, 22);
             this.MenteeExpBank_textbox.TabIndex = 24;
             this.MenteeExpBank_textbox.TextChanged += new System.EventHandler(this.MenteeExpBank_textbox_TextChanged);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(22, 135);
+            this.label25.Location = new System.Drawing.Point(29, 166);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(164, 13);
+            this.label25.Size = new System.Drawing.Size(216, 17);
             this.label25.TabIndex = 23;
             this.label25.Text = "Mentee EXP Boost (With Mentor)";
             // 
             // MenteeExpBoost_textbox
             // 
-            this.MenteeExpBoost_textbox.Location = new System.Drawing.Point(194, 132);
+            this.MenteeExpBoost_textbox.Location = new System.Drawing.Point(259, 162);
+            this.MenteeExpBoost_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.MenteeExpBoost_textbox.Name = "MenteeExpBoost_textbox";
-            this.MenteeExpBoost_textbox.Size = new System.Drawing.Size(64, 20);
+            this.MenteeExpBoost_textbox.Size = new System.Drawing.Size(84, 22);
             this.MenteeExpBoost_textbox.TabIndex = 22;
             this.MenteeExpBoost_textbox.TextChanged += new System.EventHandler(this.MenteeExpBoost_textbox_TextChanged);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(3, 109);
+            this.label26.Location = new System.Drawing.Point(4, 134);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(183, 13);
+            this.label26.Size = new System.Drawing.Size(242, 17);
             this.label26.TabIndex = 21;
             this.label26.Text = "Mentor Damage Boost (With Mentee)";
             // 
             // MentorDamageBoost_textbox
             // 
-            this.MentorDamageBoost_textbox.Location = new System.Drawing.Point(194, 106);
+            this.MentorDamageBoost_textbox.Location = new System.Drawing.Point(259, 130);
+            this.MentorDamageBoost_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.MentorDamageBoost_textbox.Name = "MentorDamageBoost_textbox";
-            this.MentorDamageBoost_textbox.Size = new System.Drawing.Size(64, 20);
+            this.MentorDamageBoost_textbox.Size = new System.Drawing.Size(84, 22);
             this.MentorDamageBoost_textbox.TabIndex = 20;
             this.MentorDamageBoost_textbox.TextChanged += new System.EventHandler(this.MentorDamageBoost_textbox_TextChanged);
             // 
             // MentorLevelGap_textbox
             // 
-            this.MentorLevelGap_textbox.Location = new System.Drawing.Point(194, 47);
+            this.MentorLevelGap_textbox.Location = new System.Drawing.Point(259, 58);
+            this.MentorLevelGap_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.MentorLevelGap_textbox.Name = "MentorLevelGap_textbox";
-            this.MentorLevelGap_textbox.Size = new System.Drawing.Size(64, 20);
+            this.MentorLevelGap_textbox.Size = new System.Drawing.Size(84, 22);
             this.MentorLevelGap_textbox.TabIndex = 19;
             this.MentorLevelGap_textbox.TextChanged += new System.EventHandler(this.MentorLevelGap_textbox_TextChanged);
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(77, 80);
+            this.label27.Location = new System.Drawing.Point(103, 98);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(109, 13);
+            this.label27.Size = new System.Drawing.Size(146, 17);
             this.label27.TabIndex = 18;
             this.label27.Text = "Mentor Length (Days)";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(94, 50);
+            this.label28.Location = new System.Drawing.Point(125, 62);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(92, 13);
+            this.label28.Size = new System.Drawing.Size(121, 17);
             this.label28.TabIndex = 17;
             this.label28.Text = "Mentor Level Gap";
             // 
             // MentorLength_textbox
             // 
-            this.MentorLength_textbox.Location = new System.Drawing.Point(194, 77);
+            this.MentorLength_textbox.Location = new System.Drawing.Point(259, 95);
+            this.MentorLength_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.MentorLength_textbox.Name = "MentorLength_textbox";
-            this.MentorLength_textbox.Size = new System.Drawing.Size(64, 20);
+            this.MentorLength_textbox.Size = new System.Drawing.Size(84, 22);
             this.MentorLength_textbox.TabIndex = 16;
             this.MentorLength_textbox.TextChanged += new System.EventHandler(this.MentorLength_textbox_TextChanged);
             // 
             // MenteeSkillBoost_checkbox
             // 
             this.MenteeSkillBoost_checkbox.AutoSize = true;
-            this.MenteeSkillBoost_checkbox.Location = new System.Drawing.Point(62, 15);
+            this.MenteeSkillBoost_checkbox.Location = new System.Drawing.Point(83, 18);
+            this.MenteeSkillBoost_checkbox.Margin = new System.Windows.Forms.Padding(4);
             this.MenteeSkillBoost_checkbox.Name = "MenteeSkillBoost_checkbox";
             this.MenteeSkillBoost_checkbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.MenteeSkillBoost_checkbox.Size = new System.Drawing.Size(196, 17);
+            this.MenteeSkillBoost_checkbox.Size = new System.Drawing.Size(255, 21);
             this.MenteeSkillBoost_checkbox.TabIndex = 15;
             this.MenteeSkillBoost_checkbox.Text = "Mentee 2x Skill Speed (with Mentor)";
             this.MenteeSkillBoost_checkbox.UseVisualStyleBackColor = true;
@@ -896,10 +987,11 @@
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.GemStatCheckBox);
-            this.tabPage7.Location = new System.Drawing.Point(4, 40);
+            this.tabPage7.Location = new System.Drawing.Point(4, 46);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(399, 211);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage7.Size = new System.Drawing.Size(535, 288);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Gem";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -907,10 +999,11 @@
             // GemStatCheckBox
             // 
             this.GemStatCheckBox.AutoSize = true;
-            this.GemStatCheckBox.Location = new System.Drawing.Point(30, 15);
+            this.GemStatCheckBox.Location = new System.Drawing.Point(40, 18);
+            this.GemStatCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.GemStatCheckBox.Name = "GemStatCheckBox";
             this.GemStatCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.GemStatCheckBox.Size = new System.Drawing.Size(133, 17);
+            this.GemStatCheckBox.Size = new System.Drawing.Size(172, 21);
             this.GemStatCheckBox.TabIndex = 16;
             this.GemStatCheckBox.Text = "Gem Stat Independent";
             this.GemStatCheckBox.UseVisualStyleBackColor = true;
@@ -923,10 +1016,11 @@
             this.tabPage8.Controls.Add(this.lbSpawnTickList);
             this.tabPage8.Controls.Add(this.btnSpawnTickRemove);
             this.tabPage8.Controls.Add(this.btnSpawnTickAdd);
-            this.tabPage8.Location = new System.Drawing.Point(4, 40);
+            this.tabPage8.Location = new System.Drawing.Point(4, 46);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(399, 211);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage8.Size = new System.Drawing.Size(535, 316);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "SpawnTick";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -936,25 +1030,28 @@
             this.panel1.Controls.Add(this.lbltickmins);
             this.panel1.Controls.Add(this.txtSpawnTickDefault);
             this.panel1.Controls.Add(this.label32);
-            this.panel1.Location = new System.Drawing.Point(152, 6);
+            this.panel1.Location = new System.Drawing.Point(203, 7);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(241, 100);
+            this.panel1.Size = new System.Drawing.Size(321, 123);
             this.panel1.TabIndex = 4;
             // 
             // lbltickmins
             // 
             this.lbltickmins.AutoSize = true;
-            this.lbltickmins.Location = new System.Drawing.Point(175, 6);
+            this.lbltickmins.Location = new System.Drawing.Point(233, 7);
+            this.lbltickmins.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltickmins.Name = "lbltickmins";
-            this.lbltickmins.Size = new System.Drawing.Size(54, 13);
+            this.lbltickmins.Size = new System.Drawing.Size(72, 17);
             this.lbltickmins.TabIndex = 2;
             this.lbltickmins.Text = "in minutes";
             // 
             // txtSpawnTickDefault
             // 
-            this.txtSpawnTickDefault.Location = new System.Drawing.Point(116, 2);
+            this.txtSpawnTickDefault.Location = new System.Drawing.Point(155, 2);
+            this.txtSpawnTickDefault.Margin = new System.Windows.Forms.Padding(4);
             this.txtSpawnTickDefault.Name = "txtSpawnTickDefault";
-            this.txtSpawnTickDefault.Size = new System.Drawing.Size(55, 20);
+            this.txtSpawnTickDefault.Size = new System.Drawing.Size(72, 22);
             this.txtSpawnTickDefault.TabIndex = 1;
             this.toolTip1.SetToolTip(this.txtSpawnTickDefault, "how long is 1 tick with no users onilne?\r\n(default suggested value = 20)\r\ntime in" +
         " minutes!");
@@ -963,9 +1060,10 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(3, 6);
+            this.label32.Location = new System.Drawing.Point(4, 7);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(93, 13);
+            this.label32.Size = new System.Drawing.Size(121, 17);
             this.label32.TabIndex = 0;
             this.label32.Text = "Default tickspeed:";
             // 
@@ -975,16 +1073,18 @@
             this.pnlSpawnTickConfig.Controls.Add(this.txtSpawnTickUsers);
             this.pnlSpawnTickConfig.Controls.Add(this.label31);
             this.pnlSpawnTickConfig.Controls.Add(this.label30);
-            this.pnlSpawnTickConfig.Location = new System.Drawing.Point(152, 160);
+            this.pnlSpawnTickConfig.Location = new System.Drawing.Point(203, 197);
+            this.pnlSpawnTickConfig.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSpawnTickConfig.Name = "pnlSpawnTickConfig";
-            this.pnlSpawnTickConfig.Size = new System.Drawing.Size(241, 61);
+            this.pnlSpawnTickConfig.Size = new System.Drawing.Size(321, 75);
             this.pnlSpawnTickConfig.TabIndex = 3;
             // 
             // txtSpawnTickSpeed
             // 
-            this.txtSpawnTickSpeed.Location = new System.Drawing.Point(116, 34);
+            this.txtSpawnTickSpeed.Location = new System.Drawing.Point(155, 42);
+            this.txtSpawnTickSpeed.Margin = new System.Windows.Forms.Padding(4);
             this.txtSpawnTickSpeed.Name = "txtSpawnTickSpeed";
-            this.txtSpawnTickSpeed.Size = new System.Drawing.Size(100, 20);
+            this.txtSpawnTickSpeed.Size = new System.Drawing.Size(132, 22);
             this.txtSpawnTickSpeed.TabIndex = 3;
             this.toolTip1.SetToolTip(this.txtSpawnTickSpeed, "1.0 = normal speed\r\nlower value = ticks go faster (= faster respawn)\r\nfor example" +
         ":\r\n0.9 with a 20 minute default tick = now it\'s 18minutes/tick");
@@ -992,9 +1092,10 @@
             // 
             // txtSpawnTickUsers
             // 
-            this.txtSpawnTickUsers.Location = new System.Drawing.Point(116, 8);
+            this.txtSpawnTickUsers.Location = new System.Drawing.Point(155, 10);
+            this.txtSpawnTickUsers.Margin = new System.Windows.Forms.Padding(4);
             this.txtSpawnTickUsers.Name = "txtSpawnTickUsers";
-            this.txtSpawnTickUsers.Size = new System.Drawing.Size(100, 20);
+            this.txtSpawnTickUsers.Size = new System.Drawing.Size(132, 22);
             this.txtSpawnTickUsers.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtSpawnTickUsers, "At least how many users should bere be online to be using this rate?");
             this.txtSpawnTickUsers.TextChanged += new System.EventHandler(this.txtSpawnTickUsers_TextChanged);
@@ -1002,35 +1103,40 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(3, 37);
+            this.label31.Location = new System.Drawing.Point(4, 46);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(92, 13);
+            this.label31.Size = new System.Drawing.Size(118, 17);
             this.label31.TabIndex = 1;
             this.label31.Text = "Spawntick speed:";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(3, 11);
+            this.label30.Location = new System.Drawing.Point(4, 14);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(68, 13);
+            this.label30.Size = new System.Drawing.Size(91, 17);
             this.label30.TabIndex = 0;
             this.label30.Text = "Users online:";
             // 
             // lbSpawnTickList
             // 
             this.lbSpawnTickList.FormattingEnabled = true;
-            this.lbSpawnTickList.Location = new System.Drawing.Point(6, 35);
+            this.lbSpawnTickList.ItemHeight = 16;
+            this.lbSpawnTickList.Location = new System.Drawing.Point(8, 43);
+            this.lbSpawnTickList.Margin = new System.Windows.Forms.Padding(4);
             this.lbSpawnTickList.Name = "lbSpawnTickList";
-            this.lbSpawnTickList.Size = new System.Drawing.Size(140, 186);
+            this.lbSpawnTickList.Size = new System.Drawing.Size(185, 228);
             this.lbSpawnTickList.TabIndex = 2;
             this.lbSpawnTickList.SelectedIndexChanged += new System.EventHandler(this.lbSpawnTickList_SelectedIndexChanged);
             // 
             // btnSpawnTickRemove
             // 
-            this.btnSpawnTickRemove.Location = new System.Drawing.Point(79, 6);
+            this.btnSpawnTickRemove.Location = new System.Drawing.Point(105, 7);
+            this.btnSpawnTickRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnSpawnTickRemove.Name = "btnSpawnTickRemove";
-            this.btnSpawnTickRemove.Size = new System.Drawing.Size(67, 23);
+            this.btnSpawnTickRemove.Size = new System.Drawing.Size(89, 28);
             this.btnSpawnTickRemove.TabIndex = 1;
             this.btnSpawnTickRemove.Text = "Remove";
             this.btnSpawnTickRemove.UseVisualStyleBackColor = true;
@@ -1038,9 +1144,10 @@
             // 
             // btnSpawnTickAdd
             // 
-            this.btnSpawnTickAdd.Location = new System.Drawing.Point(6, 6);
+            this.btnSpawnTickAdd.Location = new System.Drawing.Point(8, 7);
+            this.btnSpawnTickAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnSpawnTickAdd.Name = "btnSpawnTickAdd";
-            this.btnSpawnTickAdd.Size = new System.Drawing.Size(67, 23);
+            this.btnSpawnTickAdd.Size = new System.Drawing.Size(89, 28);
             this.btnSpawnTickAdd.TabIndex = 0;
             this.btnSpawnTickAdd.Text = "Add";
             this.btnSpawnTickAdd.UseVisualStyleBackColor = true;
@@ -1048,23 +1155,106 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.GuildWarKillSpreeGroupBox);
+            this.tabPage9.Controls.Add(this.AllowGWKillSpreesCheckBox);
             this.tabPage9.Controls.Add(this.WarKillShoutTypeGroupBox);
             this.tabPage9.Controls.Add(this.GuildWarKillShoutCheckbox);
-            this.tabPage9.Location = new System.Drawing.Point(4, 40);
+            this.tabPage9.Location = new System.Drawing.Point(4, 46);
+            this.tabPage9.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(399, 211);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage9.Size = new System.Drawing.Size(535, 352);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Guild war";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // GuildWarKillSpreeGroupBox
+            // 
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.KillSpreeBuffGroupBox);
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.EnableKillSpreeBuffsCheckbox);
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.label33);
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.KillSpreeShoutMapRadioButton);
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.KillSpreeShoutLocalRadioButton);
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.TimeBetweenGWKillsTextBox);
+            this.GuildWarKillSpreeGroupBox.Controls.Add(this.TimeBetweenGWKillsLabels);
+            this.GuildWarKillSpreeGroupBox.Location = new System.Drawing.Point(27, 166);
+            this.GuildWarKillSpreeGroupBox.Name = "GuildWarKillSpreeGroupBox";
+            this.GuildWarKillSpreeGroupBox.Size = new System.Drawing.Size(481, 179);
+            this.GuildWarKillSpreeGroupBox.TabIndex = 3;
+            this.GuildWarKillSpreeGroupBox.TabStop = false;
+            this.GuildWarKillSpreeGroupBox.Text = "Guild war kill sprees";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(6, 32);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(140, 17);
+            this.label33.TabIndex = 4;
+            this.label33.Text = "Kill spree shout type:";
+            // 
+            // KillSpreeShoutMapRadioButton
+            // 
+            this.KillSpreeShoutMapRadioButton.AutoSize = true;
+            this.KillSpreeShoutMapRadioButton.Location = new System.Drawing.Point(267, 32);
+            this.KillSpreeShoutMapRadioButton.Margin = new System.Windows.Forms.Padding(4);
+            this.KillSpreeShoutMapRadioButton.Name = "KillSpreeShoutMapRadioButton";
+            this.KillSpreeShoutMapRadioButton.Size = new System.Drawing.Size(56, 21);
+            this.KillSpreeShoutMapRadioButton.TabIndex = 3;
+            this.KillSpreeShoutMapRadioButton.TabStop = true;
+            this.KillSpreeShoutMapRadioButton.Text = "Map";
+            this.KillSpreeShoutMapRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // KillSpreeShoutLocalRadioButton
+            // 
+            this.KillSpreeShoutLocalRadioButton.AutoSize = true;
+            this.KillSpreeShoutLocalRadioButton.Location = new System.Drawing.Point(171, 32);
+            this.KillSpreeShoutLocalRadioButton.Margin = new System.Windows.Forms.Padding(4);
+            this.KillSpreeShoutLocalRadioButton.Name = "KillSpreeShoutLocalRadioButton";
+            this.KillSpreeShoutLocalRadioButton.Size = new System.Drawing.Size(63, 21);
+            this.KillSpreeShoutLocalRadioButton.TabIndex = 2;
+            this.KillSpreeShoutLocalRadioButton.TabStop = true;
+            this.KillSpreeShoutLocalRadioButton.Text = "Local";
+            this.KillSpreeShoutLocalRadioButton.UseVisualStyleBackColor = true;
+            this.KillSpreeShoutLocalRadioButton.CheckedChanged += new System.EventHandler(this.KillSpreeShoutLocalRadioButton_CheckedChanged);
+            // 
+            // TimeBetweenGWKillsTextBox
+            // 
+            this.TimeBetweenGWKillsTextBox.Location = new System.Drawing.Point(223, 67);
+            this.TimeBetweenGWKillsTextBox.Name = "TimeBetweenGWKillsTextBox";
+            this.TimeBetweenGWKillsTextBox.Size = new System.Drawing.Size(100, 22);
+            this.TimeBetweenGWKillsTextBox.TabIndex = 1;
+            this.TimeBetweenGWKillsTextBox.TextChanged += new System.EventHandler(this.TimeBetweenGWKillsTextBox_TextChanged);
+            // 
+            // TimeBetweenGWKillsLabels
+            // 
+            this.TimeBetweenGWKillsLabels.AutoSize = true;
+            this.TimeBetweenGWKillsLabels.Location = new System.Drawing.Point(6, 68);
+            this.TimeBetweenGWKillsLabels.Name = "TimeBetweenGWKillsLabels";
+            this.TimeBetweenGWKillsLabels.Size = new System.Drawing.Size(211, 17);
+            this.TimeBetweenGWKillsLabels.TabIndex = 0;
+            this.TimeBetweenGWKillsLabels.Text = "Max time between guild war kills:";
+            // 
+            // AllowGWKillSpreesCheckBox
+            // 
+            this.AllowGWKillSpreesCheckBox.AutoSize = true;
+            this.AllowGWKillSpreesCheckBox.Location = new System.Drawing.Point(27, 139);
+            this.AllowGWKillSpreesCheckBox.Name = "AllowGWKillSpreesCheckBox";
+            this.AllowGWKillSpreesCheckBox.Size = new System.Drawing.Size(189, 21);
+            this.AllowGWKillSpreesCheckBox.TabIndex = 2;
+            this.AllowGWKillSpreesCheckBox.Text = "Allow guild war kill sprees";
+            this.AllowGWKillSpreesCheckBox.UseVisualStyleBackColor = true;
+            this.AllowGWKillSpreesCheckBox.CheckedChanged += new System.EventHandler(this.AllowGWKillSpreesCheckBox_CheckedChanged);
             // 
             // WarKillShoutTypeGroupBox
             // 
             this.WarKillShoutTypeGroupBox.Controls.Add(this.WarShoutMapRadioButton);
             this.WarKillShoutTypeGroupBox.Controls.Add(this.WarShoutLocalRadioButton);
-            this.WarKillShoutTypeGroupBox.Location = new System.Drawing.Point(20, 50);
+            this.WarKillShoutTypeGroupBox.Location = new System.Drawing.Point(27, 62);
+            this.WarKillShoutTypeGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.WarKillShoutTypeGroupBox.Name = "WarKillShoutTypeGroupBox";
-            this.WarKillShoutTypeGroupBox.Size = new System.Drawing.Size(264, 45);
+            this.WarKillShoutTypeGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.WarKillShoutTypeGroupBox.Size = new System.Drawing.Size(352, 55);
             this.WarKillShoutTypeGroupBox.TabIndex = 1;
             this.WarKillShoutTypeGroupBox.TabStop = false;
             this.WarKillShoutTypeGroupBox.Text = "Shout type";
@@ -1072,20 +1262,23 @@
             // WarShoutMapRadioButton
             // 
             this.WarShoutMapRadioButton.AutoSize = true;
-            this.WarShoutMapRadioButton.Location = new System.Drawing.Point(128, 19);
+            this.WarShoutMapRadioButton.Location = new System.Drawing.Point(171, 23);
+            this.WarShoutMapRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.WarShoutMapRadioButton.Name = "WarShoutMapRadioButton";
-            this.WarShoutMapRadioButton.Size = new System.Drawing.Size(46, 17);
+            this.WarShoutMapRadioButton.Size = new System.Drawing.Size(56, 21);
             this.WarShoutMapRadioButton.TabIndex = 1;
             this.WarShoutMapRadioButton.TabStop = true;
             this.WarShoutMapRadioButton.Text = "Map";
             this.WarShoutMapRadioButton.UseVisualStyleBackColor = true;
+            this.WarShoutMapRadioButton.CheckedChanged += new System.EventHandler(this.WarShoutMapRadioButton_CheckedChanged);
             // 
             // WarShoutLocalRadioButton
             // 
             this.WarShoutLocalRadioButton.AutoSize = true;
-            this.WarShoutLocalRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.WarShoutLocalRadioButton.Location = new System.Drawing.Point(8, 23);
+            this.WarShoutLocalRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.WarShoutLocalRadioButton.Name = "WarShoutLocalRadioButton";
-            this.WarShoutLocalRadioButton.Size = new System.Drawing.Size(51, 17);
+            this.WarShoutLocalRadioButton.Size = new System.Drawing.Size(63, 21);
             this.WarShoutLocalRadioButton.TabIndex = 0;
             this.WarShoutLocalRadioButton.TabStop = true;
             this.WarShoutLocalRadioButton.Text = "Local";
@@ -1095,9 +1288,10 @@
             // GuildWarKillShoutCheckbox
             // 
             this.GuildWarKillShoutCheckbox.AutoSize = true;
-            this.GuildWarKillShoutCheckbox.Location = new System.Drawing.Point(20, 17);
+            this.GuildWarKillShoutCheckbox.Location = new System.Drawing.Point(27, 21);
+            this.GuildWarKillShoutCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.GuildWarKillShoutCheckbox.Name = "GuildWarKillShoutCheckbox";
-            this.GuildWarKillShoutCheckbox.Size = new System.Drawing.Size(178, 17);
+            this.GuildWarKillShoutCheckbox.Size = new System.Drawing.Size(233, 21);
             this.GuildWarKillShoutCheckbox.TabIndex = 0;
             this.GuildWarKillShoutCheckbox.Text = "Broadcast shout on guild war kill";
             this.GuildWarKillShoutCheckbox.UseVisualStyleBackColor = true;
@@ -1107,24 +1301,14 @@
             // 
             this.tabPage10.Controls.Add(this.KillChainGroupBox);
             this.tabPage10.Controls.Add(this.EnableKillChainsCheckBox);
-            this.tabPage10.Location = new System.Drawing.Point(4, 40);
+            this.tabPage10.Location = new System.Drawing.Point(4, 46);
+            this.tabPage10.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(399, 211);
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage10.Size = new System.Drawing.Size(535, 316);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Kill chains";
             this.tabPage10.UseVisualStyleBackColor = true;
-            // 
-            // EnableKillChainsCheckBox
-            // 
-            this.EnableKillChainsCheckBox.AutoSize = true;
-            this.EnableKillChainsCheckBox.Location = new System.Drawing.Point(23, 21);
-            this.EnableKillChainsCheckBox.Name = "EnableKillChainsCheckBox";
-            this.EnableKillChainsCheckBox.Size = new System.Drawing.Size(108, 17);
-            this.EnableKillChainsCheckBox.TabIndex = 0;
-            this.EnableKillChainsCheckBox.Text = "Enable kill chains";
-            this.EnableKillChainsCheckBox.UseVisualStyleBackColor = true;
-            this.EnableKillChainsCheckBox.CheckedChanged += new System.EventHandler(this.EnableKillChainsCheckBox_CheckedChanged);
             // 
             // KillChainGroupBox
             // 
@@ -1140,122 +1324,213 @@
             this.KillChainGroupBox.Controls.Add(this.txtKillChainBonusExp);
             this.KillChainGroupBox.Controls.Add(this.KillChainLabel2);
             this.KillChainGroupBox.Controls.Add(this.KillChainLabel1);
-            this.KillChainGroupBox.Location = new System.Drawing.Point(23, 44);
+            this.KillChainGroupBox.Location = new System.Drawing.Point(31, 54);
+            this.KillChainGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.KillChainGroupBox.Name = "KillChainGroupBox";
-            this.KillChainGroupBox.Size = new System.Drawing.Size(278, 138);
+            this.KillChainGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.KillChainGroupBox.Size = new System.Drawing.Size(371, 170);
             this.KillChainGroupBox.TabIndex = 1;
             this.KillChainGroupBox.TabStop = false;
             // 
-            // KillChainLabel1
-            // 
-            this.KillChainLabel1.AutoSize = true;
-            this.KillChainLabel1.Location = new System.Drawing.Point(6, 114);
-            this.KillChainLabel1.Name = "KillChainLabel1";
-            this.KillChainLabel1.Size = new System.Drawing.Size(104, 13);
-            this.KillChainLabel1.TabIndex = 0;
-            this.KillChainLabel1.Text = "Kill chain exp bonus:";
-            // 
-            // KillChainLabel2
-            // 
-            this.KillChainLabel2.AutoSize = true;
-            this.KillChainLabel2.Location = new System.Drawing.Point(240, 114);
-            this.KillChainLabel2.Name = "KillChainLabel2";
-            this.KillChainLabel2.Size = new System.Drawing.Size(15, 13);
-            this.KillChainLabel2.TabIndex = 2;
-            this.KillChainLabel2.Text = "%";
-            // 
-            // txtKillChainBonusExp
-            // 
-            this.txtKillChainBonusExp.Location = new System.Drawing.Point(199, 111);
-            this.txtKillChainBonusExp.Name = "txtKillChainBonusExp";
-            this.txtKillChainBonusExp.Size = new System.Drawing.Size(35, 20);
-            this.txtKillChainBonusExp.TabIndex = 2;
-            this.txtKillChainBonusExp.TextChanged += new System.EventHandler(this.txtKillChainBonusExp_TextChanged);
-            // 
-            // KillChainChanceTextBox
-            // 
-            this.KillChainChanceTextBox.Location = new System.Drawing.Point(199, 13);
-            this.KillChainChanceTextBox.Name = "KillChainChanceTextBox";
-            this.KillChainChanceTextBox.Size = new System.Drawing.Size(35, 20);
-            this.KillChainChanceTextBox.TabIndex = 5;
-            this.KillChainChanceTextBox.TextChanged += new System.EventHandler(this.KillChainChanceTextBox_TextChanged);
-            // 
-            // KillChainChanceLabel2
-            // 
-            this.KillChainChanceLabel2.AutoSize = true;
-            this.KillChainChanceLabel2.Location = new System.Drawing.Point(240, 16);
-            this.KillChainChanceLabel2.Name = "KillChainChanceLabel2";
-            this.KillChainChanceLabel2.Size = new System.Drawing.Size(15, 13);
-            this.KillChainChanceLabel2.TabIndex = 4;
-            this.KillChainChanceLabel2.Text = "%";
-            // 
-            // KillChainChanceLabel1
-            // 
-            this.KillChainChanceLabel1.AutoSize = true;
-            this.KillChainChanceLabel1.Location = new System.Drawing.Point(6, 16);
-            this.KillChainChanceLabel1.Name = "KillChainChanceLabel1";
-            this.KillChainChanceLabel1.Size = new System.Drawing.Size(149, 13);
-            this.KillChainChanceLabel1.TabIndex = 3;
-            this.KillChainChanceLabel1.Text = "Chance of triggering kill chain:";
-            // 
-            // txtKillChainMinMobsDefault
-            // 
-            this.txtKillChainMinMobsDefault.Location = new System.Drawing.Point(199, 37);
-            this.txtKillChainMinMobsDefault.Name = "txtKillChainMinMobsDefault";
-            this.txtKillChainMinMobsDefault.Size = new System.Drawing.Size(35, 20);
-            this.txtKillChainMinMobsDefault.TabIndex = 8;
-            this.txtKillChainMinMobsDefault.TextChanged += new System.EventHandler(this.txtKillChainMinMobsDefault_TextChanged);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(6, 40);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(156, 13);
-            this.label34.TabIndex = 6;
-            this.label34.Text = "Default minimum mobs required:";
-            // 
-            // txtKillChainMaxMobsDefault
-            // 
-            this.txtKillChainMaxMobsDefault.Location = new System.Drawing.Point(199, 61);
-            this.txtKillChainMaxMobsDefault.Name = "txtKillChainMaxMobsDefault";
-            this.txtKillChainMaxMobsDefault.Size = new System.Drawing.Size(35, 20);
-            this.txtKillChainMaxMobsDefault.TabIndex = 11;
-            this.txtKillChainMaxMobsDefault.TextChanged += new System.EventHandler(this.txtKillChainMaxMobsDefault_TextChanged);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(6, 64);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(159, 13);
-            this.label36.TabIndex = 9;
-            this.label36.Text = "Default maximum mobs required:";
-            // 
             // txtKillChainBonusPerMob
             // 
-            this.txtKillChainBonusPerMob.Location = new System.Drawing.Point(199, 86);
+            this.txtKillChainBonusPerMob.Location = new System.Drawing.Point(265, 106);
+            this.txtKillChainBonusPerMob.Margin = new System.Windows.Forms.Padding(4);
             this.txtKillChainBonusPerMob.Name = "txtKillChainBonusPerMob";
-            this.txtKillChainBonusPerMob.Size = new System.Drawing.Size(35, 20);
+            this.txtKillChainBonusPerMob.Size = new System.Drawing.Size(45, 22);
             this.txtKillChainBonusPerMob.TabIndex = 14;
             this.txtKillChainBonusPerMob.TextChanged += new System.EventHandler(this.txtKillChainBonusPerMob_TextChanged);
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(6, 89);
+            this.label38.Location = new System.Drawing.Point(8, 110);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(182, 13);
+            this.label38.Size = new System.Drawing.Size(246, 17);
             this.label38.TabIndex = 12;
             this.label38.Text = "Bonus duration per mob (in seconds):";
             // 
+            // txtKillChainMaxMobsDefault
+            // 
+            this.txtKillChainMaxMobsDefault.Location = new System.Drawing.Point(265, 75);
+            this.txtKillChainMaxMobsDefault.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKillChainMaxMobsDefault.Name = "txtKillChainMaxMobsDefault";
+            this.txtKillChainMaxMobsDefault.Size = new System.Drawing.Size(45, 22);
+            this.txtKillChainMaxMobsDefault.TabIndex = 11;
+            this.txtKillChainMaxMobsDefault.TextChanged += new System.EventHandler(this.txtKillChainMaxMobsDefault_TextChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(8, 79);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(214, 17);
+            this.label36.TabIndex = 9;
+            this.label36.Text = "Default maximum mobs required:";
+            // 
+            // txtKillChainMinMobsDefault
+            // 
+            this.txtKillChainMinMobsDefault.Location = new System.Drawing.Point(265, 46);
+            this.txtKillChainMinMobsDefault.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKillChainMinMobsDefault.Name = "txtKillChainMinMobsDefault";
+            this.txtKillChainMinMobsDefault.Size = new System.Drawing.Size(45, 22);
+            this.txtKillChainMinMobsDefault.TabIndex = 8;
+            this.txtKillChainMinMobsDefault.TextChanged += new System.EventHandler(this.txtKillChainMinMobsDefault_TextChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(8, 49);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(211, 17);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "Default minimum mobs required:";
+            // 
+            // KillChainChanceTextBox
+            // 
+            this.KillChainChanceTextBox.Location = new System.Drawing.Point(265, 16);
+            this.KillChainChanceTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.KillChainChanceTextBox.Name = "KillChainChanceTextBox";
+            this.KillChainChanceTextBox.Size = new System.Drawing.Size(45, 22);
+            this.KillChainChanceTextBox.TabIndex = 5;
+            this.KillChainChanceTextBox.TextChanged += new System.EventHandler(this.KillChainChanceTextBox_TextChanged);
+            // 
+            // KillChainChanceLabel2
+            // 
+            this.KillChainChanceLabel2.AutoSize = true;
+            this.KillChainChanceLabel2.Location = new System.Drawing.Point(320, 20);
+            this.KillChainChanceLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.KillChainChanceLabel2.Name = "KillChainChanceLabel2";
+            this.KillChainChanceLabel2.Size = new System.Drawing.Size(20, 17);
+            this.KillChainChanceLabel2.TabIndex = 4;
+            this.KillChainChanceLabel2.Text = "%";
+            // 
+            // KillChainChanceLabel1
+            // 
+            this.KillChainChanceLabel1.AutoSize = true;
+            this.KillChainChanceLabel1.Location = new System.Drawing.Point(8, 20);
+            this.KillChainChanceLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.KillChainChanceLabel1.Name = "KillChainChanceLabel1";
+            this.KillChainChanceLabel1.Size = new System.Drawing.Size(198, 17);
+            this.KillChainChanceLabel1.TabIndex = 3;
+            this.KillChainChanceLabel1.Text = "Chance of triggering kill chain:";
+            // 
+            // txtKillChainBonusExp
+            // 
+            this.txtKillChainBonusExp.Location = new System.Drawing.Point(265, 137);
+            this.txtKillChainBonusExp.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKillChainBonusExp.Name = "txtKillChainBonusExp";
+            this.txtKillChainBonusExp.Size = new System.Drawing.Size(45, 22);
+            this.txtKillChainBonusExp.TabIndex = 2;
+            this.txtKillChainBonusExp.TextChanged += new System.EventHandler(this.txtKillChainBonusExp_TextChanged);
+            // 
+            // KillChainLabel2
+            // 
+            this.KillChainLabel2.AutoSize = true;
+            this.KillChainLabel2.Location = new System.Drawing.Point(320, 140);
+            this.KillChainLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.KillChainLabel2.Name = "KillChainLabel2";
+            this.KillChainLabel2.Size = new System.Drawing.Size(20, 17);
+            this.KillChainLabel2.TabIndex = 2;
+            this.KillChainLabel2.Text = "%";
+            // 
+            // KillChainLabel1
+            // 
+            this.KillChainLabel1.AutoSize = true;
+            this.KillChainLabel1.Location = new System.Drawing.Point(8, 140);
+            this.KillChainLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.KillChainLabel1.Name = "KillChainLabel1";
+            this.KillChainLabel1.Size = new System.Drawing.Size(137, 17);
+            this.KillChainLabel1.TabIndex = 0;
+            this.KillChainLabel1.Text = "Kill chain exp bonus:";
+            // 
+            // EnableKillChainsCheckBox
+            // 
+            this.EnableKillChainsCheckBox.AutoSize = true;
+            this.EnableKillChainsCheckBox.Location = new System.Drawing.Point(31, 26);
+            this.EnableKillChainsCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.EnableKillChainsCheckBox.Name = "EnableKillChainsCheckBox";
+            this.EnableKillChainsCheckBox.Size = new System.Drawing.Size(139, 21);
+            this.EnableKillChainsCheckBox.TabIndex = 0;
+            this.EnableKillChainsCheckBox.Text = "Enable kill chains";
+            this.EnableKillChainsCheckBox.UseVisualStyleBackColor = true;
+            this.EnableKillChainsCheckBox.CheckedChanged += new System.EventHandler(this.EnableKillChainsCheckBox_CheckedChanged);
+            // 
+            // EnableKillSpreeBuffsCheckbox
+            // 
+            this.EnableKillSpreeBuffsCheckbox.AutoSize = true;
+            this.EnableKillSpreeBuffsCheckbox.Location = new System.Drawing.Point(9, 105);
+            this.EnableKillSpreeBuffsCheckbox.Name = "EnableKillSpreeBuffsCheckbox";
+            this.EnableKillSpreeBuffsCheckbox.Size = new System.Drawing.Size(169, 21);
+            this.EnableKillSpreeBuffsCheckbox.TabIndex = 5;
+            this.EnableKillSpreeBuffsCheckbox.Text = "Enable kill spree buffs";
+            this.EnableKillSpreeBuffsCheckbox.UseVisualStyleBackColor = true;
+            this.EnableKillSpreeBuffsCheckbox.CheckedChanged += new System.EventHandler(this.EnableKillSpreeBuffsCheckbox_CheckedChanged);
+            // 
+            // KillSpreeBuffDurationLabel
+            // 
+            this.KillSpreeBuffDurationLabel.AutoSize = true;
+            this.KillSpreeBuffDurationLabel.Location = new System.Drawing.Point(7, 19);
+            this.KillSpreeBuffDurationLabel.Name = "KillSpreeBuffDurationLabel";
+            this.KillSpreeBuffDurationLabel.Size = new System.Drawing.Size(160, 17);
+            this.KillSpreeBuffDurationLabel.TabIndex = 6;
+            this.KillSpreeBuffDurationLabel.Text = "Buff duration (seconds):";
+            // 
+            // KillSpreeBuffDurationTextbox
+            // 
+            this.KillSpreeBuffDurationTextbox.Location = new System.Drawing.Point(173, 16);
+            this.KillSpreeBuffDurationTextbox.Name = "KillSpreeBuffDurationTextbox";
+            this.KillSpreeBuffDurationTextbox.Size = new System.Drawing.Size(71, 22);
+            this.KillSpreeBuffDurationTextbox.TabIndex = 7;
+            this.KillSpreeBuffDurationTextbox.TextChanged += new System.EventHandler(this.KillSpreeBuffDurationTextbox_TextChanged);
+            // 
+            // KillSpreeBuffGroupBox
+            // 
+            this.KillSpreeBuffGroupBox.Controls.Add(this.KillSpreeBuffDropdown);
+            this.KillSpreeBuffGroupBox.Controls.Add(this.KillSpreeBuffMultiplierLabel);
+            this.KillSpreeBuffGroupBox.Controls.Add(this.KillSpreeBuffDurationTextbox);
+            this.KillSpreeBuffGroupBox.Controls.Add(this.KillSpreeBuffDurationLabel);
+            this.KillSpreeBuffGroupBox.Location = new System.Drawing.Point(9, 128);
+            this.KillSpreeBuffGroupBox.Name = "KillSpreeBuffGroupBox";
+            this.KillSpreeBuffGroupBox.Size = new System.Drawing.Size(452, 45);
+            this.KillSpreeBuffGroupBox.TabIndex = 8;
+            this.KillSpreeBuffGroupBox.TabStop = false;
+            // 
+            // KillSpreeBuffMultiplierLabel
+            // 
+            this.KillSpreeBuffMultiplierLabel.AutoSize = true;
+            this.KillSpreeBuffMultiplierLabel.Location = new System.Drawing.Point(255, 19);
+            this.KillSpreeBuffMultiplierLabel.Name = "KillSpreeBuffMultiplierLabel";
+            this.KillSpreeBuffMultiplierLabel.Size = new System.Drawing.Size(97, 17);
+            this.KillSpreeBuffMultiplierLabel.TabIndex = 8;
+            this.KillSpreeBuffMultiplierLabel.Text = "Buff multiplier:";
+            // 
+            // KillSpreeBuffDropdown
+            // 
+            this.KillSpreeBuffDropdown.FormattingEnabled = true;
+            this.KillSpreeBuffDropdown.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.KillSpreeBuffDropdown.Location = new System.Drawing.Point(359, 14);
+            this.KillSpreeBuffDropdown.Name = "KillSpreeBuffDropdown";
+            this.KillSpreeBuffDropdown.Size = new System.Drawing.Size(87, 24);
+            this.KillSpreeBuffDropdown.TabIndex = 9;
+            this.KillSpreeBuffDropdown.SelectedIndexChanged += new System.EventHandler(this.KillSpreeBuffDropdown_SelectedIndexChanged);
+            // 
             // SystemInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 284);
+            this.ClientSize = new System.Drawing.Size(575, 420);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SystemInfoForm";
@@ -1288,12 +1563,16 @@
             this.pnlSpawnTickConfig.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.GuildWarKillSpreeGroupBox.ResumeLayout(false);
+            this.GuildWarKillSpreeGroupBox.PerformLayout();
             this.WarKillShoutTypeGroupBox.ResumeLayout(false);
             this.WarKillShoutTypeGroupBox.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
             this.KillChainGroupBox.ResumeLayout(false);
             this.KillChainGroupBox.PerformLayout();
+            this.KillSpreeBuffGroupBox.ResumeLayout(false);
+            this.KillSpreeBuffGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1410,5 +1689,18 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox txtKillChainMinMobsDefault;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.GroupBox GuildWarKillSpreeGroupBox;
+        private System.Windows.Forms.TextBox TimeBetweenGWKillsTextBox;
+        private System.Windows.Forms.Label TimeBetweenGWKillsLabels;
+        private System.Windows.Forms.CheckBox AllowGWKillSpreesCheckBox;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.RadioButton KillSpreeShoutMapRadioButton;
+        private System.Windows.Forms.RadioButton KillSpreeShoutLocalRadioButton;
+        private System.Windows.Forms.CheckBox EnableKillSpreeBuffsCheckbox;
+        private System.Windows.Forms.TextBox KillSpreeBuffDurationTextbox;
+        private System.Windows.Forms.Label KillSpreeBuffDurationLabel;
+        private System.Windows.Forms.GroupBox KillSpreeBuffGroupBox;
+        private System.Windows.Forms.ComboBox KillSpreeBuffDropdown;
+        private System.Windows.Forms.Label KillSpreeBuffMultiplierLabel;
     }
 }
