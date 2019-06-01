@@ -842,12 +842,14 @@ namespace Server.MirObjects
             string message;
 
             int timeRemaining = KillChain.Duration - KillChain.TimePassed;
+            int killsRemaining = KillChain.KillsRequired - KillChain.Kills;
 
             message = "you have "
                         + timeRemaining.ToString() + " seconds to kill "
-                        + KillChain.KillsRequired.ToString() + " " + KillChain.mobInfo.Name;
+                        + killsRemaining.ToString()
+                        + " " + KillChain.mobInfo.Name;
 
-            if (KillChain.KillsRequired > 1)
+            if (killsRemaining > 1)
                 message += "s";
 
             return message;
