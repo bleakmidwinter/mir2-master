@@ -582,6 +582,8 @@ namespace Client.MirScenes.Dialogs
                     return 261;
                 case BuffType.Exp2:
                     return 306;
+                case BuffType.KillSpree:
+                    return 306;
 
                 //Stats
                 case BuffType.Impact:

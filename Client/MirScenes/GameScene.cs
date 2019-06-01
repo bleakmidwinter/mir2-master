@@ -4061,7 +4061,8 @@ namespace Client.MirScenes
         }
         private void AddBuff(S.AddBuff p)
         {
-            Buff buff = new Buff { Type = p.Type, Caster = p.Caster, Expire = CMain.Time + p.Expire, Values = p.Values, Infinite = p.Infinite, ObjectID = p.ObjectID, Visible = p.Visible };
+            //Buff buff = new Buff { Type = p.Type, Caster = p.Caster, Expire = CMain.Time + p.Expire, Values = p.Values, Infinite = p.Infinite, ObjectID = p.ObjectID, Visible = p.Visible };
+            Buff buff = new Buff { Type = p.Type, Caster = p.Caster, Expire = CMain.Time + p.Expire, Values = p.Values, Infinite = p.Infinite, ObjectID = p.ObjectID, Visible = p.Visible, Title = p.Title };
 
             if (buff.ObjectID == User.ObjectID)
             {
@@ -10176,6 +10177,7 @@ namespace Client.MirScenes
         public long Expire;
         public int[] Values;
         public bool Infinite;
+        public string Title;
 
         public override string ToString()
         {
@@ -10398,6 +10400,9 @@ namespace Client.MirScenes
                     break;
                 case BuffType.Paralysed:
                     text = string.Format("Paralysed\nUnable to move.\n", Values[0]);
+                    break;
+                case BuffType.KillSpree:
+                    text = "Killing spree\n" + Title;
                     break;
             }
 

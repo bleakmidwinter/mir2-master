@@ -762,6 +762,7 @@ namespace Server.MirObjects
         public long ExpireTime;
         public int[] Values;
         public bool Infinite;
+        public string Title;
 
         public bool RealTime;
         public DateTime RealTimeExpire;

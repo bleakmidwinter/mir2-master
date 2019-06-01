@@ -52,12 +52,19 @@ namespace Server
         private void UpdateGuildWarSettings()
         {
             GuildWarKillShoutCheckbox.Checked = Settings.BroadcastGuildWarKillShout;
+            WarKillShoutTypeGroupBox.Enabled = GuildWarKillShoutCheckbox.Checked;
             WarShoutLocalRadioButton.Checked = Settings.GuildWarKillShoutType == "Local" ? true : false;
+            WarShoutMapRadioButton.Checked = Settings.GuildWarKillShoutType == "Map" ? true : false;
 
-            if (Settings.GuildWarKillShoutType == "Local")
-                WarShoutLocalRadioButton.Checked = true;
-            else
-                WarShoutMapRadioButton.Checked = true;
+            AllowGWKillSpreesCheckBox.Checked = Settings.EnableGWKillSprees;
+            GuildWarKillSpreeGroupBox.Enabled = AllowGWKillSpreesCheckBox.Checked;
+            TimeBetweenGWKillsTextBox.Text = Settings.TimeBetweenGWKills.ToString();
+            KillSpreeShoutLocalRadioButton.Checked = Settings.KillingSpreeShoutType == "Local" ? true : false;
+            KillSpreeShoutMapRadioButton.Checked = Settings.KillingSpreeShoutType == "Map" ? true : false;
+            EnableKillSpreeBuffsCheckbox.Checked = Settings.EnableKillSpreeBuffs;
+            KillSpreeBuffGroupBox.Enabled = Settings.EnableKillSpreeBuffs;
+            KillSpreeBuffDurationTextbox.Text = Settings.KillSpreeBuffDuration.ToString();
+            KillSpreeBuffDropdown.SelectedIndex = Settings.KillSpreeBuffMultiplier - 1;
         }
 
         private void UpdateKillChainSettings()
@@ -815,6 +822,73 @@ namespace Server
             ActiveControl.BackColor = SystemColors.Window;
             Settings.KillChainDurationPerMob = temp;
             KillChainsChanged = true;
+        }
+
+        private void AllowGWKillSpreesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            GuildWarKillSpreeGroupBox.Enabled = AllowGWKillSpreesCheckBox.Checked;
+            Settings.EnableGWKillSprees = AllowGWKillSpreesCheckBox.Checked;
+
+            //Settings.TimeBetweenGWKills = !Int32.TryParse(TimeBetweenGWKillsTextBox.Text, out int temp) ? 0 : Convert.ToInt32(TimeBetweenGWKillsTextBox.Text);
+
+            GuildWarChanged = true;
+        }
+
+        private void TimeBetweenGWKillsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            int temp;
+
+            if (!Int32.TryParse(ActiveControl.Text, out temp))
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.TimeBetweenGWKills = temp;
+            GuildWarChanged = true;
+        }
+
+        private void WarShoutMapRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KillSpreeShoutLocalRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.KillingSpreeShoutType = KillSpreeShoutLocalRadioButton.Checked ? "Local" : "Map";
+            GuildWarChanged = true;
+        }
+
+        private void EnableKillSpreeBuffsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            Settings.EnableKillSpreeBuffs = EnableKillSpreeBuffsCheckbox.Checked;
+            KillSpreeBuffGroupBox.Enabled = EnableKillSpreeBuffsCheckbox.Checked;
+            GuildWarChanged = true;
+        }
+
+        private void KillSpreeBuffDurationTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            int temp;
+
+            if (!Int32.TryParse(ActiveControl.Text, out temp))
+            {
+                ActiveControl.BackColor = Color.Red;
+                return;
+            }
+
+            ActiveControl.BackColor = SystemColors.Window;
+            Settings.KillSpreeBuffDuration = temp;
+            GuildWarChanged = true;
+        }
+
+        private void KillSpreeBuffDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.KillSpreeBuffMultiplier = KillSpreeBuffDropdown.SelectedIndex + 1;
         }
 
         private void EnableKillChainsCheckBox_CheckedChanged(object sender, EventArgs e)

@@ -823,6 +823,10 @@ namespace Client.MirScenes.Dialogs
                     backColour = Color.White;
                     foreColour = Color.Purple;
                     break;
+                case ChatType.KillSpreeAnnouncement:
+                    GameScene.Scene.ChatNoticeDialog.ShowNotice(text);
+                    return;
+                    break;
                 default:
                     backColour = Color.White;
                     foreColour = Color.Black;

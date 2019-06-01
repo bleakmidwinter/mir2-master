@@ -29,6 +29,7 @@ namespace Server.MirObjects
         public bool WarZone = false;
 
         public KillChainInfo KillChain;
+        private List<GuildWarKill> guildWarKills;
 
         public override ObjectType Race
         {
@@ -336,6 +337,8 @@ namespace Server.MirObjects
         {
             get { return Info.CompletedQuests; }
         }
+
+        internal List<GuildWarKill> GuildWarKills { get => guildWarKills; set => guildWarKills = value; }
 
         public byte AttackBonus, MineRate, GemRate, FishRate, CraftRate, SkillNeckBoost;
 
@@ -1395,7 +1398,8 @@ namespace Server.MirObjects
                     else
                     {
                         Packet p;
-                        string message = "Guild war: " + hitter.Name + " has killed " + Name + ".";
+                        string message = "Guild war: " + hitter.Name + "(" + hitter.MyGuild.Name + ")" +
+                            " has killed " + Name + "(" + MyGuild.Name + ")" + ".";
                         p = new S.Chat { Message = message, Type = ChatType.Shout4 };
 
                         if (Settings.GuildWarKillShoutType == "Local")
@@ -1413,6 +1417,13 @@ namespace Server.MirObjects
                                 CurrentMap.Players[i].Enqueue(p);
                             }
                         }
+                    }
+
+                    if (Settings.EnableGWKillSprees)
+                    {
+                        GuildWarKills = null;
+
+                        hitter.AddGuildWarKill(Name, MyGuild.Name, Envir.Time);
                     }
                 }
                 else if (Envir.Time > BrownTime && PKPoints < 200)
@@ -10712,10 +10723,14 @@ namespace Server.MirObjects
             base.AddBuff(b);
 
             string caster = b.Caster != null ? b.Caster.Name : string.Empty;
+            string title = "";
+
+            if (b.Title != null)
+                title = b.Title;
 
             if (b.Values == null) b.Values = new int[1];
 
-            S.AddBuff addBuff = new S.AddBuff { Type = b.Type, Caster = caster, Expire = b.ExpireTime - Envir.Time, Values = b.Values, Infinite = b.Infinite, ObjectID = ObjectID, Visible = b.Visible };
+            S.AddBuff addBuff = new S.AddBuff { Type = b.Type, Caster = caster, Expire = b.ExpireTime - Envir.Time, Values = b.Values, Infinite = b.Infinite, ObjectID = ObjectID, Visible = b.Visible , Title = title };
             Enqueue(addBuff);
 
             if (b.Visible) Broadcast(addBuff);
@@ -20463,6 +20478,106 @@ namespace Server.MirObjects
 
             ItemRentalPartner.ItemRentalPartner = null;
             ItemRentalPartner = null;
+        }
+
+        public void AddGuildWarKill(string playerName, string guildName, long timeOfDeath)
+        {
+            if (guildWarKills == null)
+                guildWarKills = new List<GuildWarKill>();
+
+            guildWarKills.Insert(0, new GuildWarKill(playerName, guildName, timeOfDeath));
+
+            RefreshGuildWarKills();
+            CheckGuildWarKillStreak(guildName);
+        }
+
+        private void CheckGuildWarKillStreak(string guildName)
+        {
+            if (guildWarKills != null && guildWarKills.Count > 1)
+            {
+                List<GuildWarKill> GWKills = GuildWarKills.FindAll(x => x.GuildName == guildName);
+
+                if (GWKills.Count > 1)
+                {
+                    string message = Name + " ";
+
+                    if (GWKills.Count == 2)
+                        message += Settings.TwoGuildWarKillsMessage;
+                    else if (GWKills.Count == 3)
+                        message += Settings.ThreeGuildWarKillsMessage;
+                    else if (GWKills.Count == 4)
+                        message += Settings.FourGuildWarKillsMessage;
+                    else if (GWKills.Count >= 5)
+                        message += Settings.FiveOrMoreGuildWarKillsMessage;
+
+                    BroadcastKillStreakMessage(message);
+
+                    if (Settings.EnableKillSpreeBuffs)
+                    {
+                        int numberOfKills;
+                        string buffTitle;
+                        int buffValue = 0;
+
+                        if (GWKills.Count > 5)
+                            numberOfKills = 5;
+                        else
+                            numberOfKills = GWKills.Count;
+
+                        buffValue = numberOfKills * Settings.KillSpreeBuffMultiplier;
+                        buffTitle = string.Format("Increases DC, MC, SC, AC and AMC against {0} members by {1}", guildName, buffValue);
+
+                        AddKillSpreeBuff(buffValue, buffTitle);
+                    }
+                }
+            }
+        }
+
+        private void AddKillSpreeBuff(int buffValue, string buffTitle)
+        {
+            AddBuff(new Buff
+            {
+                Type = BuffType.KillSpree,
+                ExpireTime = Envir.Time + (Settings.KillSpreeBuffDuration * 1000),
+                Values = new int[] { buffValue },
+                Title = buffTitle
+            });
+        }
+
+        private void BroadcastKillStreakMessage(string message)
+        {
+            if (Settings.KillingSpreeShoutType == "Local")
+            {
+                for (int i = 0; i < CurrentMap.Players.Count; i++)
+                {
+                    if (!Functions.InRange(CurrentLocation, CurrentMap.Players[i].CurrentLocation, Globals.DataRange * 3)) continue;
+                    CurrentMap.Players[i].ReceiveChat(message, ChatType.KillSpreeAnnouncement);
+                }
+            }
+            else if (Settings.KillingSpreeShoutType == "Map")
+            {
+                for (int i = 0; i < CurrentMap.Players.Count; i++)
+                {
+                    CurrentMap.Players[i].ReceiveChat(message, ChatType.KillSpreeAnnouncement);
+                }
+            }
+        }
+
+        private void RefreshGuildWarKills()
+        {
+            if (guildWarKills != null && guildWarKills.Count > 0)
+            {
+                for (int i = guildWarKills.Count - 1; i >= 0; i--)
+                {
+                    if (Envir.Time > (guildWarKills[i].DiedTime + (Settings.TimeBetweenGWKills * 1000)))
+                    {
+                        guildWarKills.RemoveAt(i);
+                    }
+                }
+            }
+            else
+            {
+                guildWarKills = null;
+            }
         }
     }
 }
