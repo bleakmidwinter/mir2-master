@@ -39,7 +39,8 @@ namespace Server.MirObjects
                 isKillChainMob = false;
             }
 
-            return Kills >= KillsRequired ? true : false;
+            //return Kills >= KillsRequired ? true : false;
+            return Kills >= KillsRequired;
         }
     }
 }
