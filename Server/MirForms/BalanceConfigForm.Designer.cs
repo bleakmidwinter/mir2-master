@@ -214,6 +214,13 @@
             this.RISMaxDuraChancetextBox = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.RISIndexcomboBox = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.ExpRateTextBox = new System.Windows.Forms.TextBox();
+            this.DropRateTextBox = new System.Windows.Forms.TextBox();
+            this.GoldRateTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -224,6 +231,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -375,6 +383,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2097,6 +2106,76 @@
             this.RISIndexcomboBox.TabIndex = 7;
             this.RISIndexcomboBox.SelectedIndexChanged += new System.EventHandler(this.RISIndexcomboBox_SelectedIndexChanged);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.GoldRateTextBox);
+            this.tabPage3.Controls.Add(this.DropRateTextBox);
+            this.tabPage3.Controls.Add(this.ExpRateTextBox);
+            this.tabPage3.Controls.Add(this.label66);
+            this.tabPage3.Controls.Add(this.label65);
+            this.tabPage3.Controls.Add(this.label64);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(624, 663);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "Rates";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(29, 25);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(49, 13);
+            this.label64.TabIndex = 0;
+            this.label64.Text = "Exp rate:";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(29, 48);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(54, 13);
+            this.label65.TabIndex = 1;
+            this.label65.Text = "Drop rate:";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(29, 77);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(53, 13);
+            this.label66.TabIndex = 2;
+            this.label66.Text = "Gold rate:";
+            // 
+            // ExpRateTextBox
+            // 
+            this.ExpRateTextBox.Location = new System.Drawing.Point(101, 25);
+            this.ExpRateTextBox.Name = "ExpRateTextBox";
+            this.ExpRateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ExpRateTextBox.TabIndex = 3;
+            this.ExpRateTextBox.TextChanged += new System.EventHandler(this.ExpRateTextBox_TextChanged);
+            this.ExpRateTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExpRateTextBox_KeyPress);
+            // 
+            // DropRateTextBox
+            // 
+            this.DropRateTextBox.Location = new System.Drawing.Point(101, 51);
+            this.DropRateTextBox.Name = "DropRateTextBox";
+            this.DropRateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.DropRateTextBox.TabIndex = 4;
+            this.DropRateTextBox.TextChanged += new System.EventHandler(this.DropRateTextBox_TextChanged);
+            this.DropRateTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DropRateTextBox_KeyPress);
+            // 
+            // GoldRateTextBox
+            // 
+            this.GoldRateTextBox.Location = new System.Drawing.Point(101, 77);
+            this.GoldRateTextBox.Name = "GoldRateTextBox";
+            this.GoldRateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GoldRateTextBox.TabIndex = 5;
+            this.GoldRateTextBox.TextChanged += new System.EventHandler(this.GoldRateTextBox_TextChanged);
+            this.GoldRateTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GoldRateTextBox_KeyPress);
+            // 
             // BalanceConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2124,6 +2203,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2316,5 +2397,12 @@
         private System.Windows.Forms.Button RISAddIndexbutton;
         private System.Windows.Forms.TextBox RISCurseChancetextBox;
         private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox GoldRateTextBox;
+        private System.Windows.Forms.TextBox DropRateTextBox;
+        private System.Windows.Forms.TextBox ExpRateTextBox;
     }
 }

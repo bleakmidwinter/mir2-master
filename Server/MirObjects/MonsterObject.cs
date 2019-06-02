@@ -787,8 +787,13 @@ namespace Server.MirObjects
 
                 if (drop.Gold > 0)
                 {
-                    int lowerGoldRange = (int)(drop.Gold / 2);
-                    int upperGoldRange = (int)(drop.Gold + drop.Gold / 2);
+                    int tempGold = (int)(drop.Gold * Settings.GoldRate);
+
+                    //int lowerGoldRange = (int)(drop.Gold / 2);
+                    //int upperGoldRange = (int)(drop.Gold + drop.Gold / 2);
+
+                    int lowerGoldRange = (int)(tempGold / 2);
+                    int upperGoldRange = (int)(tempGold + tempGold / 2);
 
                     if (EXPOwner != null && EXPOwner.GoldDropRateOffset > 0)
                         lowerGoldRange += (int)(lowerGoldRange * (EXPOwner.GoldDropRateOffset / 100));
@@ -800,6 +805,15 @@ namespace Server.MirObjects
                     if (gold <= 0) continue;
 
                     if (!DropGold((uint)gold)) return;
+
+                    ////FOR TESTING ONLY
+                    //if (EXPOwner != null)
+                    //{
+                    //    EXPOwner.ReceiveChat(this.Name + ": "
+                    //        + "Lower gold range: " + lowerGoldRange.ToString()
+                    //        + ", upper gold range: " + upperGoldRange.ToString()
+                    //        + ", gold dropped: " + gold.ToString(), ChatType.Hint);
+                    //}
                 }
                 else
                 {

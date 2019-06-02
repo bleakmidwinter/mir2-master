@@ -22,6 +22,7 @@ namespace Server
         public bool BaseStatsChanged = false;
         public bool RandomItemStatsChanged = false;
         public bool GuildsChanged = false;
+        public bool RatesChanged = false;
 
         public BalanceConfigForm()
         {
@@ -135,6 +136,10 @@ namespace Server
             CanFreezecheckBox.Checked = Settings.PvpCanFreeze;
             CanResistPoisoncheckBox.Checked = Settings.PvpCanResistPoison;
             CanResistMagiccheckBox.Checked = Settings.PvpCanResistMagic;
+
+            ExpRateTextBox.Text = Settings.ExpRate.ToString();
+            DropRateTextBox.Text = Settings.DropRate.ToString();
+            GoldRateTextBox.Text = Settings.GoldRate.ToString();
         }
 
         private void UpdateRandomItemStats()
@@ -1987,8 +1992,70 @@ namespace Server
             Settings.RandomItemStatsList[RISIndexcomboBox.SelectedIndex].CurseChance = temp;
         }
 
-        
+        private void ExpRateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
 
-        
+        private void DropRateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void GoldRateTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ExpRateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            float temp;
+
+            if (!float.TryParse(ActiveControl.Text, out temp))
+            {
+                return;
+            }
+
+            Settings.ExpRate = temp;
+        }
+
+        private void DropRateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            float temp;
+
+            if (!float.TryParse(ActiveControl.Text, out temp))
+            {
+                return;
+            }
+
+            Settings.DropRate = temp;
+        }
+
+        private void GoldRateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            float temp;
+
+            if (!float.TryParse(ActiveControl.Text, out temp))
+            {
+                return;
+            }
+
+            Settings.GoldRate = temp;
+        }
     }
 }

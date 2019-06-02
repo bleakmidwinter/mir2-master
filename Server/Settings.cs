@@ -90,7 +90,7 @@ namespace Server
         public static List<long> OrbsDefList = new List<long>();
         public static List<long> OrbsDmgList = new List<long>();
 
-        public static float DropRate = 1F, ExpRate = 1F;
+        public static float DropRate = 1F, ExpRate = 1F, GoldRate = 1F;
 
         public static int ItemTimeOut = 30,
                           PlayerDiedItemTimeOut = 120,
@@ -248,6 +248,7 @@ namespace Server
                               PvpCanResistPoison = false,
                               PvpCanFreeze = false;
 
+
         //Guild related settings
         public static byte Guild_RequiredLevel = 22, Guild_PointPerLevel = 0;
         public static float Guild_ExpRate = 0.01f;
@@ -344,6 +345,7 @@ namespace Server
             //Game
             DropRate = Reader.ReadSingle("Game", "DropRate", DropRate);
             ExpRate = Reader.ReadSingle("Game", "ExpRate", ExpRate);
+            GoldRate = Reader.ReadSingle("Game", "GoldRate", GoldRate);
             ItemTimeOut = Reader.ReadInt32("Game", "ItemTimeOut", ItemTimeOut);
             PlayerDiedItemTimeOut = Reader.ReadInt32("Game", "PlayerDiedItemTimeOut", PlayerDiedItemTimeOut);
             PetTimeOut = Reader.ReadInt64("Game", "PetTimeOut", PetTimeOut);
