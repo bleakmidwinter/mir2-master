@@ -581,9 +581,10 @@ namespace Client.MirScenes.Dialogs
                 case BuffType.TemporalFlux:
                     return 261;
                 case BuffType.Exp2:
-                    return 306;
+                    return 260;
                 case BuffType.KillSpree:
-                    return 306;
+                    //return 306;
+                    return 267;
 
                 //Stats
                 case BuffType.Impact:
