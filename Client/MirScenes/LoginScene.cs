@@ -432,19 +432,6 @@ namespace Client.MirScenes
                     };
                 CloseButton.Click += (o, e) => Program.Form.Close();
 
-                AccountIDTextBox = new MirTextBox
-                    {
-                        Location = new Point(85, 85),
-                        Parent = this,
-                        Size = new Size(136, 12),
-                        MaxLength = Globals.MaxAccountIDLength
-                };
-                AccountIDTextBox.SetFocus();
-                AccountIDTextBox.TextBox.TextChanged += AccountIDTextBox_TextChanged;
-                AccountIDTextBox.TextBox.KeyPress += TextBox_KeyPress;
-                AccountIDTextBox.Text = Settings.AccountID;
-
-
 
                 PasswordTextBox = new MirTextBox
                     {
@@ -459,6 +446,17 @@ namespace Client.MirScenes
                 PasswordTextBox.TextBox.KeyPress += TextBox_KeyPress;
                 PasswordTextBox.Text = Settings.Password;
 
+                AccountIDTextBox = new MirTextBox
+                {
+                    Location = new Point(85, 85),
+                    Parent = this,
+                    Size = new Size(136, 12),
+                    MaxLength = Globals.MaxAccountIDLength
+                };
+                AccountIDTextBox.SetFocus();
+                AccountIDTextBox.TextBox.TextChanged += AccountIDTextBox_TextChanged;
+                AccountIDTextBox.TextBox.KeyPress += TextBox_KeyPress;
+                AccountIDTextBox.Text = Settings.AccountID;
             }
 
             private void AccountIDTextBox_TextChanged(object sender, EventArgs e)
