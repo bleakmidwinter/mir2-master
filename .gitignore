@@ -58,7 +58,18 @@ Client/Client.csproj
 /Build
 Questions.xlsx
 Questions.xlsx
+<<<<<<< Updated upstream
 .vs/Legend of Mir/v15/Server/sqlite3/db.lock
 .vs/Legend of Mir/v15/Server/sqlite3/storage.ide
 .vs/Legend of Mir/v15/Server/sqlite3/storage.ide-shm
 .vs/Legend of Mir/v15/Server/sqlite3/storage.ide-wal
+=======
+*.lock
+*.ide
+*.ide-wal
+*.ide-shm
+*.ide-shm
+>>>>>>> Stashed changes
+*.ide-shm
+Build/Server/Server.MirADB
+Build/Server/Server.MirADB
